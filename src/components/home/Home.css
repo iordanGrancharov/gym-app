@@ -1,0 +1,7 @@
+.content {
+  height: 93vh;
+  background-image: url("./images/original.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: inherit;
+}

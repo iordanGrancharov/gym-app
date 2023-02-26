@@ -1,0 +1,34 @@
+.links {
+  display: flex;
+  justify-content: end;
+  list-style-type: none;
+  position: fixed;
+  top: 0;
+  right: 20px;
+  z-index: 999;
+  padding-top: 0.5rem;
+}
+
+.links li a {
+  color: white;
+  font-family: "Ryu";
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.links li a:hover {
+  /* color: rgb(252, 252, 252); */
+  font-weight: 700;
+  /* transition: linear 0.1s; */
+}
+
+.links li:hover {
+  transform: translatey(-10%) scale(1.1);
+  transition: linear 0.25s;
+}
+
+.links li {
+  padding: 0.8rem 0.6rem;
+  /* padding-right: 0.8rem; */
+}

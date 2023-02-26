@@ -1,0 +1,55 @@
+.burgerMenu {
+  position: fixed; /* this will fix the burger icon in place */
+  top: 20px; /* adjust this to position the icon from the top of the page */
+  right: 20px; /* adjust this to position the icon from the right of the page */
+  cursor: pointer; /* this will make the cursor a pointer when hovering over the icon */
+  z-index: 999; /* this will make the icon appear on top of other elements */
+  font-size: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid white;
+  padding: 0.5rem 0.8rem;
+}
+
+.burgerMenu:hover {
+  border: 2px solid white;
+  transition: linear 0.05s;
+}
+
+.links-burger {
+  position: fixed; /* this will fix the burger icon in place */
+  top: 77px; /* adjust this to position the icon from the top of the page */
+  right: 30px; /* adjust this to position the icon from the right of the page */
+  cursor: pointer; /* this will make the cursor a pointer when hovering over the icon */
+  z-index: 999; /* this will make the icon appear on top of other elements */
+
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+
+  text-align: center;
+  padding-top: 0.5rem;
+  border-radius: 20px;
+}
+
+.links-burger li {
+  border: 1px solid rgb(253, 253, 253, 0.5);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.2rem;
+  border-radius: 20px;
+  background-color: rgba(189, 185, 185, 0.089);
+}
+
+.links-burger li:hover {
+  /* transition: linear 0.3s; */
+
+  border: 2px solid rgb(253, 253, 253);
+}
+
+.links-burger li a {
+  color: white;
+  font-family: "Ryu";
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
