@@ -15,11 +15,12 @@
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1.2rem;
+  text-shadow: rgb(0, 0, 0) 2px 5px 3px;
 }
 
 .links li a:hover {
   /* color: rgb(252, 252, 252); */
-  font-weight: 700;
+  font-weight: 600;
   /* transition: linear 0.1s; */
 }
 
@@ -29,6 +30,7 @@
 }
 
 .links li {
-  padding: 0.8rem 0.6rem;
+  padding: 0.8rem 0.9rem;
+
   /* padding-right: 0.8rem; */
 }

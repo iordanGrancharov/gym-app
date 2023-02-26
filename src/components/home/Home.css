@@ -8,9 +8,11 @@
 
 @media only screen and (max-width: 900px) {
   .content {
-    background-image: url("./images/cbum1.jpg");
+    background-image: url("https://image-cdn.essentiallysports.com/wp-content/uploads/318594095_668733691630816_6711357103519956960_n.jpg?width=600");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50%;
+    background-position: inherit;
   }
 }
+
+/* https://i.pinimg.com/originals/2e/58/19/2e5819317f737e57a772e54c96c6dbc1.jpg */

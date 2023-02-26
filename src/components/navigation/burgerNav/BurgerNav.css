@@ -4,7 +4,7 @@
   right: 20px; /* adjust this to position the icon from the right of the page */
   cursor: pointer; /* this will make the cursor a pointer when hovering over the icon */
   z-index: 999; /* this will make the icon appear on top of other elements */
-  font-size: 2.5rem;
+  font-size: 2rem;
   border-radius: 50%;
   border: 1px solid white;
   padding: 0.5rem 0.8rem;
@@ -27,7 +27,7 @@
   list-style-type: none;
 
   text-align: center;
-  padding-top: 0.5rem;
+  padding-top: 0.1rem;
   border-radius: 20px;
 }
 
@@ -37,12 +37,12 @@
   padding: 0.5rem 1rem;
   margin-bottom: 0.2rem;
   border-radius: 20px;
+  /* background-color: rgba(255, 255, 255, 0.8); */
   background-color: rgba(189, 185, 185, 0.089);
 }
 
 .links-burger li:hover {
   /* transition: linear 0.3s; */
-
   border: 2px solid rgb(253, 253, 253);
 }
 
@@ -51,7 +51,7 @@
   font-family: "Ryu";
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .burger-container-show {

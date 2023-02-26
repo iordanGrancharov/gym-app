@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 import "./BurgerNav.css";
@@ -15,11 +15,20 @@ const BurgerNav = (props) => {
     isShown == true ? "burger-container-show" : "burger-container-hide";
   return (
     <div className={props.className}>
-      <FontAwesomeIcon
-        icon={faBars}
-        className="burgerMenu"
-        onClick={showBurgerMenu}
-      />
+      {isShown == true ? (
+        <FontAwesomeIcon
+          icon={faClose}
+          className="burgerMenu "
+          onClick={showBurgerMenu}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faBars}
+          className="burgerMenu "
+          onClick={showBurgerMenu}
+        />
+      )}
+
       <div className={classShown}>
         <ul className="links-burger">
           {/* USER */}
