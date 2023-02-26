@@ -5,3 +5,12 @@
   background-repeat: no-repeat;
   background-position: inherit;
 }
+
+@media only screen and (max-width: 900px) {
+  .content {
+    background-image: url("./images/cbum1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+}

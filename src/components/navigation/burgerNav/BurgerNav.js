@@ -5,20 +5,22 @@ import { useState } from "react";
 import "./BurgerNav.css";
 
 const BurgerNav = (props) => {
-  const [isShown, setIsShown] = useState("false");
+  const [isShown, setIsShown] = useState(false);
 
-  const showBurgerMenu = (e) => {};
+  const showBurgerMenu = (e) => {
+    setIsShown(!isShown);
+  };
 
+  const classShown =
+    isShown == true ? "burger-container-show" : "burger-container-hide";
   return (
     <div className={props.className}>
       <FontAwesomeIcon
         icon={faBars}
         className="burgerMenu"
-        onClick={(e) => showBurgerMenu}
+        onClick={showBurgerMenu}
       />
-      <div
-        className={isShown ? "burger-container show" : "burger-container hide"}
-      >
+      <div className={classShown}>
         <ul className="links-burger">
           {/* USER */}
           {/* <li>

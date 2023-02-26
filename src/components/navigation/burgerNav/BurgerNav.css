@@ -53,3 +53,11 @@
   text-transform: uppercase;
   font-size: 1.2rem;
 }
+
+.burger-container-show {
+  display: block;
+}
+
+.burger-container-hide {
+  display: none;
+}
