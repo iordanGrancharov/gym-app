@@ -1,27 +1,27 @@
 .links {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
   position: fixed;
   top: 0;
   right: 20px;
   z-index: 999;
-  padding-top: 0.5rem;
+  padding-top: 2rem;
 }
 
 .links li a {
-  color: white;
+  color: #d83e59;
   font-family: "Ryu";
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-shadow: rgb(0, 0, 0) 2px 5px 3px;
 }
 
 .links li a:hover {
-  /* color: rgb(252, 252, 252); */
-  font-weight: 600;
-  /* transition: linear 0.1s; */
+  color: rgb(252, 252, 252);
+  transition: linear 0.1s;
 }
 
 .links li:hover {
@@ -30,7 +30,8 @@
 }
 
 .links li {
-  padding: 0.8rem 0.9rem;
+  padding: 0 1.2rem;
+  margin-right: 1rem;
 
   /* padding-right: 0.8rem; */
 }

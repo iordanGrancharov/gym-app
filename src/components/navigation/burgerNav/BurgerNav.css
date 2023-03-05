@@ -4,60 +4,137 @@
   right: 20px; /* adjust this to position the icon from the right of the page */
   cursor: pointer; /* this will make the cursor a pointer when hovering over the icon */
   z-index: 999; /* this will make the icon appear on top of other elements */
-  font-size: 2rem;
+  font-size: var(--font-size-big);
   border-radius: 50%;
-  border: 1px solid white;
   padding: 0.5rem 0.8rem;
 }
 
 .burgerMenu:hover {
-  border: 2px solid white;
-  transition: linear 0.05s;
+  transform: scale(1.1);
+  transition: linear 0.2s;
 }
 
 .links-burger {
+  width: 100%;
   position: fixed; /* this will fix the burger icon in place */
-  top: 77px; /* adjust this to position the icon from the top of the page */
-  right: 30px; /* adjust this to position the icon from the right of the page */
+  top: 12vh; /* adjust this to position the icon from the top of the page */
+  right: 4vw; /* adjust this to position the icon from the right of the page */
   cursor: pointer; /* this will make the cursor a pointer when hovering over the icon */
   z-index: 999; /* this will make the icon appear on top of other elements */
-
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   list-style-type: none;
-
+  margin: auto;
   text-align: center;
-  padding-top: 0.1rem;
+
   border-radius: 20px;
 }
 
 .links-burger li {
-  border: 1px solid rgb(253, 253, 253, 0.5);
-  margin: 0;
+  display: flex;
+
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+
+  margin: 0 1%;
+  margin-top: 1rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 0.2rem;
-  border-radius: 20px;
-  /* background-color: rgba(255, 255, 255, 0.8); */
-  background-color: rgba(189, 185, 185, 0.089);
+
+  background-color: #d83e5a32;
+  box-shadow: var(--box-shadow-main);
+
+  transform: translateY(50px);
+  opacity: 0;
 }
 
 .links-burger li:hover {
-  /* transition: linear 0.3s; */
-  border: 2px solid rgb(253, 253, 253);
+  transition: linear 0.1s;
+  border: 2px solid var(--main-bg-color);
+  /* background-color: var(--secondary-color); */
 }
 
 .links-burger li a {
-  color: white;
-  font-family: "Ryu";
+  padding: 0;
+  margin: 0;
+
+  color: var(--secondary-color);
+  font-family: var(--font-family-two);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: var(--font-size-big-mobile);
 }
 
 .burger-container-show {
   display: block;
 }
 
+.burger-container-show > .links-burger li {
+  animation: showNav 0.5s linear;
+  animation-fill-mode: forwards;
+}
+
 .burger-container-hide {
-  display: none;
+  display: block;
+}
+
+.burger-container-hide > .links-burger li {
+  animation: hideNav 0.5s linear;
+  /* animation-fill-mode: forwards; */
+}
+
+@keyframes showNav {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(5px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes hideNav {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  25% {
+    transform: translateY(5px);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .burgerMenu {
+    font-size: var(--font-size-middle);
+  }
 }

@@ -14,7 +14,7 @@ const Navbar = () => {
           <Col xs={2} md={2} lg={2}>
             <Col xs={6}>
               <a href="#">
-                <img className="logo" src={Logo} alt="ne stana" />
+                <img className="logo" src={Logo} alt="problem" />
               </a>
             </Col>
             <Col xs={6}>
@@ -27,7 +27,7 @@ const Navbar = () => {
               </label>
             </Col>
           </Col>
-          <Col xs="auto">
+          <Col xs="auto" className="nav-ul">
             <DefaultNav className="links-container" />
             <BurgerNav className="burger" />
           </Col>

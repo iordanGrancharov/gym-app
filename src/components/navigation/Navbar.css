@@ -10,83 +10,31 @@
   width: 100%; /* this will make the navigation bar span the entire width of the page */
   background-color: transparent; /* this will make the background transparent */
   z-index: 999; /* this will make the navigation bar appear on top of other elements */
-  color: white;
-}
-
-/* LOGO */
-.mainRow {
-  padding-top: 1rem;
-}
-
-.logo {
-  position: fixed;
-  margin-left: -5rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .logo {
-    margin-left: 0rem;
-  }
-
-  .logoText {
-    margin-left: 5rem;
-    margin-right: -5rem;
-  }
-}
-
-@media only screen and (min-width: 750px) and (max-width: 850px) {
-  .logo {
-    margin-left: -2rem;
-  }
-
-  .logoText {
-    margin-left: 3rem;
-    margin-right: -5rem;
-  }
-}
-
-@media only screen and (min-width: 950px) and (max-width: 1050px) {
-  .logo {
-    margin-left: -2rem;
-  }
-
-  .logoText {
-    margin-left: 3rem;
-    margin-right: -5rem;
-  }
-}
-
-@media only screen and (min-width: 1050px) and (max-width: 1500px) {
-  .logo {
-    margin-left: -3rem;
-  }
-
-  .logoText {
-    margin-left: 2rem;
-    margin-right: -5rem;
-  }
-}
-
-@media only screen and (min-width: 1500px) {
-  .logo {
-    margin-left: -6rem;
-  }
-
-  .logoText {
-    margin-left: -1rem;
-    margin-right: -5rem;
-  }
+  color: var(--secondary-color);
 }
 
 .logoText {
   text-transform: uppercase;
   font-family: "Rye";
   text-align: center;
-  font-size: 1.2rem;
+  justify-content: center;
+  font-size: 1rem;
+  text-shadow: rgb(0, 0, 0) 2px 5px 3px;
+  margin-left: -1.2rem;
 }
 
 .and {
   font-size: 0.8em;
+}
+
+/* LOGO */
+.mainRow {
+  padding: 1rem 0;
+}
+
+.logo {
+  position: fixed;
+  margin-left: -5rem;
 }
 
 /* LINKS */
@@ -100,8 +48,18 @@
 }
 
 /* QUERIES */
+@media only screen and (max-width: 480px) {
+  .logo {
+    margin-left: 0px;
+    width: 40px;
+  }
+  .logoText {
+    margin-left: 2.5rem;
+    font-size: var(--font-size-extrabig-mobile);
+  }
+}
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .links-container {
     display: none;
   }

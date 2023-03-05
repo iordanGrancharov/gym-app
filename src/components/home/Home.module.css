@@ -1,0 +1,387 @@
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&display=swap");
+
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("https://i.imgur.com/hW8tBdX.png");
+  background-repeat: repeat-x;
+  background-position: right;
+
+  animation: move-background 30s linear infinite;
+}
+
+@keyframes move-background {
+  0% {
+    background-position: left;
+  }
+  25% {
+    background-position: center;
+  }
+  50% {
+    background-position: right;
+  }
+  75% {
+    background-position: center;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.section-one {
+  position: fixed;
+  left: 70px;
+
+  height: 70vh;
+  width: 50vw;
+
+  background-image: url("https://cdn.wallpapersafari.com/17/13/es1bhZ.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: var(--border-type-one);
+  box-shadow: var(--box-shadow-main);
+}
+
+.section-two {
+  position: fixed;
+  right: 70px;
+
+  height: 50vh;
+  width: 40vw;
+
+  margin-top: -9.5rem;
+  margin-left: 1rem;
+
+  border-top: var(--border-type-one);
+  box-shadow: var(--box-shadow-main);
+}
+.section-two h1 {
+  color: var(--secondary-color);
+
+  font-size: var(--font-size-big);
+  font-family: var(--font-family-two);
+  font-weight: 800;
+  font-style: italic;
+
+  text-transform: uppercase;
+  text-align: start;
+  text-shadow: var(--text-shadow-one);
+
+  padding: 0.5rem;
+}
+
+.section-two p {
+  color: var(--secondary-color);
+
+  font-size: var(--font-size-middle);
+  font-family: var(--font-family-two);
+  font-style: italic;
+
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: var(--text-shadow-two);
+
+  padding: 0.5rem;
+  margin-top: 5rem;
+}
+
+.anchor-btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  font-size: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 800;
+
+  padding: 0.5rem 1rem;
+
+  box-shadow: var(--box-shadow-main);
+  border-radius: 3px;
+  transition: var(--transition-half);
+}
+
+.btn-container {
+  width: 60%;
+  height: 20%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: auto;
+}
+
+.workouts-btn {
+  background-color: var(--main-bg-color);
+  border: var(--border-type-two);
+  color: var(--secondary-color);
+
+  outline-offset: 5px;
+  outline: var(--border-type-two);
+
+  opacity: 0.85;
+}
+
+.workouts-btn:hover {
+  background-color: var(--secondary-color);
+  border: var(--border-type-one);
+  color: var(--main-bg-color);
+
+  outline: var(--border-type-one);
+  outline-offset: 5px;
+
+  opacity: 1;
+}
+
+.nutrition-btn {
+  background-color: var(--secondary-color);
+  border: var(--border-type-one);
+  color: var(--main-bg-color);
+
+  outline: var(--border-type-one);
+  outline-offset: 5px;
+
+  opacity: 0.85;
+}
+
+.nutrition-btn:hover {
+  background-color: var(--main-bg-color);
+  border: var(--border-type-two);
+  color: var(--secondary-color);
+  outline: var(--border-type-two);
+  outline-offset: 5px;
+  opacity: 1;
+}
+
+.section-three {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  right: 70px;
+  bottom: 113px;
+
+  height: 18vh;
+  width: 40vw;
+
+  border-top: var(--border-type-one);
+  box-shadow: var(--box-shadow-main);
+}
+
+.section-three h1 {
+  display: flex;
+  flex-direction: column;
+
+  font-size: var(--font-size-big);
+  font-family: var(--font-family-two);
+  font-style: italic;
+
+  color: var(--secondary-color);
+
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow-one);
+
+  margin-top: 1.3rem;
+}
+
+.learn {
+  position: fixed;
+  right: 470px;
+  bottom: 210px;
+}
+
+.about {
+  position: fixed;
+  bottom: 165px;
+  right: 290px;
+  cursor: pointer;
+  font-family: var(--font-family-three);
+  font-size: 1.8rem;
+  font-weight: 900;
+  animation: pulsate 1s ease-out infinite;
+  padding: 0.2rem 2rem;
+  background-color: #d83e5a29;
+  opacity: 0.85;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--secondary-color);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px var(--main-bg-color);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--secondary-color);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--main-bg-color);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px var(--secondary-color);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--main-bg-color);
+  }
+}
+.about:hover > a {
+  color: var(--secondary-color);
+  transition: var(--transition-half);
+}
+
+.about:hover {
+  opacity: 1;
+
+  animation: pulse 1s ease-out infinite;
+  transition: var(--transition-half);
+}
+
+.about a {
+  text-decoration: none;
+  color: #ffffffb0;
+  text-shadow: var(--text-shadow-one);
+}
+
+.ourapp {
+  position: fixed;
+  right: 100px;
+  bottom: 110px;
+}
+
+.about-btn {
+  position: fixed;
+  right: 90px;
+  bottom: 190px;
+  background-color: var(--main-bg-color);
+  color: var(--secondary-color);
+  border: var(--border-type-two);
+
+  outline-offset: 5px;
+  outline: var(--border-type-two);
+
+  opacity: 0.85;
+  padding: 0.2rem 4rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .section-one {
+    height: 60vh;
+    width: 57vw;
+    position: fixed;
+    left: 3vw;
+
+    background-image: url("https://i.pinimg.com/originals/35/38/f7/3538f77c1fe1bcdad9720def0ad90ab5.jpg");
+  }
+  .section-two {
+    position: fixed;
+    height: 36vh;
+    right: 3vw;
+    bottom: 44vh;
+    width: 36vw;
+  }
+
+  .section-two h1 {
+    font-size: var(--font-size-extrabig-mobile);
+  }
+
+  .section-two p {
+    font-size: var(--font-size-big-mobile);
+    padding: 0.5rem 0.2rem;
+    margin-top: 1vh;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .anchor-btn {
+    font-size: var(--font-size-middle-mobile);
+    padding: 0.3rem 0.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .nutrition-btn {
+    outline: 2px solid var(--main-bg-color);
+    outline-offset: 3px;
+  }
+
+  .nutrition-btn:hover {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
+  }
+
+  .workouts-btn {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
+  }
+
+  .workouts-btn:hover {
+    outline: 2px solid var(--main-bg-color);
+    outline-offset: 3px;
+  }
+
+  .section-three {
+    position: fixed;
+    right: 3vw;
+    bottom: 20vh;
+    width: 36vw;
+    height: 23vh;
+  }
+
+  .learn {
+    font-size: 0.8rem;
+    right: 10vw;
+    bottom: 37vh;
+  }
+  .about {
+    font-size: var(--font-size-middle-mobile);
+    right: 12vw;
+    bottom: 32vh;
+    padding: 0.2rem 1rem;
+  }
+  .ourapp {
+    font-size: 0.8rem;
+    right: 6vw;
+    bottom: 26vh;
+  }
+}
+
+/* https://i.pinimg.com/originals/2e/58/19/2e5819317f737e57a772e54c96c6dbc1.jpg */
+
+/* https://image-cdn.essentiallysports.com/wp-content/uploads/318594095_668733691630816_6711357103519956960_n.jpg?width=600 */
+
+/* https://fitnessgadzets.com/wp-content/uploads/2022/11/1669214432474-825x1024.png */

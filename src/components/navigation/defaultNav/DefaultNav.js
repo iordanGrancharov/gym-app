@@ -27,9 +27,6 @@ const DefaultNav = (props) => {
         {/* <li>
                 <a href="#">LogOut</a> 
               </li> */}
-        <li>
-          <a href="#">About</a>
-        </li>
       </ul>
     </div>
   );

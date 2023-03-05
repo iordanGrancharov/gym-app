@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
+
+:root {
+  --main-bg-color: #d83e59;
+  --secondary-color: #fff;
+  --border-type-one: 3px solid var(--main-bg-color);
+  --border-type-two: 3px solid var(--secondary-color);
+  --box-shadow-main: 0px 0px 30px black;
+  --font-family-one: "Rye";
+  --font-family-two: "Josefin Slab";
+  --font-family-three: "Jacques Francois Shadow";
+  --font-size-big: 1.8rem;
+  --font-size-middle: 1.5rem;
+  --font-size-small: 1rem;
+  --font-size-extrabig-mobile: 0.7rem;
+  --font-size-big-mobile: 50%;
+  --font-size-middle-mobile: 0.5rem;
+  --font-size-small-mobile: 0.4rem;
+  --transition-one: linear 1s;
+  --transition-half: linear 0.5s;
+  --text-shadow-one: 1px 1px 2px black, 0 0 1em #fff, 0 0 0.2em #fff;
+  --text-shadow-two: 1px 1px 2px black, 0 0 1em #d83e59, 0 0 0.2em #d83e59;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

@@ -13,18 +13,19 @@ const BurgerNav = (props) => {
 
   const classShown =
     isShown == true ? "burger-container-show" : "burger-container-hide";
+
   return (
     <div className={props.className}>
       {isShown == true ? (
         <FontAwesomeIcon
           icon={faClose}
-          className="burgerMenu "
+          className="burgerMenu"
           onClick={showBurgerMenu}
         />
       ) : (
         <FontAwesomeIcon
           icon={faBars}
-          className="burgerMenu "
+          className="burgerMenu"
           onClick={showBurgerMenu}
         />
       )}
@@ -54,9 +55,6 @@ const BurgerNav = (props) => {
           {/* <li>
                 <a href="#">LogOut</a> 
               </li> */}
-          <li>
-            <a href="#">About</a> {/* /exercises */}
-          </li>
         </ul>
       </div>
     </div>

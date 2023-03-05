@@ -1,11 +1,24 @@
 .icon {
-  font-size: 2rem;
-  color: red;
+  font-size: var(--font-size-big);
+  color: var(--main-bg-color);
   padding: 0.7rem;
+}
+.icon:hover {
+  color: var(--secondary-color);
+  transition: linear 0.1s;
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
   text-align: center;
   height: 7vh;
-  background-color: rgb(0, 0, 0);
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 480px) {
+  .icon {
+    font-size: var(--font-size-middle);
+  }
 }
