@@ -53,13 +53,58 @@
   height: 70vh;
   width: 50vw;
 
-  background-image: url("https://cdn.wallpapersafari.com/17/13/es1bhZ.jpg");
+  /* background-image: url("https://cdn.wallpapersafari.com/17/13/es1bhZ.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   border: var(--border-type-one);
   box-shadow: var(--box-shadow-main);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: slide 13s infinite;
+  opacity: 0;
+  transition: var(--transition-one);
+}
+
+.slide-1 {
+  background-image: url("./images/main.jpg");
+  animation-delay: 0s;
+}
+
+.slide-2 {
+  background-image: url("https://cutewallpaper.org/21x/9s0ea7dlc/Bodybuilding-Wallpaper-HD-2018-78+-images-.jpg");
+  animation-delay: 4s;
+}
+
+.slide-3 {
+  background-image: url("https://cutewallpaper.org/21x/9s0ea7dlc/Bodybuilding-Wallpaper-189.jpg");
+  animation-delay: 8s;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .section-two {
@@ -137,7 +182,7 @@
   border: var(--border-type-two);
   color: var(--secondary-color);
 
-  outline-offset: 5px;
+  outline-offset: 3px;
   outline: var(--border-type-two);
 
   opacity: 0.85;
@@ -149,7 +194,7 @@
   color: var(--main-bg-color);
 
   outline: var(--border-type-one);
-  outline-offset: 5px;
+  outline-offset: 3px;
 
   opacity: 1;
 }
@@ -160,7 +205,7 @@
   color: var(--main-bg-color);
 
   outline: var(--border-type-one);
-  outline-offset: 5px;
+  outline-offset: 3px;
 
   opacity: 0.85;
 }
@@ -170,7 +215,7 @@
   border: var(--border-type-two);
   color: var(--secondary-color);
   outline: var(--border-type-two);
-  outline-offset: 5px;
+  outline-offset: 3px;
   opacity: 1;
 }
 
@@ -220,7 +265,9 @@
   font-family: var(--font-family-three);
   font-size: 1.8rem;
   font-weight: 900;
-  animation: pulsate 1s ease-out infinite;
+  border: 1px solid var(--secondary-color);
+  /* animation: pulsate 1s ease-out infinite; */
+  box-shadow: var(--box-shadow-main);
   padding: 0.2rem 2rem;
   background-color: #d83e5a29;
   opacity: 0.85;
@@ -301,8 +348,10 @@
     width: 57vw;
     position: fixed;
     left: 3vw;
-
-    background-image: url("https://i.pinimg.com/originals/35/38/f7/3538f77c1fe1bcdad9720def0ad90ab5.jpg");
+    background-image: url("./images/dasd.webp");
+  }
+  .slide {
+    animation: none;
   }
   .section-two {
     position: fixed;

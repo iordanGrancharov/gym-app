@@ -3,7 +3,11 @@ import styles from "./Home.module.css";
 const Home = () => {
   return (
     <div className={styles["container"]}>
-      <div className={styles["section-one"]}></div>
+      <div className={styles["section-one"]}>
+        <div className={`${styles["slide"]} ${styles["slide-1"]}`}></div>
+        <div className={`${styles["slide"]} ${styles["slide-2"]}`}></div>
+        <div className={`${styles["slide"]} ${styles["slide-3"]}`}></div>
+      </div>
       <div className={styles["section-two"]}>
         <h1>
           You've always wanted to change your lifestyle, but don't know where to
