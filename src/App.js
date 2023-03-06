@@ -4,9 +4,11 @@ import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  const user = true;
+  const hasUser = user ? true : false;
   return (
     <>
-      <Navbar />
+      <Navbar hasUser={hasUser} />
       <Home />
       <Footer />
     </>

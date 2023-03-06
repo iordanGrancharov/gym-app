@@ -10,6 +10,12 @@
   padding-top: 2rem;
 }
 
+.links-user {
+  position: fixed;
+  top: 0;
+  right: 10vw;
+}
+
 .links li a {
   color: #d83e59;
   font-family: "Ryu";

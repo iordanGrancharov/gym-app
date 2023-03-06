@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
 
+@-ms-viewport {
+  width: device-width;
+}
+
 :root {
   --main-bg-color: #d83e59;
   --secondary-color: #fff;

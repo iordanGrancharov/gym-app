@@ -6,7 +6,7 @@ import DefaultNav from "./defaultNav/DefaultNav";
 
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ hasUser }) => {
   return (
     <div className="navigation-bg">
       <Container>
@@ -28,12 +28,19 @@ const Navbar = () => {
             </Col>
           </Col>
           <Col xs="auto" className="nav-ul">
-            <DefaultNav className="links-container" />
-            <BurgerNav className="burger" />
+            <DefaultNav className="links-container" hasUser={hasUser} />
+            <BurgerNav className="burger" hasUser={hasUser} />
+            {hasUser && (
+              <div className="profile">
+                <a href="#">
+                  <img
+                    src="https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png"
+                    alt="SNIMKA BACE"
+                  />
+                </a>
+              </div>
+            )}
           </Col>
-          {/* <Col>
-            <h1>asddas</h1>
-          </Col> */}
         </Row>
       </Container>
     </div>
