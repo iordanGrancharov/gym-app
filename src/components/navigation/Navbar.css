@@ -29,13 +29,13 @@
 }
 
 .logoText {
+  position: fixed;
   text-transform: uppercase;
   font-family: "Rye";
   text-align: center;
   justify-content: center;
   font-size: 1rem;
   text-shadow: rgb(0, 0, 0) 2px 5px 3px;
-  margin-left: -1.2rem;
 }
 
 .and {
@@ -72,14 +72,111 @@
     margin-left: 2.5rem;
     font-size: var(--font-size-extrabig-mobile);
   }
+
+  .profile {
+    position: fixed;
+    right: 45vw;
+    top: 3vh;
+    width: 10vw;
+    height: 5vh;
+  }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
   .links-container {
     display: none;
   }
 
   .burger {
     display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+  .logo {
+    top: 4vh;
+    left: 1vw;
+    margin-left: 0vw;
+    width: 60px;
+  }
+  .logoText {
+    margin-left: 4vw;
+    margin-top: 1vh;
+    font-size: var(--font-size-extrabig-mobile);
+  }
+
+  .profile {
+    position: fixed;
+    right: 2vw;
+    top: 4vh;
+    width: 8vw;
+    height: 6vh;
+  }
+}
+
+@media only screen and (min-width: 771px) and (max-width: 1050px) {
+  .logo {
+    top: 4vh;
+    left: 2vw;
+    margin-left: 0vw;
+    width: 70px;
+  }
+  .logoText {
+    top: 3vh;
+    left: 7vh;
+    font-size: var(--font-size-extrabig-mobile);
+  }
+
+  .profile {
+    position: fixed;
+    right: 2vw;
+    top: 4vh;
+    width: 8vw;
+    height: 6vh;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .logo {
+    top: 3vh;
+    left: 2vw;
+    margin-left: 0vw;
+    width: 70px;
+  }
+  .logoText {
+    top: 4vh;
+    left: 13vh;
+    font-size: var(--font-size-small);
+  }
+
+  .profile {
+    position: fixed;
+    right: 2vw;
+    top: 4vh;
+    width: 5vw;
+    height: 7vh;
+  }
+}
+
+@media only screen and (min-width: 1210px) and (max-width: 2000px) {
+  .logo {
+    top: 3vh;
+    left: 2vw;
+    margin-left: 0vw;
+    width: 70px;
+  }
+  .logoText {
+    position: fixed;
+    top: 4vh;
+    left: 14vh;
+    font-size: var(--font-size-small);
+  }
+
+  .profile {
+    position: fixed;
+    right: 2vw;
+    top: 4vh;
+    width: 4vw;
+    height: 8vh;
   }
 }

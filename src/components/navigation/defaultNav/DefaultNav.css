@@ -3,9 +3,7 @@
   justify-content: center;
   align-items: center;
   list-style-type: none;
-  position: fixed;
-  top: 0;
-  right: 20px;
+
   z-index: 999;
   padding-top: 2rem;
 }
@@ -16,28 +14,109 @@
   right: 10vw;
 }
 
-.links li a {
-  color: #d83e59;
-  font-family: "Ryu";
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  text-shadow: rgb(0, 0, 0) 2px 5px 3px;
-}
-
-.links li a:hover {
-  color: rgb(252, 252, 252);
-  transition: linear 0.1s;
-}
-
-.links li:hover {
-  transform: translatey(-10%) scale(1.1);
-  transition: linear 0.25s;
+.links-guest {
+  position: fixed;
+  top: 0;
+  right: 10vw;
 }
 
 .links li {
-  padding: 0 1.2rem;
-  margin-right: 1rem;
+  display: flex;
 
-  /* padding-right: 0.8rem; */
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+
+  margin: 0 1.5%;
+  margin-top: 1vw;
+  padding: 0.5vh 1.5vw;
+
+  background-color: #d83e5a32;
+  box-shadow: var(--box-shadow-main);
+  opacity: 1;
+}
+
+.links li:hover {
+  transition: linear 0.1s;
+  border: 2px solid var(--main-bg-color);
+  /* background-color: var(--secondary-color); */
+}
+
+.links li a {
+  padding: 0;
+  margin: 0;
+
+  white-space: nowrap;
+  color: var(--secondary-color);
+  font-family: var(--font-family-two);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5vw;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+  .links-user {
+    top: 9vh;
+    right: 12vw;
+  }
+
+  .links-guest {
+    top: 9vh;
+    right: 18vw;
+  }
+
+  .links li a {
+    font-size: var(--font-size-big-mobile);
+    padding-top: 0.1vh;
+  }
+}
+
+@media only screen and (min-width: 771px) and (max-width: 1050px) {
+  .links-user {
+    top: 10vh;
+    right: 9vw;
+  }
+
+  .links-guest {
+    top: 10vh;
+    right: 15vw;
+  }
+
+  .links li a {
+    font-size: var(--font-size-big-mobile);
+    padding-top: 0.1vh;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .links-user {
+    top: 7vh;
+    right: 20vw;
+  }
+
+  .links-guest {
+    top: 7vh;
+    right: 6vw;
+  }
+
+  .links li a {
+    font-size: var(--font-size-small);
+    padding-top: 0.1vh;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 2000px) {
+  .links-user {
+    top: 1vh;
+    right: 25vw;
+  }
+
+  .links-guest {
+    top: 1vh;
+    right: 6vw;
+  }
+
+  .links li a {
+    font-size: 2.7vh;
+    padding-top: 0.1vh;
+  }
 }

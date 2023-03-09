@@ -137,4 +137,10 @@
   .burgerMenu {
     font-size: var(--font-size-middle);
   }
+
+  .links-burger li {
+    margin: 0 1%;
+    margin-top: 1rem;
+    padding: 0.8vh 2vw;
+  }
 }

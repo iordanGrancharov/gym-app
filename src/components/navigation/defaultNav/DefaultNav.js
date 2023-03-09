@@ -1,14 +1,16 @@
 import "./DefaultNav.css";
 
 const DefaultNav = (props) => {
-  const hasUser = props.hasUser ? "links links-user" : "links";
+  const hasUser = props.hasUser ? "links links-user" : "links links-guest";
   return (
     <div className={props.className}>
       {props.hasUser ? (
         <ul className={hasUser}>
           {/* USER */}
           <li>
-            <a href="#">Custom Workout</a>
+            <a href="#">
+              <span>Create Your Own</span>
+            </a>
           </li>
           <li>
             <a href="#">Nutrition</a>

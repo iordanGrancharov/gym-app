@@ -8,7 +8,7 @@ import "./Navbar.css";
 
 const Navbar = ({ hasUser }) => {
   return (
-    <div className="navigation-bg">
+    <nav className="navigation-bg">
       <Container>
         <Row xs={2} md={2} lg={2} className="mainRow justify-content center">
           <Col xs={2} md={2} lg={2}>
@@ -27,7 +27,7 @@ const Navbar = ({ hasUser }) => {
               </label>
             </Col>
           </Col>
-          <Col xs="auto" className="nav-ul">
+          <Col xs="auto">
             <DefaultNav className="links-container" hasUser={hasUser} />
             <BurgerNav className="burger" hasUser={hasUser} />
             {hasUser && (
@@ -43,7 +43,7 @@ const Navbar = ({ hasUser }) => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </nav>
   );
 };
 

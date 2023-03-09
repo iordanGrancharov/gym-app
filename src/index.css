@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
 
 @-ms-viewport {
   width: device-width;
@@ -10,19 +11,21 @@
 :root {
   --main-bg-color: #d83e59;
   --secondary-color: #fff;
-  --border-type-one: 3px solid var(--main-bg-color);
-  --border-type-two: 3px solid var(--secondary-color);
+  --border-type-one: 0.4vh solid var(--main-bg-color);
+  --border-type-two: 0.4vh solid var(--secondary-color);
   --box-shadow-main: 0px 0px 30px black;
   --font-family-one: "Rye";
   --font-family-two: "Josefin Slab";
   --font-family-three: "Jacques Francois Shadow";
-  --font-size-big: 1.8rem;
-  --font-size-middle: 1.5rem;
-  --font-size-small: 1rem;
-  --font-size-extrabig-mobile: 0.7rem;
-  --font-size-big-mobile: 50%;
-  --font-size-middle-mobile: 0.5rem;
-  --font-size-small-mobile: 0.4rem;
+  --font-family-four: "Vollkorn";
+  --font-size-extrabig: 4.2vh;
+  --font-size-big: 3.5vh;
+  --font-size-middle: 3.2vh;
+  --font-size-small: 2vh;
+  --font-size-extrabig-mobile: 1.8vh;
+  --font-size-big-mobile: 1.5vh;
+  --font-size-middle-mobile: 1.1vh;
+  --font-size-small-mobile: 0.8vh;
   --transition-one: linear 1s;
   --transition-half: linear 0.5s;
   --text-shadow-one: 1px 1px 2px black, 0 0 1em #fff, 0 0 0.2em #fff;
