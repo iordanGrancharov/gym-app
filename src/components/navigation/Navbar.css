@@ -100,8 +100,8 @@
     width: 60px;
   }
   .logoText {
-    margin-left: 4vw;
-    margin-top: 1vh;
+    top: 3vh;
+    left: 6.5vh;
     font-size: var(--font-size-extrabig-mobile);
   }
 

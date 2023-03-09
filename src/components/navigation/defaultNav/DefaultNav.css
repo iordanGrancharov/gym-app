@@ -56,7 +56,7 @@
 @media only screen and (min-width: 480px) and (max-width: 770px) {
   .links-user {
     top: 9vh;
-    right: 12vw;
+    right: 17vw;
   }
 
   .links-guest {
@@ -73,7 +73,7 @@
 @media only screen and (min-width: 771px) and (max-width: 1050px) {
   .links-user {
     top: 10vh;
-    right: 9vw;
+    right: 15vw;
   }
 
   .links-guest {
@@ -89,22 +89,22 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
   .links-user {
-    top: 7vh;
+    top: 6vh;
     right: 20vw;
   }
 
   .links-guest {
-    top: 7vh;
+    top: 6vh;
     right: 6vw;
   }
 
   .links li a {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-middle);
     padding-top: 0.1vh;
   }
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 2000px) {
+@media only screen and (min-width: 1201px) and (max-width: 2000px) {
   .links-user {
     top: 1vh;
     right: 25vw;
