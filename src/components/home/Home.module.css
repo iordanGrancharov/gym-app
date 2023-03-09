@@ -245,7 +245,7 @@
   cursor: pointer;
 
   font-style: normal;
-  font-family: var(--font-family-three);
+  font-family: var(--font-family-five);
   font-size: 1.8rem;
   font-weight: 900;
 
@@ -369,9 +369,9 @@
   }
   .about {
     font-size: var(--font-size-middle-mobile);
-    right: 12vw;
+    right: 13.5vw;
     bottom: 32vh;
-    padding: 0.2rem 1rem;
+    padding: 0.5vh 2vh;
   }
   .ourapp {
     font-size: var(--font-size-big-mobile);
@@ -454,7 +454,7 @@
   }
   .about {
     font-size: var(--font-size-extrabig-mobile);
-    right: 13vw;
+    right: 14vw;
     bottom: 31vh;
     padding: 0.2vh 2vw;
   }
@@ -516,7 +516,7 @@
 
   .about {
     font-size: var(--font-size-small);
-    right: 14vw;
+    right: 15vw;
     bottom: 18vh;
     padding: 0.2vh 2vw;
   }
@@ -560,7 +560,7 @@
 
   .btn-container {
     margin-top: 2vh;
-    margin-right: 10.5vw;
+    margin-right: 13vh;
   }
 
   .anchor-btn {
@@ -585,9 +585,9 @@
 
   .about {
     font-size: var(--font-size-middle);
-    right: 10.2vw;
+    right: 11.3vw;
     bottom: 17vh;
-    padding: 0.2vh 2vw;
+    padding: 0.2vh 2vh;
   }
 
   .ourapp {
@@ -640,7 +640,7 @@
 
   .about {
     font-size: var(--font-size-middle);
-    right: 13vw;
+    right: 13.5vw;
     bottom: 18vh;
   }
 
