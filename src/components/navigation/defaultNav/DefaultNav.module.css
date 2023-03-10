@@ -59,13 +59,18 @@
     right: 17vw;
   }
 
-  .links-guest {
-    top: 9vh;
-    right: 23vw;
+  .links-user li a {
+    font-size: var(--font-size-big-mobile);
+    padding-top: 0.1vh;
   }
 
-  .links li a {
-    font-size: var(--font-size-big-mobile);
+  .links-guest {
+    top: 9vh;
+    right: 6vw;
+  }
+
+  .links-guest li a {
+    font-size: var(--font-size-extrabig-mobile);
     padding-top: 0.1vh;
   }
 }
@@ -76,13 +81,18 @@
     right: 15vw;
   }
 
-  .links-guest {
-    top: 10vh;
-    right: 22vw;
+  .links-user li a {
+    font-size: var(--font-size-big-mobile);
+    padding-top: 0.1vh;
   }
 
-  .links li a {
-    font-size: var(--font-size-big-mobile);
+  .links-guest {
+    top: 10vh;
+    right: 6vw;
+  }
+
+  .links-guest li a {
+    font-size: var(--font-size-extrabig-mobile);
     padding-top: 0.1vh;
   }
 }

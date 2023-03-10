@@ -1,4 +1,4 @@
-import "./Footer.css";
+import styles from "./Footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -8,15 +8,15 @@ import {
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className={styles["footer"]}>
       <a href="#">
-        <FontAwesomeIcon icon={faGithub} className="icon" />
+        <FontAwesomeIcon icon={faGithub} className={styles["icon"]} />
       </a>
       <a href="#">
-        <FontAwesomeIcon icon={faFacebook} className="icon" />
+        <FontAwesomeIcon icon={faFacebook} className={styles["icon"]} />
       </a>
       <a href="#">
-        <FontAwesomeIcon icon={faLinkedin} className="icon" />
+        <FontAwesomeIcon icon={faLinkedin} className={styles["icon"]} />
       </a>
     </div>
   );

@@ -1,11 +1,11 @@
-import "./DefaultNav.css";
+import styles from "./DefaultNav.module.css";
 
-const DefaultNav = (props) => {
-  const hasUser = props.hasUser ? "links links-user" : "links links-guest";
+const DefaultNav = ({ className, hasUser }) => {
+  const userClass = hasUser ? "links links-user" : "links links-guest";
   return (
-    <div className={props.className}>
-      {props.hasUser ? (
-        <ul className={hasUser}>
+    <div className={className}>
+      {hasUser ? (
+        <ul className={`${styles["links"]} ${styles["links-user"]}`}>
           {/* USER */}
           <li>
             <a href="#">
@@ -23,7 +23,7 @@ const DefaultNav = (props) => {
           </li>
         </ul>
       ) : (
-        <ul className={hasUser}>
+        <ul className={`${styles["links"]} ${styles["links-guest"]}`}>
           {/* <li>
           <a href="#">Custom Foods plan</a>
         </li> */}

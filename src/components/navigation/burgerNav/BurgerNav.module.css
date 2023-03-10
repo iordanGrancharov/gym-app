@@ -139,6 +139,10 @@
     font-size: var(--font-size-middle);
   }
 
+  .hasUser li a {
+    font-size: 1.2vh;
+  }
+
   .links-burger li {
     margin: 0 1%;
     margin-top: 1rem;

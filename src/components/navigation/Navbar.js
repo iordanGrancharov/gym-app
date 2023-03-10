@@ -4,34 +4,37 @@ import Logo from "../navigation/logo/logo2.svg";
 import BurgerNav from "./burgerNav/BurgerNav";
 import DefaultNav from "./defaultNav/DefaultNav";
 
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 
 const Navbar = ({ hasUser }) => {
   return (
-    <nav className="navigation-bg">
+    <nav className={styles["navigation-bg"]}>
       <Container>
-        <Row xs={2} md={2} lg={2} className="mainRow justify-content center">
+        <Row xs={2} md={2} lg={2}>
           <Col xs={2} md={2} lg={2}>
             <Col xs={6}>
               <a href="#">
-                <img className="logo" src={Logo} alt="problem" />
+                <img className={styles["logo"]} src={Logo} alt="problem" />
               </a>
             </Col>
             <Col xs={6}>
-              <label className="logoText">
+              <label className={styles["logoText"]}>
                 PAIN
                 <br />
-                <span className="and">AND</span>
+                <span className={styles["and"]}>AND</span>
                 <br />
-                <span className="gain">GAIN</span>
+                <span className={styles["gain"]}>GAIN</span>
               </label>
             </Col>
           </Col>
           <Col xs="auto">
-            <DefaultNav className="links-container" hasUser={hasUser} />
-            <BurgerNav className="burger" hasUser={hasUser} />
+            <DefaultNav
+              className={styles["links-container"]}
+              hasUser={hasUser}
+            />
+            <BurgerNav className={styles["burger"]} hasUser={hasUser} />
             {hasUser && (
-              <div className="profile">
+              <div className={styles["profile"]}>
                 <a href="#">
                   <img
                     src="https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png"

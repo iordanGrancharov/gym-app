@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-import "./BurgerNav.css";
+import styles from "./BurgerNav.module.css";
 
 const BurgerNav = ({ className, hasUser }) => {
   const [isShown, setIsShown] = useState(false);
@@ -19,20 +19,20 @@ const BurgerNav = ({ className, hasUser }) => {
       {isShown == true ? (
         <FontAwesomeIcon
           icon={faClose}
-          className="burgerMenu"
+          className={styles["burgerMenu"]}
           onClick={showBurgerMenu}
         />
       ) : (
         <FontAwesomeIcon
           icon={faBars}
-          className="burgerMenu"
+          className={styles["burgerMenu"]}
           onClick={showBurgerMenu}
         />
       )}
       {/* hasUser */}
-      <div className={classShown}>
+      <div className={styles[classShown]}>
         {hasUser ? (
-          <ul className="links-burger">
+          <ul className={`${styles["links-burger"]} ${styles["hasUser"]}`}>
             {/* USER */}
             <li>
               <a href="#">Create Your Own</a>
@@ -48,7 +48,7 @@ const BurgerNav = ({ className, hasUser }) => {
             </li>
           </ul>
         ) : (
-          <ul className="links-burger">
+          <ul className={`${styles["links-burger"]} ${styles["hasGuest"]}`}>
             {/* GUEST */}
             <li>
               <a href="#">Nutrition</a>
