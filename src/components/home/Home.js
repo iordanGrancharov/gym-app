@@ -13,7 +13,7 @@ const Home = () => {
           You've always wanted to change your lifestyle, but don't know where to
           start?
         </h1>
-        <p>Try out our free workouts and diet plans</p>
+        <p>Try out our free workouts and healthy recipes!</p>
         <div className={styles["btn-container"]}>
           <a
             href="#"
