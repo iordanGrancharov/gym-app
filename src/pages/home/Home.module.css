@@ -116,7 +116,7 @@
   font-size: var(--font-size-big);
   font-family: var(--font-family-four);
   font-weight: 800;
-  font-style: italic;
+  /* font-style: italic; */
 
   text-transform: uppercase;
   text-align: start;
@@ -130,7 +130,7 @@
 
   font-size: var(--font-size-middle);
   font-family: var(--font-family-four);
-  font-style: italic;
+  /* font-style: italic; */
 
   text-transform: uppercase;
   text-align: center;
@@ -221,7 +221,7 @@
 
   font-size: var(--font-size-big);
   font-family: var(--font-family-two);
-  font-style: italic;
+  /* font-style: italic; */
 
   color: var(--secondary-color);
 
