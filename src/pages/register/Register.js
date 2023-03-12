@@ -1,6 +1,11 @@
 import styles from "./Register.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faLock,
+  faImage,
+  faCity,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   return (
@@ -34,18 +39,30 @@ const Register = () => {
               placeholder="Confirm password"
             />
           </div>
-        </div>
-        {/* <div className={styles["additional"]}>
-          <div className={styles["checkbox"]}>
-            <input type="checkbox" name="remember" id="remember" />
-            <label htmlFor="remember">Remember me</label>
+
+          <div className={styles["input-field"]}>
+            <FontAwesomeIcon icon={faImage} className={styles["icon"]} />
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              placeholder="imageUrl"
+            />
           </div>
-          <a href="#">Forgot password?</a>
+          <div className={styles["input-field"]}>
+            <FontAwesomeIcon icon={faCity} className={styles["icon"]} />
+            <input
+              type="text"
+              id="country"
+              name="country"
+              placeholder="City, Country"
+            />
+          </div>
         </div>
         <input className={styles["btn-submit"]} type="submit" value="Sign In" />
-        <p className={styles["new-here"]}>
-          New here? <a href="#">Create an Account</a>
-        </p> */}
+        <p className={styles["p-signIn"]}>
+          Already have an account? <a href="#">Sign in</a>
+        </p>
       </form>
     </div>
   );

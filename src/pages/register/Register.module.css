@@ -32,9 +32,7 @@
 }
 
 .picture-container {
-  position: fixed;
-  left: 25vw;
-  bottom: 10vh;
+  margin-top: 10vh;
   width: 25vw;
   height: 70vh;
   background: url("https://images.unsplash.com/photo-1579547621113-e4bb2a19bdd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGFic3RyYWN0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
@@ -42,9 +40,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
+
   z-index: 1;
 
-  /* filter: grayscale(0.1); */
   box-shadow: 0px 0px 10px 2px black;
 
   border-top-left-radius: 1vh;
@@ -55,31 +53,25 @@
 
 .picture-container h1 {
   width: 15vw;
-  position: fixed;
-  top: 25vh;
-  left: 26vw;
+  margin: 3vh;
+
   text-shadow: var(--text-shadow-one);
 }
 
 .picture-container p {
-  position: fixed;
-  top: 47vh;
-  left: 26.5vw;
   width: 14vw;
-
+  margin-left: 3vh;
   font-size: 3vh;
 }
 
 .form {
-  position: fixed;
+  margin-top: 10vh;
   width: 25vw;
   height: 70vh;
 
-  bottom: 10vh;
-  right: 25vw;
-
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   background-color: var(--secondary-color);
   box-shadow: var(--box-shadow-main);
@@ -89,20 +81,14 @@
 }
 
 .form h1 {
-  position: fixed;
-  top: 38vh;
-  right: 38vw;
+  margin: 3vh auto;
   font-family: var(--font-family-four);
 }
 
 .input-container {
-  position: fixed;
-  top: 44vh;
-  right: 30.5vw;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
-
-  width: 16vw;
 }
 
 .input-container input {
@@ -139,77 +125,282 @@
   align-items: center;
 }
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  bottom: 39vh;
-  right: 39vw;
-}
-
-.checkbox label {
-  margin-left: 0.2vh;
-}
-
-.checkbox input {
-  width: 1.5vh;
-}
-
-.additional {
-  position: fixed;
-  bottom: 39vh;
-  right: 23vw;
-  width: 15vw;
-
-  font-size: 1.8vh;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-family-four);
-  color: rgba(0, 0, 0, 0.731);
-}
-
-.additional a {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.731);
-}
-
-.additional a:hover {
-  text-decoration: underline;
-  color: rgba(0, 0, 0, 0.731);
-}
-
 .btn-submit {
-  position: fixed;
-  bottom: 33vh;
-  right: 30.5vw;
-  width: 15vw;
-
+  width: 16vw;
+  margin: 0 auto;
   border-radius: 5vh;
   border: none;
   padding: 0.5vh 0;
   font-size: 2.5vh;
   color: var(--secondary-color);
   font-weight: 600;
-  background-color: #fd3f89;
+  background-color: #a64bd7;
 }
 
 .btn-submit:hover {
-  background-color: #a64bd7;
+  background-color: #fd3f89;
   transition: 0.1s linear;
 }
 
-.new-here {
-  position: fixed;
-  bottom: 28vh;
-  right: 31.5vw;
-  width: 13vw;
-
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--font-size-small);
+.p-signIn {
+  margin: 0 auto;
   font-family: var(--font-family-four);
 }
 
-.new-here a {
+.p-signIn a {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .picture-container {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .picture-container h1 {
+    width: 25vw;
+    margin: 3vh;
+    font-size: 3.3vh;
+  }
+
+  .picture-container p {
+    width: 30vw;
+    margin-left: 3vh;
+    font-size: 2.6vh;
+  }
+
+  .form {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .form h1 {
+    margin: 3vh auto;
+    font-size: 4vh;
+  }
+
+  .input-field {
+    margin: -0.5vh auto;
+  }
+
+  .input-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .input-container input {
+    /* margin: 1vh 0; */
+    width: 25vw;
+    font-size: 1.4vh;
+  }
+
+  .icon {
+    padding: 0vh 1vh;
+    width: 1.7vh;
+    height: 4.5vh;
+  }
+  .btn-submit {
+    width: 25vw;
+    margin: 1vh auto;
+    font-size: 1.8vh;
+  }
+
+  .p-signIn {
+    margin: 0 auto;
+    font-size: 1.3vh;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+  .picture-container {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .picture-container h1 {
+    width: 25vw;
+    margin: 3vh;
+    font-size: 4vh;
+  }
+
+  .picture-container p {
+    width: 30vw;
+    margin-left: 3vh;
+    font-size: 2.6vh;
+  }
+
+  .form {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .form h1 {
+    margin: 3vh auto;
+    font-size: 4vh;
+  }
+
+  .input-field {
+    margin: -0.5vh auto;
+  }
+
+  .input-container {
+    margin: 0 auto;
+    width: 45vw;
+  }
+
+  .input-container input {
+    margin: 1vh 0;
+    width: 25vw;
+    font-size: 1.5vh;
+  }
+
+  .icon {
+    border-right: none;
+    width: 1.1vh;
+    height: 1.5vh;
+    padding: 1.57vh;
+    padding-right: 0;
+  }
+  .btn-submit {
+    width: 25vw;
+    margin: 1vh auto;
+    font-size: 1.8vh;
+  }
+
+  .p-signIn {
+    margin: 0 auto;
+    font-size: 1.5vh;
+  }
+}
+
+@media only screen and (min-width: 771px) and (max-width: 1050px) {
+  .container {
+    background-size: 300%;
+  }
+
+  .picture-container {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .picture-container h1 {
+    width: 25vw;
+    margin: 3vh;
+    font-size: 4vh;
+  }
+
+  .picture-container p {
+    width: 30vw;
+    margin-left: 3vh;
+    font-size: 2.6vh;
+  }
+
+  .form {
+    width: 45vw;
+    height: 60vh;
+  }
+
+  .form h1 {
+    margin: 3vh auto;
+    font-size: 4vh;
+  }
+
+  .input-field {
+    margin: -0.5vh auto;
+  }
+
+  .input-container {
+    margin: 0 auto;
+    width: 45vw;
+  }
+
+  .input-container input {
+    margin: 1vh 0;
+    width: 25vw;
+    font-size: 1.5vh;
+  }
+
+  .icon {
+    border-right: none;
+    width: 1.3vh;
+    height: 1.5vh;
+    padding: 1.58vh;
+    padding-right: 0;
+  }
+  .btn-submit {
+    width: 25vw;
+    margin: 1vh auto;
+    font-size: 1.8vh;
+  }
+
+  .p-signIn {
+    margin: 0 auto;
+    font-size: 1.5vh;
+  }
+}
+
+@media only screen and (min-width: 1051px) and (max-width: 1200px) {
+  .container {
+    background-size: 300%;
+  }
+
+  .picture-container {
+    width: 30vw;
+    height: 60vh;
+  }
+
+  .picture-container h1 {
+    width: 25vw;
+    margin: 3vh;
+    font-size: 4vh;
+  }
+
+  .picture-container p {
+    width: 30vw;
+    margin-left: 3vh;
+    font-size: 2.6vh;
+  }
+
+  .form {
+    width: 30vw;
+    height: 60vh;
+  }
+
+  .form h1 {
+    margin: 3vh auto;
+    font-size: 4vh;
+  }
+
+  .input-field {
+    margin: -0.5vh auto;
+  }
+
+  .input-container {
+    margin: 0 auto;
+    width: 30vw;
+  }
+
+  .input-container input {
+    margin: 1vh 0;
+    width: 15vw;
+    font-size: 1.5vh;
+  }
+
+  .icon {
+    border-right: none;
+    width: 1.3vh;
+    height: 1.5vh;
+    padding: 1.58vh;
+    padding-right: 0;
+  }
+  .btn-submit {
+    width: 15vw;
+    margin: 1vh auto;
+    font-size: 1.8vh;
+  }
+
+  .p-signIn {
+    margin: 0 auto;
+    font-size: 1.5vh;
+  }
 }

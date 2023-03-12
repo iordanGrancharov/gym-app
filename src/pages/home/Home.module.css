@@ -167,7 +167,7 @@
 }
 
 .workouts-btn {
-  background-color: var(--main-bg-color);
+  background-color: #d83e5a99;
   border: var(--border-type-two);
   color: var(--secondary-color);
 
@@ -183,7 +183,7 @@
 }
 
 .nutrition-btn {
-  background-color: var(--secondary-color);
+  background-color: #ffffffb9;
   border: var(--border-type-one);
   color: var(--main-bg-color);
 
@@ -250,7 +250,6 @@
   font-weight: 900;
 
   border: 1px solid var(--secondary-color);
-  /* animation: pulsate 1s ease-out infinite; */
   box-shadow: var(--box-shadow-main);
   padding: 0.2rem 2rem;
 
@@ -380,23 +379,6 @@
   }
 }
 
-/* @keyframes background-scale {
-  0% {
-    background-size: 120%;
-    opacity: 0.9;
-  }
-
-  50% {
-    background-size: 140%;
-    opacity: 1;
-  }
-
-  100% {
-    background-size: 120%;
-    opacity: 0.9;
-  }
-} */
-
 @media only screen and (min-width: 480px) and (max-width: 770px) {
   .section-one {
     height: 60vh;
@@ -487,7 +469,7 @@
   }
 
   .section-two h1 {
-    font-size: var(--font-size-small);
+    font-size: 2.5vh;
   }
   .section-two p {
     font-size: var(--font-size-small);
@@ -551,7 +533,7 @@
   }
 
   .section-two h1 {
-    font-size: var(--font-size-middle);
+    font-size: 3.5vh;
   }
   .section-two p {
     margin-top: -1vh;
@@ -614,7 +596,8 @@
   }
 
   .section-two h1 {
-    margin-bottom: 6vh;
+    margin-bottom: -2vh;
+    font-size: 4.3vh;
   }
 
   .btn-container {
