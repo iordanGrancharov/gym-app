@@ -6,18 +6,23 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className={styles["footer"]}>
-      <a href="#">
+      <Link to="https://github.com/iordanGrancharov/gym-app" target="_blank">
         <FontAwesomeIcon icon={faGithub} className={styles["icon"]} />
-      </a>
+      </Link>
       <a href="#">
         <FontAwesomeIcon icon={faFacebook} className={styles["icon"]} />
       </a>
-      <a href="#">
+      <Link
+        to="https://www.linkedin.com/in/yordan-gruncharov-151815244"
+        target="_blank"
+      >
         <FontAwesomeIcon icon={faLinkedin} className={styles["icon"]} />
-      </a>
+      </Link>
     </div>
   );
 };

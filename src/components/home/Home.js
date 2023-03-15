@@ -1,8 +1,9 @@
 import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className={styles["container"]}>
+    <section className={styles["container"]}>
       <div className={styles["section-one"]}>
         <div className={`${styles["slide"]} ${styles["slide-1"]}`}></div>
         <div className={`${styles["slide"]} ${styles["slide-2"]}`}></div>
@@ -15,42 +16,32 @@ const Home = () => {
         </h1>
         <p>Try out our free workouts and healthy recipes!</p>
         <div className={styles["btn-container"]}>
-          <a
-            href="#"
+          <Link
+            to="/nutrition"
             className={`${styles["nutrition-btn"]} ${styles["anchor-btn"]}`}
           >
             Nutrition
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/workouts"
             className={`${styles["workouts-btn"]} ${styles["anchor-btn"]}`}
           >
             Workouts
-          </a>
+          </Link>
         </div>
       </div>
       <div className={styles["section-three"]}>
         <h1>
           <span className={styles["learn"]}>Learn more</span>
           <span className={styles["about"]}>
-            <a href="#">about</a>
+            <Link to="/about">about</Link>
           </span>
 
           <span className={styles["ourapp"]}>our application</span>
         </h1>
-        {/* <a
-          href="#"
-          className={`${styles["about-btn"]} ${styles["anchor-btn"]}`}
-        >
-          About
-        </a> */}
       </div>
-    </div>
+    </section>
   );
 };
 
 export default Home;
-
-// <div className={styles["container-quotes"]}>
-//   <h1>Pain is temporary...</h1>
-// </div>;

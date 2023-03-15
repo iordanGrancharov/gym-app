@@ -1,17 +1,23 @@
 import "./App.css";
 import Navbar from "./components/navigation/Navbar";
-import Home from "./pages/home/Home";
-// import Login from "./pages/login/Login";
-// import Register from "./pages/register/Register";
+import Home from "./components/home/Home";
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 import Footer from "./components/footer/Footer";
 
+import { Routes, Route } from "react-router-dom";
+
 function App() {
-  const user = false;
+  const user = true;
   const hasUser = user ? true : false;
   return (
     <>
       <Navbar hasUser={hasUser} />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./BurgerNav.module.css";
 
@@ -35,32 +36,32 @@ const BurgerNav = ({ className, hasUser }) => {
           <ul className={`${styles["links-burger"]} ${styles["hasUser"]}`}>
             {/* USER */}
             <li>
-              <a href="#">Create Your Own</a>
+              <Link to="/create">Create Your Own</Link>
             </li>
             <li>
-              <a href="#">Nutrition</a>
+              <Link to="/nutrition">Nutrition</Link>
             </li>
             <li>
-              <a href="#">Workouts</a>
+              <Link to="/workouts">Workouts</Link>
             </li>
             <li>
-              <a href="#">LogOut</a>
+              <Link to="/logout">LogOut</Link>
             </li>
           </ul>
         ) : (
           <ul className={`${styles["links-burger"]} ${styles["hasGuest"]}`}>
             {/* GUEST */}
             <li>
-              <a href="#">Nutrition</a>
+              <Link to="/nutrition">Nutrition</Link>
             </li>
             <li>
-              <a href="#">Workouts</a>
+              <Link to="/workouts">Workouts</Link>
             </li>
             <li>
-              <a href="#">Login</a> {/* /exercises */}
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="#">Register</a> {/* /exercises */}
+              <Link to="/register">Register</Link>
             </li>
           </ul>
         )}

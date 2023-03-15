@@ -31,20 +31,36 @@
   }
 }
 
+.error {
+  color: red;
+  font-family: var(--font-family-four);
+  margin-bottom: 0.8vh;
+  margin-top: -0.5vh;
+  margin-left: 0.5vw;
+  font-size: 1.8vh;
+  width: 20vw;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
 .picture-container {
-  position: fixed;
-  left: 25vw;
-  bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 25vw;
   height: 70vh;
-  background: url("https://i.pinimg.com/564x/a9/d5/2a/a9d52ac540de721422ae127830e8c7ab.jpg");
+  margin-top: 10vh;
 
+  background: url("https://i.pinimg.com/564x/a9/d5/2a/a9d52ac540de721422ae127830e8c7ab.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
   z-index: 1;
 
-  /* filter: grayscale(0.1); */
   box-shadow: 0px 0px 10px 2px black;
 
   border-top-left-radius: 1vh;
@@ -54,16 +70,11 @@
 }
 
 .picture-container h1 {
-  position: fixed;
-  top: 38vh;
-  left: 28vw;
+  margin-top: 15vh;
   white-space: nowrap;
 }
 
 .picture-container p {
-  position: fixed;
-  top: 45vh;
-  left: 28.5vw;
   width: 17vw;
   white-space: normal;
 
@@ -71,15 +82,13 @@
 }
 
 .form {
-  position: fixed;
   width: 25vw;
   height: 70vh;
-
-  bottom: 10vh;
-  right: 25vw;
+  margin-top: 10vh;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   background-color: var(--secondary-color);
   box-shadow: var(--box-shadow-main);
@@ -89,16 +98,11 @@
 }
 
 .form h1 {
-  position: fixed;
-  top: 38vh;
-  right: 38vw;
+  margin-top: 15vh;
   font-family: var(--font-family-four);
 }
 
 .input-container {
-  position: fixed;
-  top: 44vh;
-  right: 30.5vw;
   display: flex;
   flex-direction: column;
 
@@ -142,9 +146,6 @@
 .checkbox {
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 39vh;
-  right: 39vw;
 }
 
 .checkbox label {
@@ -156,13 +157,11 @@
 }
 
 .additional {
-  position: fixed;
-  bottom: 39vh;
-  right: 23vw;
   width: 15vw;
 
   font-size: 1.8vh;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   font-family: var(--font-family-four);
   color: rgba(0, 0, 0, 0.731);
@@ -179,11 +178,8 @@
 }
 
 .btn-submit {
-  position: fixed;
-  bottom: 33vh;
-  right: 30.5vw;
-  width: 15vw;
-
+  width: 16vw;
+  margin-left: 0.5vw;
   border-radius: 5vh;
   border: none;
   padding: 0.5vh 0;
@@ -199,9 +195,6 @@
 }
 
 .new-here {
-  position: fixed;
-  bottom: 28vh;
-  right: 31.5vw;
   width: 13vw;
 
   display: flex;
@@ -215,47 +208,130 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .error {
+    margin-bottom: 0.8vh;
+    margin-top: -0.5vh;
+    margin-left: 0.5vw;
+    font-size: 1.2vh;
+    width: 30vw;
+  }
+
   .picture-container {
     width: 45vw;
     height: 50vh;
-    bottom: 20vh;
-    left: 5vw;
   }
 
   .picture-container h1 {
-    position: fixed;
-    font-size: 5vw;
-    left: 9vw;
-    top: 40vh;
+    font-size: 3vh;
+    text-shadow: var(--text-shadow-one);
   }
 
   .picture-container p {
-    font-size: 4vw;
+    font-size: 2.2vh;
     width: 30vw;
-    left: 10vw;
   }
 
   .form {
     width: 45vw;
     height: 50vh;
-    bottom: 20vh;
-    right: 5vw;
   }
 
   .form h1 {
     font-size: 2.8vh;
     right: 25vw;
-    top: 40vh;
   }
 
   .input-container {
-    right: 28vw;
+    margin-right: 15vw;
   }
 
   .icon {
     margin-top: -1.5vh;
-    height: 0.9vh;
-    width: 1.6vw;
+    height: 1.2vh;
+    width: 2vw;
+    padding: 1vh;
+    padding-right: 0;
+  }
+
+  .input-container input {
+    padding: 0.51vh;
+    margin-top: -0.5vh;
+    width: 28vw;
+    font-size: 1.4vh;
+  }
+
+  .checkbox {
+    font-size: 1.2vh;
+    margin-right: 1vw;
+  }
+
+  .additional {
+    font-size: 1.2vh;
+    white-space: nowrap;
+    margin-top: -0.2vh;
+    margin-right: 10vh;
+  }
+
+  .btn-submit {
+    margin-top: 1vh;
+    font-size: 1.5vh;
+    width: 26vw;
+  }
+
+  .new-here {
+    margin-right: 15vw;
+    font-size: 1.2vh;
+    white-space: nowrap;
+  }
+  .new-here a {
+    margin-left: 1vw;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+  .error {
+    margin-bottom: 0.8vh;
+    margin-top: -0.5vh;
+    margin-left: 0.5vw;
+    font-size: 1.2vh;
+    width: 30vw;
+  }
+
+  .picture-container {
+    width: 45vw;
+    height: 50vh;
+  }
+
+  .picture-container h1 {
+    font-size: 4vh;
+    margin-top: 10vh;
+    text-shadow: var(--text-shadow-one);
+  }
+
+  .picture-container p {
+    font-size: 2.5vh;
+    width: 30vw;
+  }
+
+  .form {
+    width: 45vw;
+    height: 50vh;
+  }
+
+  .form h1 {
+    font-size: 4vh;
+    margin-top: 10vh;
+    right: 25vw;
+  }
+
+  .input-container {
+    margin-right: 12vw;
+  }
+
+  .icon {
+    margin-top: -1.52vh;
+    height: 1vh;
+    width: 4vh;
     padding: 1vh;
     padding-right: 0;
   }
@@ -268,114 +344,27 @@
   }
 
   .checkbox {
-    top: 43vh;
-    right: 28vw;
     font-size: 1.2vh;
+    margin-right: 1vw;
   }
 
   .additional {
-    top: 51vh;
-    right: 12vw;
-    font-size: 1.2vh;
+    font-size: 1.3vh;
     white-space: nowrap;
+    margin-top: -0.2vh;
+    margin-right: 10vh;
   }
 
   .btn-submit {
-    bottom: 43vh;
-    right: 15vw;
+    margin-top: 1vh;
     font-size: 1.5vh;
-    width: 25vw;
+    width: 28vw;
   }
 
   .new-here {
+    margin-right: 8vw;
     font-size: 1.2vh;
     white-space: nowrap;
-    bottom: 38.5vh;
-    right: 15vh;
-  }
-  .new-here a {
-    margin-left: 1vw;
-  }
-}
-
-@media only screen and (min-width: 480px) and (max-width: 770px) {
-  .picture-container {
-    width: 40vw;
-    height: 50vh;
-    bottom: 20vh;
-    left: 10vw;
-  }
-
-  .picture-container h1 {
-    position: fixed;
-    font-size: 2.8vh;
-    left: 15vw;
-    top: 40vh;
-  }
-
-  .picture-container p {
-    font-size: 2vh;
-    width: 30vw;
-    left: 16vw;
-  }
-
-  .form {
-    width: 40vw;
-    height: 50vh;
-    bottom: 20vh;
-    right: 10vw;
-  }
-
-  .form h1 {
-    font-size: 2.8vh;
-    right: 28vw;
-    top: 40vh;
-  }
-
-  .input-container {
-    right: 28vw;
-  }
-
-  .icon {
-    margin-top: -1.5vh;
-    height: 0.9vh;
-    width: 1vw;
-    padding: 1.1vh;
-    padding-right: 0;
-  }
-
-  .input-container input {
-    padding: 0.5vh;
-    margin-top: -0.5vh;
-    width: 25vw;
-    font-size: 1.4vh;
-  }
-
-  .checkbox {
-    top: 43vh;
-    right: 31vw;
-    font-size: 1.2vh;
-  }
-
-  .additional {
-    top: 51vh;
-    right: 14vw;
-    font-size: 1.2vh;
-    white-space: nowrap;
-  }
-
-  .btn-submit {
-    bottom: 43vh;
-    right: 18vw;
-    font-size: 1.5vh;
-    width: 25vw;
-  }
-
-  .new-here {
-    font-size: 1.5vh;
-    white-space: nowrap;
-    bottom: 38vh;
-    right: 30vw;
   }
   .new-here a {
     margin-left: 1vw;
@@ -383,87 +372,87 @@
 }
 
 @media only screen and (min-width: 771px) and (max-width: 1050px) {
+  .error {
+    margin-bottom: 0.8vh;
+    margin-top: -0.5vh;
+    margin-left: 0.5vw;
+    font-size: 1.4vh;
+    width: 30vw;
+  }
+
   .container {
     background-size: 300%;
   }
 
   .picture-container {
-    width: 40vw;
+    width: 45vw;
     height: 50vh;
-    bottom: 20vh;
-    left: 10vw;
   }
 
   .picture-container h1 {
-    position: fixed;
-    font-size: 2.8vh;
-    left: 15vw;
-    top: 40vh;
+    font-size: 4vh;
+    margin-top: 10vh;
+    text-shadow: var(--text-shadow-one);
   }
 
   .picture-container p {
-    font-size: 2vh;
+    font-size: 2.5vh;
     width: 30vw;
-    left: 16vw;
   }
 
   .form {
-    width: 40vw;
+    width: 45vw;
     height: 50vh;
-    bottom: 20vh;
-    right: 10vw;
   }
 
   .form h1 {
-    font-size: 2.8vh;
-    right: 28vw;
-    top: 40vh;
+    font-size: 4vh;
+    margin-top: 10vh;
+    right: 25vw;
   }
 
   .input-container {
-    right: 28vw;
+    margin-right: 12vw;
   }
 
   .icon {
     margin-top: -1.5vh;
-    height: 0.9vh;
-    width: 1vw;
-    padding: 1.1vh;
+    height: 2.02vh;
+    width: 1.15vh;
+    padding: 1vh;
     padding-right: 0;
   }
 
   .input-container input {
-    padding: 0.5vh;
+    padding: 0.51vh;
     margin-top: -0.5vh;
-    width: 25vw;
-    font-size: 1.4vh;
+    width: 28vw;
+    font-size: 2vh;
   }
 
   .checkbox {
-    top: 43vh;
-    right: 31vw;
-    font-size: 1.2vh;
+    font-size: 1.5vh;
+    margin-right: 1vw;
   }
 
   .additional {
-    top: 51vh;
-    right: 14vw;
-    font-size: 1.2vh;
+    font-size: 1.5vh;
     white-space: nowrap;
+    margin-top: -0.2vh;
+    margin-right: 12vh;
   }
 
   .btn-submit {
-    bottom: 43vh;
-    right: 17vw;
+    margin-left: 2vh;
+    margin-top: 1vh;
     font-size: 1.5vh;
-    width: 25vw;
+    width: 26vw;
   }
 
   .new-here {
+    margin-right: 12vw;
     font-size: 1.5vh;
     white-space: nowrap;
-    bottom: 39vh;
-    right: 30vw;
   }
   .new-here a {
     margin-left: 1vw;
@@ -471,178 +460,89 @@
 }
 
 @media only screen and (min-width: 1051px) and (max-width: 1200px) {
+  .error {
+    margin-bottom: 0.8vh;
+    margin-top: -0.5vh;
+    margin-left: 0.5vw;
+    font-size: 1.4vh;
+    width: 30vw;
+  }
+
   .container {
     background-size: cover;
   }
 
   .picture-container {
+    margin-top: 10vh;
     width: 30vw;
-    height: 70vh;
-    bottom: 10vh;
-    left: 20vw;
+    height: 60vh;
   }
 
   .picture-container h1 {
-    position: fixed;
     font-size: 4vh;
-    left: 23vw;
-    top: 38vh;
+    margin-top: 10vh;
+    text-shadow: var(--text-shadow-one);
   }
 
   .picture-container p {
-    font-size: 3.2vh;
-    width: 25vw;
-    left: 23vw;
+    font-size: 2.8vh;
+    width: 16vw;
   }
 
   .form {
+    margin-top: 10vh;
     width: 30vw;
-    height: 70vh;
-    bottom: 10vh;
-    right: 20vw;
+    height: 60vh;
   }
 
   .form h1 {
     font-size: 4vh;
-    right: 35vw;
-    top: 38vh;
+    margin-top: 10vh;
   }
 
   .input-container {
-    right: 28vw;
+    margin-right: 0vw;
   }
 
   .icon {
-    margin-top: -1.55vh;
-    height: 2.5vh;
-    width: 2vw;
-    padding: 1.4vh;
+    margin-top: -1.3vh;
+    height: 1.95vh;
+    width: 1.5vh;
+    padding: 1vh;
     padding-right: 0;
   }
 
   .input-container input {
-    padding: 0.95vh;
-    margin-top: -0.5vh;
-    width: 16vw;
-    font-size: 2.3vh;
+    padding: 0.51vh;
+    margin-top: -0.2vh;
+    width: 15vw;
+    font-size: 2vh;
   }
 
   .checkbox {
-    top: 53vh;
-    right: 36vw;
-    font-size: 2vh;
+    font-size: 1.8vh;
+    margin-right: 1vw;
   }
 
   .additional {
-    top: 55.5vh;
-    right: 19vw;
-    font-size: 2vh;
     white-space: nowrap;
+    margin-top: -0.2vh;
+    margin-right: 3vw;
   }
 
   .btn-submit {
-    bottom: 36vh;
-    right: 26vw;
-    font-size: 2.3vh;
-    width: 17vw;
+    margin-left: 1vh;
+    margin-top: 1vh;
+    font-size: 1.8vh;
+    width: 16vw;
   }
 
   .new-here {
-    font-size: 2vh;
+    margin-right: 2vw;
+    font-size: 1.8vh;
     white-space: nowrap;
-    bottom: 30vh;
-    right: 29vw;
   }
   .new-here a {
-    margin-left: 0.6vw;
+    margin-left: 1vw;
   }
 }
-/*
-@media only screen and (min-width: 1501px) {
-.container {
-  background-size: 300%;
-}
-
-.picture-container {
-  width: 30vw;
-  height: 70vh;
-  bottom: 10vh;
-  left: 20vw;
-}
-
-.picture-container h1 {
-  position: fixed;
-  font-size: 5vh;
-  left: 23vw;
-  top: 38vh;
-}
-
-.picture-container p {
-  font-size: 3.2vh;
-  width: 25vw;
-  left: 23.5vw;
-}
-
-.form {
-  width: 30vw;
-  height: 70vh;
-  bottom: 10vh;
-  right: 20vw;
-}
-
-.form h1 {
-  font-size: 5vh;
-  right: 35vw;
-  top: 38vh;
-}
-
-.input-container {
-  right: 28vw;
-}
-
-.icon {
-  margin-top: -0.6vh;
-  height: 2vh;
-  width: 0.8vw;
-  padding: 2vh;
-  padding-right: 0;
-}
-
-.input-container input {
-  padding: 1vh;
-  margin-top: 0.5vh;
-  width: 16vw;
-  font-size: 2.7vh;
-}
-
-.checkbox {
-  top: 60vh;
-  right: 36vw;
-  font-size: 2.5vh;
-}
-
-.additional {
-  top: 58.6vh;
-  right: 20vw;
-  font-size: 2.5vh;
-  white-space: nowrap;
-}
-
-.btn-submit {
-  bottom: 31vh;
-  right: 29.5vw;
-  font-size: 3vh;
-  width: 35vh;
-}
-
-.new-here {
-  font-size: 2.5vh;
-  white-space: nowrap;
-  bottom: 25vh;
-  right: 29vw;
-}
-.new-here a {
-  margin-left: 0.6vw;
-}
-}
-*/

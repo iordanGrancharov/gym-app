@@ -117,7 +117,7 @@
   font-family: var(--font-family-four);
   font-weight: 800;
   /* font-style: italic; */
-
+  margin-left: 1vw;
   text-transform: uppercase;
   text-align: start;
   text-shadow: var(--text-shadow-one);
@@ -235,6 +235,7 @@
   position: fixed;
   right: 470px;
   bottom: 210px;
+  font-family: var(--font-family-four);
 }
 
 .about {
@@ -290,12 +291,6 @@
   text-shadow: var(--text-shadow-one);
 }
 
-.ourapp {
-  position: fixed;
-  right: 100px;
-  bottom: 110px;
-}
-
 .about-btn {
   position: fixed;
   right: 90px;
@@ -310,6 +305,13 @@
   opacity: 0.85;
   padding: 0.2rem 4rem;
   margin-bottom: 1rem;
+}
+
+.ourapp {
+  position: fixed;
+  right: 100px;
+  bottom: 110px;
+  font-family: var(--font-family-five);
 }
 
 @media only screen and (max-width: 480px) {

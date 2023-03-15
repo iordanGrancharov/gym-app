@@ -1,4 +1,5 @@
 import styles from "./DefaultNav.module.css";
+import { Link } from "react-router-dom";
 
 const DefaultNav = ({ className, hasUser }) => {
   const userClass = hasUser ? "links links-user" : "links links-guest";
@@ -8,38 +9,32 @@ const DefaultNav = ({ className, hasUser }) => {
         <ul className={`${styles["links"]} ${styles["links-user"]}`}>
           {/* USER */}
           <li>
-            <a href="#">
-              <span>Create Your Own</span>
-            </a>
+            <Link to="/create">Create Your Own</Link>
           </li>
           <li>
-            <a href="#">Nutrition</a>
+            <Link to="/nutrition">Nutrition</Link>
           </li>
           <li>
-            <a href="#">Workouts</a>
+            <Link to="/workouts">Workouts</Link>
           </li>
           <li>
-            <a href="#">LogOut</a>
+            <Link to="/logout">LogOut</Link>
           </li>
         </ul>
       ) : (
         <ul className={`${styles["links"]} ${styles["links-guest"]}`}>
-          {/* <li>
-          <a href="#">Custom Foods plan</a>
-        </li> */}
-
           {/* GUEST */}
           <li>
-            <a href="#">Nutrition</a>
+            <Link to="/nutrition">Nutrition</Link>
           </li>
           <li>
-            <a href="#">Workouts</a>
+            <Link to="/workouts">Workouts</Link>
           </li>
           <li>
-            <a href="#">Login</a>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <a href="#">Register</a>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
       )}

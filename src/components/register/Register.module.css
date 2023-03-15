@@ -31,6 +31,16 @@
   }
 }
 
+.error {
+  color: red;
+  font-family: var(--font-family-four);
+  margin-bottom: 0.5vh;
+  margin-top: 0vh;
+  margin-left: 0.5vw;
+  font-size: 1.8vh;
+  width: 20vw;
+}
+
 .picture-container {
   margin-top: 10vh;
   width: 25vw;
@@ -88,6 +98,7 @@
 .input-container {
   display: flex;
   margin: 0 auto;
+  margin-left: 4vw;
   flex-direction: column;
 }
 
@@ -126,7 +137,7 @@
 }
 
 .btn-submit {
-  width: 16vw;
+  width: 14vw;
   margin: 0 auto;
   border-radius: 5vh;
   border: none;
@@ -152,6 +163,14 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .error {
+    margin-bottom: 0.5vh;
+    margin-top: 0vh;
+    margin-left: 7vw;
+    font-size: 1.2vh;
+    width: 30vw;
+  }
+
   .picture-container {
     width: 45vw;
     height: 60vh;
@@ -212,6 +231,14 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 770px) {
+  .error {
+    margin-bottom: 0.5vh;
+    margin-top: 0vh;
+    margin-left: 9vw;
+    font-size: 1.4vh;
+    width: 30vw;
+  }
+
   .picture-container {
     width: 45vw;
     height: 60vh;
@@ -274,6 +301,14 @@
 }
 
 @media only screen and (min-width: 771px) and (max-width: 1050px) {
+  .error {
+    margin-bottom: 0.5vh;
+    margin-top: 0vh;
+    margin-left: 8vw;
+    font-size: 1.5vh;
+    width: 30vw;
+  }
+
   .container {
     background-size: 300%;
   }
@@ -340,6 +375,14 @@
 }
 
 @media only screen and (min-width: 1051px) and (max-width: 1200px) {
+  .error {
+    margin-bottom: 0.5vh;
+    margin-top: 0vh;
+    margin-left: 7vw;
+    font-size: 1.6vh;
+    width: 20vw;
+  }
+
   .container {
     background-size: 300%;
   }

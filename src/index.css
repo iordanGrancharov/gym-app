@@ -30,7 +30,7 @@
   --font-size-small-mobile: 0.8vh;
   --transition-one: linear 1s;
   --transition-half: linear 0.5s;
-  --text-shadow-one: 1px 1px 2px black, 0 0 1em #fff, 0 0 0.2em #fff;
+  --text-shadow-one: 1px 1px 2px black, 0 0 1em #fff, 0 0 0.2em #000;
   --text-shadow-two: 1px 1px 2px black, 0 0 1em #d83e59, 0 0 0.2em #d83e59;
 }
 
