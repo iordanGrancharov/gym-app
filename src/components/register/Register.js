@@ -31,7 +31,7 @@ const Register = () => {
 
   const validate = (values) => {
     const errors = {};
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
 
     if (!values.email) {
       errors.email = "Email is required!";
@@ -65,7 +65,7 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       /*Submit the form*/
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmit]);
   return (
     <section className={styles["container"]}>
       <div className={styles["picture-container"]}>

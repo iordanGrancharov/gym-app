@@ -26,7 +26,7 @@ const Login = () => {
 
   const validate = (values) => {
     const errors = {};
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
 
     if (!values.email) {
       errors.email = "Email is required!";
@@ -46,9 +46,9 @@ const Login = () => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       /*Submit the form*/
-      setFormValues(initialValues);
+      // setFormValues(initialValues);
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmit]);
 
   return (
     <section className={styles["container"]}>
@@ -84,13 +84,6 @@ const Login = () => {
           </div>
           <p className={styles["error"]}>{formErrors.password}</p>
         </div>
-        {/* <div className={styles["additional"]}>
-          <div className={styles["checkbox"]}>
-            <input type="checkbox" name="remember" id="remember" />
-            <label htmlFor="remember">Remember me</label>
-          </div>
-          <Link to="/passRecovery">Forgot password?</Link>
-        </div> */}
         <input className={styles["btn-submit"]} type="submit" value="Sign In" />
         <p className={styles["new-here"]}>
           New here? <Link to="/register">Create an Account</Link>
@@ -101,10 +94,3 @@ const Login = () => {
 };
 
 export default Login;
-
-{
-  /* <div className={styles["text"]}>
-  <h1>"If it means winning...</h1>
-  <h1>My life is a price i can pay..."</h1>
-</div>; */
-}
