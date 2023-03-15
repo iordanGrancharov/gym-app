@@ -1,7 +1,7 @@
 .icon {
   font-size: var(--font-size-big);
   color: var(--main-bg-color);
-  padding: 0.7rem;
+  padding: 0.4rem;
 }
 .icon:hover {
   color: var(--secondary-color);
@@ -9,12 +9,28 @@
 }
 
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   bottom: 0;
   width: 100vw;
-  text-align: center;
+
   height: 7vh;
   background-color: transparent;
+}
+
+.links-continer {
+  margin-right: 1.5vw;
+}
+
+.text {
+  margin-left: 2vw;
+  margin-top: 3vh;
+  color: var(--main-bg-color);
+  font-size: var(--font-size-big-mobile);
+  font-family: var(--font-family-five);
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 480px) {
