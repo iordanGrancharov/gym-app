@@ -603,7 +603,7 @@
   }
 
   .btn-container {
-    margin-right: 12vw;
+    margin-right: 13vw;
   }
 
   .anchor-btn {
@@ -620,18 +620,18 @@
   .learn {
     font-size: var(--font-size-big);
     bottom: 27vh;
-    right: 13vw;
+    right: 14vw;
   }
 
   .about {
     font-size: var(--font-size-middle);
-    right: 13.5vw;
+    right: 14.5vw;
     bottom: 18vh;
   }
 
   .ourapp {
     bottom: 10vh;
-    right: 11vw;
+    right: 11.5vw;
   }
 }
 
