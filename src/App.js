@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
 
 import { Routes, Route } from "react-router-dom";
+import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
 
 function App() {
   const user = true;
@@ -19,6 +20,7 @@ function App() {
         <Route path="/create" element={<CreateWorkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/details/:exerciseId" element={<ExerciseDetails />} />
       </Routes>
       <Footer />
     </>

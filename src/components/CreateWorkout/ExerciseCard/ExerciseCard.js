@@ -1,7 +1,7 @@
 import styles from "./ExerciseCard.module.css";
 import { Link } from "react-router-dom";
 
-const ExerciseCard = ({ bodyPart, equipment, gifUrl, id, name, target }) => {
+const ExerciseCard = ({ bodyPart, gifUrl, id, name, target }) => {
   return (
     <Link to={`/details/${id}`} className={styles["card"]}>
       <div className={styles["gif-container"]}>

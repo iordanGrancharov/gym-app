@@ -106,3 +106,9 @@
   margin-top: 10vh;
   z-index: 999;
 }
+
+.loader {
+  margin: auto;
+  color: white;
+  font-size: 50vw;
+}

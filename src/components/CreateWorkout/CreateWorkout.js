@@ -1,22 +1,27 @@
-import styles from "./CreateWorkout.module.css";
 import { useEffect, useState } from "react";
 import { fetchData, exerciseDbOptions } from "../../utils/fetchData";
-import Exercises from "./Exercises/Exercises";
 
+import { CircularProgress } from "@mui/material";
+
+import styles from "./CreateWorkout.module.css";
+import Exercises from "./Exercises/Exercises";
 import CreateForm from "./CreateForm/CreateForm";
 
 const CreateWorkout = () => {
   const [search, setSearch] = useState("");
   const [exercises, setExercises] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const response = await fetch(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseDbOptions
       );
       const data = await response.json();
       setExercises(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -58,11 +63,19 @@ const CreateWorkout = () => {
           />
           <button onClick={handleSearchClick}>Search</button>
         </div>
-        <Exercises
-          className={styles["exercises"]}
-          exercises={exercises}
-          setExercises={setExercises}
-        />
+        {isLoading ? (
+          <CircularProgress
+            style={{ color: "white" }}
+            size={"4rem"}
+            className={styles["loader"]}
+          />
+        ) : (
+          <Exercises
+            className={styles["exercises"]}
+            exercises={exercises}
+            setExercises={setExercises}
+          />
+        )}
       </div>
       <CreateForm className={styles["create-form"]} />
     </section>
