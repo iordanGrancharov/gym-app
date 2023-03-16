@@ -16,46 +16,49 @@ import {
 const ExerciseDetails = () => {
   const [exercise, setExercise] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [videos, setVideos] = useState([]);
+
   const { exerciseId } = useParams();
 
   useEffect(() => {
     const fetchExerciseData = async () => {
       setIsLoading(true);
-      const exerciseDbUrl = "https://exercisedb.p.rapidapi.com";
-      const youtubeDbUrl = "https://youtube-search-and-download.p.rapidapi.com";
+      const exerciseAPIUrl = "https://exercisedb.p.rapidapi.com";
+      const youtubeAPIUrl =
+        "https://youtube-search-and-download.p.rapidapi.com";
 
       const exerciseDbResponse = await fetchData(
-        `${exerciseDbUrl}/exercises/exercise/${exerciseId}`,
+        `${exerciseAPIUrl}/exercises/exercise/${exerciseId}`,
         exerciseDbOptions
       );
 
+      const exerciseVideos = await fetchData(
+        `${youtubeAPIUrl}/search?query=${exerciseDbResponse.name}`,
+        youtubeDbOptions
+      );
+
       setExercise(exerciseDbResponse);
+      setVideos(exerciseVideos.contents);
       setIsLoading(false);
     };
     fetchExerciseData();
   }, [exerciseId]);
   return (
     <div className={styles["container"]}>
-      {isLoading ? (
-        <CircularProgress
-          style={{ color: "white" }}
-          size={"4rem"}
-          className={styles["loader"]}
-        />
-      ) : (
-        <Details {...exercise} />
-      )}
-
-      {/* {isLoading ? (
-        <CircularProgress
-          style={{ color: "white" }}
-          size={"4rem"}
-          className={styles["loader"]}
-        />
-      ) : (
-        <ExerciseVideos />
-      )}
-      {isLoading ? (
+      <div className={styles["content"]}>
+        {isLoading ? (
+          <CircularProgress
+            style={{ color: "white" }}
+            size={"4rem"}
+            className={styles["loader"]}
+          />
+        ) : (
+          <>
+            <Details {...exercise} />
+            <ExerciseVideos videos={videos} name={exercise.name} />
+          </>
+        )}
+        {/* {isLoading ? (
         <CircularProgress
           style={{ color: "white" }}
           size={"4rem"}
@@ -64,6 +67,7 @@ const ExerciseDetails = () => {
       ) : (
         <SimilarExercise />
       )} */}
+      </div>
     </div>
   );
 };

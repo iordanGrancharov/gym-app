@@ -3,19 +3,18 @@
   width: 100vw;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   background-image: url("https://i.imgur.com/hW8tBdX.png");
   background-repeat: repeat-x;
   background-position: right;
-  overflow: scroll;
-  overflow-x: hidden;
 
   animation: move-background 30s linear infinite;
 }
 
-.container::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 
@@ -35,4 +34,16 @@
   100% {
     background-position: left;
   }
+}
+
+.content {
+  width: 60vw;
+  height: 70vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.loader {
+  margin-top: 40vh;
+  margin-left: 30vw;
 }
