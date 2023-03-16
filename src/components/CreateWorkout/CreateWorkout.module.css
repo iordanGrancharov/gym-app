@@ -49,10 +49,20 @@
   display: none; /* Safari and Chrome */
 }
 
+.no-match {
+  margin: auto;
+  color: white;
+  text-shadow: var(--text-shadow-one);
+  font-weight: 600;
+  font-family: var(--font-family-five);
+  font-size: 5vh;
+}
+
 .search-section {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 1vh;
 }
 
 .search-section input {

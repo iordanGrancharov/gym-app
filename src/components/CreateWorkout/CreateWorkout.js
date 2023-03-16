@@ -47,6 +47,13 @@ const CreateWorkout = () => {
 
       setSearch("");
       setExercises(searchedExercised);
+    } else {
+      const exercisesData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises",
+        exerciseDbOptions
+      );
+      setSearch("");
+      setExercises(exercisesData);
     }
   };
 
@@ -69,6 +76,8 @@ const CreateWorkout = () => {
             size={"4rem"}
             className={styles["loader"]}
           />
+        ) : exercises.length === 0 ? (
+          <p className={styles["no-match"]}>No match!</p>
         ) : (
           <Exercises
             className={styles["exercises"]}
