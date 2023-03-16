@@ -29,6 +29,12 @@ const Register = () => {
     setIsSubmit(true);
   };
 
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      /*Submit the form*/
+    }
+  }, [formErrors, isSubmit]);
+
   const validate = (values) => {
     const errors = {};
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
@@ -61,11 +67,6 @@ const Register = () => {
     return errors;
   };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      /*Submit the form*/
-    }
-  }, [formErrors, isSubmit]);
   return (
     <section className={styles["container"]}>
       <div className={styles["picture-container"]}>

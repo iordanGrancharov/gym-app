@@ -27,10 +27,12 @@
 .text {
   margin-left: 2vw;
   margin-top: 3vh;
-  color: var(--main-bg-color);
+  /* color: var(--main-bg-color); */
+  color: white;
   font-size: var(--font-size-big-mobile);
   font-family: var(--font-family-five);
   text-transform: uppercase;
+  text-shadow: var(--text-shadow-one);
 }
 
 @media only screen and (max-width: 480px) {

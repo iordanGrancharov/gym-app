@@ -24,6 +24,13 @@ const Login = () => {
     setIsSubmit(true);
   };
 
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      /*Submit the form*/
+      // setFormValues(initialValues);
+    }
+  }, [formErrors, isSubmit]);
+
   const validate = (values) => {
     const errors = {};
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
@@ -42,13 +49,6 @@ const Login = () => {
 
     return errors;
   };
-
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      /*Submit the form*/
-      // setFormValues(initialValues);
-    }
-  }, [formErrors, isSubmit]);
 
   return (
     <section className={styles["container"]}>

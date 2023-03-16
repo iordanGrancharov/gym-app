@@ -1,0 +1,28 @@
+.results-title {
+  color: white;
+  /* text-transform: uppercase; */
+  font-family: var(--font-family-five);
+  text-align: center;
+  margin-top: 1.5vh;
+}
+
+.exercises-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.pagination {
+  margin: 4vh auto;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.custom {
+  background-color: white;
+  border-radius: 5vh;
+  opacity: 0.9;
+}

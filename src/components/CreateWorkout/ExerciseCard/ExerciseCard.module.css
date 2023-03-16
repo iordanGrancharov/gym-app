@@ -1,0 +1,83 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 14vw;
+  border: 1px solid white;
+  text-decoration: none;
+  box-shadow: var(--box-shadow-main);
+  border-top: 3px solid var(--main-bg-color);
+  border-bottom: 3px solid var(--main-bg-color);
+  height: 40vh;
+  background-color: white;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.3s linear;
+}
+
+.gif-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  color: white;
+  font-family: var(--font-family-five);
+  text-transform: uppercase;
+  padding: 0.5vh;
+  font-size: 1.5vh;
+  margin: 0.3vh 0.3vw;
+  font-weight: 600;
+  border-radius: 20px;
+  z-index: 999;
+  width: 5vw;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.exercise-info {
+  border-top: 3px solid var(--main-bg-color);
+  width: 100%;
+  display: flex;
+  margin: 1vh 0;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.bodypart {
+  background-color: var(--main-bg-color);
+  text-shadow: var(--text-shadow-one);
+}
+
+.target {
+  color: var(white);
+  background-color: var(--main-bg-color);
+  text-shadow: var(--text-shadow-one);
+}
+
+.bodypart:hover {
+  background-color: #ebbebe;
+}
+
+.target:hover {
+  background-color: #ebbebe;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+}
+
+.title h6 {
+  width: 100%;
+  color: black;
+  text-transform: capitalize;
+  font-family: var(--font-family-five);
+  font-weight: 600;
+  text-align: center;
+}

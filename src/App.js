@@ -1,6 +1,6 @@
 import "./App.css";
-import Navbar from "./components/navigation/Navbar";
-import Home from "./components/home/Home";
+import Navbar from "./components/Navigation/Navbar";
+import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Footer from "./components/Footer/Footer";

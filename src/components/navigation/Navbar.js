@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import Logo from "../navigation/logo/logo2.svg";
+import Logo from "../Navigation/Logo/logo2.svg";
 
-import BurgerNav from "./burgerNav/BurgerNav";
-import DefaultNav from "./defaultNav/DefaultNav";
+import BurgerNav from "./BurgerNav/BurgerNav";
+import DefaultNav from "./DefaultNav/DefaultNav";
 
 import styles from "./Navbar.module.css";
 

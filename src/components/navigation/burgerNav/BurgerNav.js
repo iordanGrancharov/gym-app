@@ -13,11 +13,11 @@ const BurgerNav = ({ className, hasUser }) => {
   };
 
   const classShown =
-    isShown == true ? "burger-container-show" : "burger-container-hide";
+    isShown === true ? "burger-container-show" : "burger-container-hide";
 
   return (
     <div className={className}>
-      {isShown == true ? (
+      {isShown === true ? (
         <FontAwesomeIcon
           icon={faClose}
           className={styles["burgerMenu"]}

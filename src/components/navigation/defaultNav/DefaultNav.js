@@ -2,7 +2,6 @@ import styles from "./DefaultNav.module.css";
 import { Link } from "react-router-dom";
 
 const DefaultNav = ({ className, hasUser }) => {
-  const userClass = hasUser ? "links links-user" : "links links-guest";
   return (
     <div className={className}>
       {hasUser ? (
