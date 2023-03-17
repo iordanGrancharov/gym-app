@@ -6,7 +6,6 @@ import {
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Details = ({ bodyPart, gifUrl, name, target, equipment }) => {

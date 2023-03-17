@@ -17,6 +17,7 @@ const ExerciseDetails = () => {
   const [exercise, setExercise] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [videos, setVideos] = useState([]);
+  const [similarTargetExercises, setSimilarTargetExercises] = useState([]);
 
   const { exerciseId } = useParams();
 
@@ -27,19 +28,30 @@ const ExerciseDetails = () => {
       const youtubeAPIUrl =
         "https://youtube-search-and-download.p.rapidapi.com";
 
-      const exerciseDbResponse = await fetchData(
-        `${exerciseAPIUrl}/exercises/exercise/${exerciseId}`,
-        exerciseDbOptions
-      );
+      try {
+        const exerciseDbResponse = await fetchData(
+          `${exerciseAPIUrl}/exercises/exercise/${exerciseId}`,
+          exerciseDbOptions
+        );
 
-      const exerciseVideos = await fetchData(
-        `${youtubeAPIUrl}/search?query=${exerciseDbResponse.name}`,
-        youtubeDbOptions
-      );
+        const exerciseVideos = await fetchData(
+          `${youtubeAPIUrl}/search?query=${exerciseDbResponse.name}`,
+          youtubeDbOptions
+        );
 
-      setExercise(exerciseDbResponse);
-      setVideos(exerciseVideos.contents);
-      setIsLoading(false);
+        const similarExercises = await fetchData(
+          `${exerciseAPIUrl}/exercises/target/${exerciseDbResponse.target}`,
+          exerciseDbOptions
+        );
+
+        setSimilarTargetExercises(similarExercises);
+        setExercise(exerciseDbResponse);
+        setVideos(exerciseVideos.contents);
+
+        setIsLoading(false);
+      } catch (e) {
+        console.log(e.message);
+      }
     };
     fetchExerciseData();
   }, [exerciseId]);
@@ -56,17 +68,13 @@ const ExerciseDetails = () => {
           <>
             <Details {...exercise} />
             <ExerciseVideos videos={videos} name={exercise.name} />
+            <SimilarExercise
+              similarTargetExercises={similarTargetExercises}
+              target={exercise.target}
+              exerciseId={exercise.id}
+            />
           </>
         )}
-        {/* {isLoading ? (
-        <CircularProgress
-          style={{ color: "white" }}
-          size={"4rem"}
-          className={styles["loader"]}
-        />
-      ) : (
-        <SimilarExercise />
-      )} */}
       </div>
     </div>
   );

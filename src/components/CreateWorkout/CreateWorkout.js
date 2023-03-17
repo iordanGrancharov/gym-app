@@ -13,17 +13,17 @@ const CreateWorkout = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchExerciseData = async () => {
       setIsLoading(true);
-      const response = await fetch(
+      const data = await fetchData(
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciseDbOptions
       );
-      const data = await response.json();
+
       setExercises(data);
       setIsLoading(false);
     };
-    fetchData();
+    fetchExerciseData();
   }, []);
 
   const handleSearchChange = (e) => {
