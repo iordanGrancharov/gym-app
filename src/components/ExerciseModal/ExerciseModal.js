@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import { ExerciseFormContext } from "../../../../context/ExerciseFormContext";
-import styles from "./AddExerciseModal.module.css";
+import { ExerciseFormContext } from "../../context/ExerciseFormContext";
+import styles from "./ExerciseModal.module.css";
 import { useNavigate } from "react-router-dom";
 
-const AddExerciseModal = ({ className, exercise, setModalState }) => {
+const AddExerciseModal = ({ className, exercise, mode, setModalState }) => {
   const navigate = useNavigate();
 
   const [exerciseInfo, setExerciseInfo] = useState({
@@ -24,7 +24,10 @@ const AddExerciseModal = ({ className, exercise, setModalState }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setExercisesForm((state) => [...state, { ...exerciseInfo }]);
+    if (mode === "Add") {
+      setExercisesForm((state) => [...state, { ...exerciseInfo }]);
+    }
+
     navigate("/create");
   };
 
@@ -57,7 +60,7 @@ const AddExerciseModal = ({ className, exercise, setModalState }) => {
             <input
               className={styles["add-btn"]}
               type="submit"
-              value="Add Exercise"
+              value={`${mode} Exercise`}
             />
             <input type="button" value="Cancel" onClick={closeModal} />
           </div>

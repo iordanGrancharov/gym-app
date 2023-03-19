@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
-import AddExerciseModal from "./AddExerciseModal/AddExerciseModal";
+import ExerciseModal from "../../ExerciseModal/ExerciseModal";
 
 const Details = ({ id, bodyPart, gifUrl, name, target, equipment }) => {
   const [modalState, setModalState] = useState(false);
@@ -64,7 +64,7 @@ const Details = ({ id, bodyPart, gifUrl, name, target, equipment }) => {
             Add Exercise
           </button>
         </div>
-        <AddExerciseModal
+        <ExerciseModal
           className={modalClass}
           exercise={{ id, name }}
           setModalState={setModalState}

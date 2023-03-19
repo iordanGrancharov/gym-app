@@ -1,4 +1,5 @@
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { ExerciseFormContext } from "../../../context/ExerciseFormContext";
@@ -8,9 +9,11 @@ import styles from "./CreateForm.module.css";
 const CreateForm = ({ className }) => {
   const { exercisesForm, setExercisesForm } = useContext(ExerciseFormContext);
 
+  console.log(exercisesForm);
   const removeExercise = (index) => {
     const items = exercisesForm.filter((x, i) => i !== index);
     setExercisesForm(items);
+    console.log(exercisesForm);
   };
 
   return (
@@ -33,11 +36,17 @@ const CreateForm = ({ className }) => {
               <li key={index}>
                 <div className={styles["ex-container"]}>
                   {exercise.name}
-                  <FontAwesomeIcon
-                    icon={faClose}
-                    className={styles["icon"]}
-                    onClick={() => removeExercise(index)}
-                  />
+                  <div className={styles["icon-container"]}>
+                    <FontAwesomeIcon
+                      icon={faClose}
+                      className={styles["icon"]}
+                      onClick={() => removeExercise(index)}
+                    />
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      className={styles["icon"]}
+                    />
+                  </div>
                 </div>
 
                 <div className={styles["sets-reps"]}>

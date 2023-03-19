@@ -74,14 +74,20 @@
   color: var(--main-bg-color);
 }
 
+.icon-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .icon {
+  margin-top: 0.5vh;
   margin-left: 0.5vw;
   margin-right: 0.3vw;
   border: 1px solid black;
   background-color: black;
   color: white;
   border-radius: 50%;
-  padding: 0 0.3vh;
+  padding: 0.1vh 0.2vh;
   cursor: pointer;
 }
 
