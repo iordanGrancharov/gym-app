@@ -6,10 +6,20 @@ import {
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import AddExerciseModal from "./AddExerciseModal/AddExerciseModal";
 
-const Details = ({ bodyPart, gifUrl, name, target, equipment }) => {
+const Details = ({ id, bodyPart, gifUrl, name, target, equipment }) => {
+  const [modalState, setModalState] = useState(false);
+
+  const showModal = () => {
+    setModalState(true);
+  };
+
+  const modalClass = modalState ? "container" : "hide";
+
   return (
     <div className={styles["details-container"]}>
       <div className={styles["gif-container"]}>
@@ -50,11 +60,15 @@ const Details = ({ bodyPart, gifUrl, name, target, equipment }) => {
           <Link to="/create" className={styles["btn"]} type="button">
             Back
           </Link>
-          <button className={styles["btn"]} type="button">
+          <button className={styles["btn"]} type="button" onClick={showModal}>
             Add Exercise
           </button>
-          <AddExerciseModal exercise={{ name: "Deadlift" }} isShown={true} />
         </div>
+        <AddExerciseModal
+          className={modalClass}
+          exercise={{ id, name }}
+          setModalState={setModalState}
+        />
       </div>
     </div>
   );

@@ -10,14 +10,13 @@ import { Routes, Route } from "react-router-dom";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
 import { useState } from "react";
 import { ExerciseFormContext } from "./context/ExerciseFormContext";
-import AddExerciseModal from "./components/ExerciseDetails/Details/AddExerciseModal/AddExerciseModal";
 
 function App() {
   const user = true;
   const hasUser = user ? true : false;
 
   const [exercisesForm, setExercisesForm] = useState([]);
-
+  console.log(exercisesForm);
   return (
     <>
       <Navbar hasUser={hasUser} />

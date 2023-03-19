@@ -8,8 +8,8 @@ import styles from "./CreateForm.module.css";
 const CreateForm = ({ className }) => {
   const { exercisesForm, setExercisesForm } = useContext(ExerciseFormContext);
 
-  const removeExercise = (id) => {
-    const items = exercisesForm.filter((x) => x.id !== id);
+  const removeExercise = (index) => {
+    const items = exercisesForm.filter((x, i) => i !== index);
     setExercisesForm(items);
   };
 
@@ -29,15 +29,23 @@ const CreateForm = ({ className }) => {
         <div className={styles["input-field"]}>
           <p>Exercises:</p>
           <ul>
-            {exercisesForm.map((exercise) => (
-              <li key={exercise.id}>
-                {exercise.name} Sets:<span>{exercise.sets}</span> Reps:
-                <span>{exercise.reps}</span>
-                <FontAwesomeIcon
-                  icon={faClose}
-                  className={styles["icon"]}
-                  onClick={() => removeExercise(exercise.id)}
-                />
+            {exercisesForm.map((exercise, index) => (
+              <li key={index}>
+                <div className={styles["ex-container"]}>
+                  {exercise.name}
+                  <FontAwesomeIcon
+                    icon={faClose}
+                    className={styles["icon"]}
+                    onClick={() => removeExercise(index)}
+                  />
+                </div>
+
+                <div className={styles["sets-reps"]}>
+                  <span className={styles["text"]}>Sets:</span>
+                  <span className={styles["amount"]}>{exercise.sets}</span>{" "}
+                  <span className={styles["text"]}>Reps:</span>
+                  <span className={styles["amount"]}>{exercise.reps}</span>
+                </div>
               </li>
             ))}
 

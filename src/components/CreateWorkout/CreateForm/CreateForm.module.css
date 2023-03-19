@@ -6,6 +6,12 @@
   margin-left: 1vw;
   margin-top: 5vh;
   font-weight: 600;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.form::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .input-field {
@@ -36,19 +42,41 @@
 
 .input-field ul {
   list-style: none;
-  padding-left: 1vw;
+  padding-left: 0vw;
 }
 
 .input-field ul li {
   padding: 0.8vh 0;
   border-bottom: var(--border-type-one);
-  font-size: 1.8vh;
+  font-size: 1.9vh;
   font-weight: 600;
   text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+}
+
+.ex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sets-reps {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.text {
+  margin-left: 1vw;
+  margin-right: 0.2vw;
+}
+
+.amount {
+  color: var(--main-bg-color);
 }
 
 .icon {
   margin-left: 0.5vw;
+  margin-right: 0.3vw;
   border: 1px solid black;
   background-color: black;
   color: white;

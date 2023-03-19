@@ -1,1 +1,78 @@
+.show {
+  display: none;
+}
 
+.hide {
+  display: none;
+}
+
+.container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.616);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+}
+
+.form {
+  width: 20vw;
+  height: 40vh;
+  background-color: #fff;
+  border: 4px solid var(--main-bg-color);
+  border-radius: 5vh;
+  font-family: var(--font-family-five);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form h5 {
+  color: var(--main-bg-color);
+  margin-top: 5vh;
+  text-transform: uppercase;
+}
+
+.input-field {
+  margin: 1vh auto;
+}
+
+.input-field input {
+  width: 8vw;
+  border-radius: 5vh;
+
+  text-align: center;
+  border: 2px solid var(--main-bg-color);
+}
+
+.input-field input:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-btn {
+  width: 8vw;
+  margin-bottom: 1vh;
+  padding: 0.3vh;
+  margin-top: 3vh;
+}
+
+.btn-container input {
+  border-radius: 5vh;
+  border: none;
+  background-color: var(--main-bg-color);
+  color: white;
+  text-shadow: var(--text-shadow-one);
+}
