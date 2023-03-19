@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
+import AddExerciseModal from "./AddExerciseModal/AddExerciseModal";
 
 const Details = ({ bodyPart, gifUrl, name, target, equipment }) => {
   return (
@@ -52,6 +53,7 @@ const Details = ({ bodyPart, gifUrl, name, target, equipment }) => {
           <button className={styles["btn"]} type="button">
             Add Exercise
           </button>
+          <AddExerciseModal exercise={{ name: "Deadlift" }} isShown={true} />
         </div>
       </div>
     </div>

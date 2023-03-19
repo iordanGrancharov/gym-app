@@ -1,9 +1,18 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { ExerciseFormContext } from "../../../context/ExerciseFormContext";
 
 import styles from "./CreateForm.module.css";
 
 const CreateForm = ({ className }) => {
+  const { exercisesForm, setExercisesForm } = useContext(ExerciseFormContext);
+
+  const removeExercise = (id) => {
+    const items = exercisesForm.filter((x) => x.id !== id);
+    setExercisesForm(items);
+  };
+
   return (
     <div className={className}>
       <form className={styles["form"]}>
@@ -20,18 +29,26 @@ const CreateForm = ({ className }) => {
         <div className={styles["input-field"]}>
           <p>Exercises:</p>
           <ul>
-            <li>
-              Bench Press
-              <FontAwesomeIcon icon={faClose} className={styles["icon"]} />
-            </li>
-            <li>
+            {exercisesForm.map((exercise) => (
+              <li key={exercise.id}>
+                {exercise.name} Sets:<span>{exercise.sets}</span> Reps:
+                <span>{exercise.reps}</span>
+                <FontAwesomeIcon
+                  icon={faClose}
+                  className={styles["icon"]}
+                  onClick={() => removeExercise(exercise.id)}
+                />
+              </li>
+            ))}
+
+            {/* <li>
               Romanian Single Leg Dumbell Deadlift
               <FontAwesomeIcon icon={faClose} className={styles["icon"]} />
             </li>
             <li>
               Barbell Squat{" "}
               <FontAwesomeIcon icon={faClose} className={styles["icon"]} />
-            </li>
+            </li> */}
           </ul>
           <input
             type="submit"
