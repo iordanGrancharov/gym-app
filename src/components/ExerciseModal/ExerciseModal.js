@@ -3,29 +3,48 @@ import { ExerciseFormContext } from "../../context/ExerciseFormContext";
 import styles from "./ExerciseModal.module.css";
 import { useNavigate } from "react-router-dom";
 
-const AddExerciseModal = ({ className, exercise, mode, setModalState }) => {
+const AddExerciseModal = ({
+  className,
+  exercise,
+  mode,
+  setModalState,
+  index,
+}) => {
   const navigate = useNavigate();
 
+  const { exercisesForm, setExercisesForm } = useContext(ExerciseFormContext);
+
   const [exerciseInfo, setExerciseInfo] = useState({
+    index: index,
     id: exercise.id,
     name: exercise.name,
-    sets: "",
-    reps: "",
+    sets: index ? Number(exercisesForm[index].sets) : 1,
+    reps: index ? Number(exercisesForm[index].reps) : 1,
   });
-
-  const { setExercisesForm } = useContext(ExerciseFormContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setExerciseInfo({ ...exerciseInfo, [name]: value });
-    console.log(exerciseInfo);
+    if (mode === "Add") {
+      setExerciseInfo({ ...exerciseInfo, [name]: value });
+    }
+    if (mode === "Edit") {
+      setExerciseInfo({ ...exerciseInfo, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (mode === "Add") {
+      console.log(exerciseInfo);
       setExercisesForm((state) => [...state, { ...exerciseInfo }]);
+    }
+
+    if (mode === "Edit") {
+      setExercisesForm((state) => [
+        { ...state[index], sets: exerciseInfo.sets, reps: exerciseInfo.reps },
+        ...state,
+      ]);
     }
 
     navigate("/create");
@@ -46,6 +65,9 @@ const AddExerciseModal = ({ className, exercise, mode, setModalState }) => {
               placeholder="Sets"
               name="sets"
               onChange={handleChange}
+              defaultValue={
+                index ? exercisesForm[index].sets : exerciseInfo.sets
+              }
             />
           </div>
           <div className={styles["input-field"]}>
@@ -54,6 +76,9 @@ const AddExerciseModal = ({ className, exercise, mode, setModalState }) => {
               placeholder="Reps"
               name="reps"
               onChange={handleChange}
+              defaultValue={
+                index ? exercisesForm[index].reps : exerciseInfo.reps
+              }
             />
           </div>
           <div className={styles["btn-container"]}>

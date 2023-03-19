@@ -13,13 +13,13 @@ import {
   fetchData,
 } from "../../utils/fetchData";
 
-const ExerciseDetails = () => {
+const ExerciseDetails = ({ mode }) => {
   const [exercise, setExercise] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [videos, setVideos] = useState([]);
   const [similarTargetExercises, setSimilarTargetExercises] = useState([]);
 
-  const { exerciseId } = useParams();
+  const { exerciseId, index } = useParams();
 
   useEffect(() => {
     const fetchExerciseData = async () => {
@@ -66,7 +66,7 @@ const ExerciseDetails = () => {
           />
         ) : (
           <>
-            <Details {...exercise} />
+            <Details {...exercise} mode={mode} index={index} />
             <ExerciseVideos videos={videos} name={exercise.name} />
             <SimilarExercise
               similarTargetExercises={similarTargetExercises}

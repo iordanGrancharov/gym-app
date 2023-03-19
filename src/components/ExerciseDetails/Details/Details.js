@@ -11,7 +11,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ExerciseModal from "../../ExerciseModal/ExerciseModal";
 
-const Details = ({ id, bodyPart, gifUrl, name, target, equipment }) => {
+const Details = ({
+  id,
+  bodyPart,
+  gifUrl,
+  name,
+  target,
+  equipment,
+  mode,
+  index,
+}) => {
   const [modalState, setModalState] = useState(false);
 
   const showModal = () => {
@@ -61,12 +70,14 @@ const Details = ({ id, bodyPart, gifUrl, name, target, equipment }) => {
             Back
           </Link>
           <button className={styles["btn"]} type="button" onClick={showModal}>
-            Add Exercise
+            {mode} Exercise
           </button>
         </div>
         <ExerciseModal
+          index={index}
           className={modalClass}
           exercise={{ id, name }}
+          mode={mode}
           setModalState={setModalState}
         />
       </div>

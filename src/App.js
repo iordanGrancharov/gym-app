@@ -16,7 +16,7 @@ function App() {
   const hasUser = user ? true : false;
 
   const [exercisesForm, setExercisesForm] = useState([]);
-  console.log(exercisesForm);
+
   return (
     <>
       <Navbar hasUser={hasUser} />
@@ -26,7 +26,14 @@ function App() {
           <Route path="/create" element={<CreateWorkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/details/:exerciseId" element={<ExerciseDetails />} />
+          <Route
+            path="/details/add/:exerciseId"
+            element={<ExerciseDetails mode="Add" />}
+          />
+          <Route
+            path="/details/edit/:exerciseId/:index"
+            element={<ExerciseDetails mode="Edit" />}
+          />
         </Routes>
       </ExerciseFormContext.Provider>
       <Footer />
