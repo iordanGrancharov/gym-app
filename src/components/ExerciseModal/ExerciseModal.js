@@ -41,10 +41,14 @@ const AddExerciseModal = ({
     }
 
     if (mode === "Edit") {
-      setExercisesForm((state) => [
-        { ...state[index], sets: exerciseInfo.sets, reps: exerciseInfo.reps },
-        ...state,
-      ]);
+      let items = [...exercisesForm];
+      let item = {
+        ...items[index],
+        sets: exerciseInfo.sets,
+        reps: exerciseInfo.reps,
+      };
+      items[index] = item;
+      setExercisesForm([...items]);
     }
 
     navigate("/create");
@@ -66,7 +70,7 @@ const AddExerciseModal = ({
               name="sets"
               onChange={handleChange}
               defaultValue={
-                index ? exercisesForm[index].sets : exerciseInfo.sets
+                index ? Number(exercisesForm[index].sets) : exerciseInfo.sets
               }
             />
           </div>
@@ -77,7 +81,7 @@ const AddExerciseModal = ({
               name="reps"
               onChange={handleChange}
               defaultValue={
-                index ? exercisesForm[index].reps : exerciseInfo.reps
+                index ? Number(exercisesForm[index].reps) : exerciseInfo.reps
               }
             />
           </div>
