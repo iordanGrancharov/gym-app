@@ -17,10 +17,24 @@ function App() {
 
   const [exercisesForm, setExercisesForm] = useState([]);
 
+  const [workoutInfo, setWorkoutInfo] = useState({
+    title: "",
+    imageUrl: "",
+    description: "",
+    exercises: exercisesForm,
+  });
+
+  const context = {
+    exercisesForm,
+    setExercisesForm,
+    workoutInfo,
+    setWorkoutInfo,
+  };
+
   return (
     <>
       <Navbar hasUser={hasUser} />
-      <ExerciseFormContext.Provider value={{ exercisesForm, setExercisesForm }}>
+      <ExerciseFormContext.Provider value={context}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateWorkout />} />

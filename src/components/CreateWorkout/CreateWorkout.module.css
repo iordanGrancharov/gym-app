@@ -32,7 +32,7 @@
 }
 
 .exercises-section {
-  width: 60vw;
+  width: 55vw;
   height: 80vh;
   background-color: rgba(100, 100, 100, 0.368);
   margin-top: 10vh;
@@ -108,13 +108,19 @@
 }
 
 .create-form {
-  width: 20vw;
+  width: 25vw;
   height: 80vh;
   background-color: var(--secondary-color);
   border: var(--border-type-one);
   border-left: 0;
   margin-top: 10vh;
   z-index: 999;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.create-form::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .loader {

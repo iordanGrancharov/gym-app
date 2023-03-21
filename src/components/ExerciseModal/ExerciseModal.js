@@ -28,7 +28,7 @@ const AddExerciseModal = ({
       setExerciseInfo({ ...exerciseInfo, [name]: value });
     }
     if (mode === "Edit") {
-      setExerciseInfo({ ...exerciseInfo, [name]: value });
+      setExerciseInfo({ ...exercisesForm[index], [name]: value });
     }
   };
 
@@ -64,25 +64,23 @@ const AddExerciseModal = ({
         <form className={styles["form"]} onSubmit={handleSubmit}>
           <h5>{exercise.name}</h5>
           <div className={styles["input-field"]}>
+            <label htmlFor="sets">Sets:</label>
             <input
               type="number"
               placeholder="Sets"
               name="sets"
               onChange={handleChange}
-              defaultValue={
-                index ? Number(exercisesForm[index].sets) : exerciseInfo.sets
-              }
+              value={exerciseInfo.sets}
             />
           </div>
           <div className={styles["input-field"]}>
+            <label htmlFor="sets">Reps:</label>
             <input
               type="number"
               placeholder="Reps"
               name="reps"
               onChange={handleChange}
-              defaultValue={
-                index ? Number(exercisesForm[index].reps) : exerciseInfo.reps
-              }
+              value={exerciseInfo.reps}
             />
           </div>
           <div className={styles["btn-container"]}>

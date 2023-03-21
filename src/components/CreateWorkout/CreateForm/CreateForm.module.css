@@ -1,68 +1,91 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   font-family: var(--font-family-five);
-  margin-left: 1vw;
+
   margin-top: 5vh;
   font-weight: 600;
-  overflow: scroll;
-  overflow-x: hidden;
 }
 
-.form::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+h3 {
+  font-weight: 600;
 }
 
 .input-field {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  margin: 1vh 0;
+  margin: 0.3vh 0;
 }
-.input-field label {
-  font-size: 2.8vh;
-}
+
 .field {
   border-radius: 5vh;
   width: 15vw;
   margin-top: 1vh;
   padding: 0.6vh;
+  padding-left: 1vw;
+  border: 2px solid black;
+}
+
+.field::placeholder {
+  font-style: italic;
 }
 
 .field:focus {
   outline: none;
 }
 
-.input-field p {
+.input-field textarea {
+  resize: inherit;
+}
+
+.exercises {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0.3vh 0;
+  width: 95%;
+}
+
+.exercises p {
   margin-top: 3vh;
   margin-bottom: 0;
   font-size: 2.5vh;
+  border-bottom: 3px solid var(--main-bg-color);
 }
 
-.input-field ul {
+.exercises ul {
   list-style: none;
   padding-left: 0vw;
 }
 
-.input-field ul li {
+.exercises ul li {
   padding: 0.8vh 0;
   border-bottom: var(--border-type-one);
   font-size: 1.9vh;
   font-weight: 600;
   text-transform: capitalize;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .ex-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .sets-reps {
+  margin-top: 0.5vh;
   margin-left: 0;
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sets-reps div {
+  margin-top: 0.5vh;
 }
 
 .text {
@@ -80,7 +103,7 @@
 }
 
 .icon {
-  margin-top: 0.5vh;
+  margin-top: 0.6vh;
   margin-left: 0.5vw;
   margin-right: 0.3vw;
   border: 1px solid black;

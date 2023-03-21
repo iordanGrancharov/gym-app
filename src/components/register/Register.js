@@ -83,6 +83,7 @@ const Register = () => {
               id="email"
               name="email"
               placeholder="Email"
+              value={formValues.email}
               onChange={handleChange}
             />
           </div>
@@ -94,6 +95,7 @@ const Register = () => {
               id="password"
               name="password"
               placeholder="Password"
+              value={formValues.password}
               onChange={handleChange}
             />
           </div>
@@ -105,6 +107,7 @@ const Register = () => {
               id="password"
               name="rePassword"
               placeholder="Confirm password"
+              value={formValues.rePassword}
               onChange={handleChange}
             />
           </div>
@@ -116,6 +119,7 @@ const Register = () => {
               id="country"
               name="country"
               placeholder="Country"
+              value={formValues.country}
               onChange={handleChange}
             />
           </div>
