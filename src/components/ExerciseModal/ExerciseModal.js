@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ExerciseFormContext } from "../../context/ExerciseFormContext";
+import { ExerciseFormContext } from "../../contexts/ExerciseFormContext";
 import styles from "./ExerciseModal.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -55,11 +55,19 @@ const AddExerciseModal = ({
   };
 
   const closeModal = (e) => {
-    setModalState(false);
+    if (e.target.id === "modal-background" || e.target.value === "Cancel") {
+      setModalState(false);
+    } else {
+      return;
+    }
   };
 
   return (
-    <div className={styles[className]}>
+    <div
+      id="modal-background"
+      className={styles[className]}
+      onClick={closeModal}
+    >
       <div>
         <form className={styles["form"]} onSubmit={handleSubmit}>
           <h5>{exercise.name}</h5>

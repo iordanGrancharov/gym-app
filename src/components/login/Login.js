@@ -1,9 +1,13 @@
+import { useState, useEffect } from "react";
+
 import styles from "./Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { validate } from "../../utils/form-validation";
+import { signIn } from "../../services/users";
 
 const Login = () => {
   const initialValues = { email: "", password: "" };
@@ -11,6 +15,8 @@ const Login = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     console.log(formValues);
@@ -21,35 +27,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-    console.log(formErrors);
     setIsSubmit(true);
   };
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      /*Submit the form*/
-      // setFormValues(initialValues);
+      signIn(formValues.email, formValues.password);
+      navigate("/");
     }
-  }, [formErrors, isSubmit]);
-
-  const validate = (values) => {
-    const errors = {};
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
-
-    if (!values.email) {
-      errors.email = "Email is required!";
-    } else if (!emailRegex.test(values.email)) {
-      errors.email = "This is not a valid email!";
-    }
-
-    if (!values.password) {
-      errors.password = "Password is required!";
-    } else if (values.password.length < 5) {
-      errors.password = "Password should be at least 5 characters long!";
-    }
-
-    return errors;
-  };
+  }, [formErrors, isSubmit, formValues, navigate]);
 
   return (
     <section className={styles["container"]}>
@@ -86,6 +72,18 @@ const Login = () => {
           <p className={styles["error"]}>{formErrors.password}</p>
         </div>
         <input className={styles["btn-submit"]} type="submit" value="Sign In" />
+        <div className={styles["google-auth"]}>
+          <FontAwesomeIcon
+            id="google-icon"
+            icon={faGoogle}
+            className={styles["icon"]}
+          />
+          <input
+            className={styles["google-submit"]}
+            type="submit"
+            value="Google Sign In"
+          />
+        </div>
         <p className={styles["new-here"]}>
           New here? <Link to="/register">Create an Account</Link>
         </p>

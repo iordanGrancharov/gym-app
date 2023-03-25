@@ -3,7 +3,7 @@ import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ExerciseFormContext } from "../../../context/ExerciseFormContext";
+import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
 
 import styles from "./CreateForm.module.css";
 

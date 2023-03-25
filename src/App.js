@@ -1,40 +1,22 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { ExerciseFormProvider } from "./contexts/ExerciseFormContext";
+
 import Navbar from "./components/Navigation/Navbar";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Footer from "./components/Footer/Footer";
 import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
-
-import { Routes, Route } from "react-router-dom";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
-import { useState } from "react";
-import { ExerciseFormContext } from "./context/ExerciseFormContext";
 
 function App() {
-  const user = true;
+  const user = false;
   const hasUser = user ? true : false;
-
-  const [exercisesForm, setExercisesForm] = useState([]);
-
-  const [workoutInfo, setWorkoutInfo] = useState({
-    title: "",
-    imageUrl: "",
-    description: "",
-    exercises: exercisesForm,
-  });
-
-  const context = {
-    exercisesForm,
-    setExercisesForm,
-    workoutInfo,
-    setWorkoutInfo,
-  };
 
   return (
     <>
       <Navbar hasUser={hasUser} />
-      <ExerciseFormContext.Provider value={context}>
+      <ExerciseFormProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateWorkout />} />
@@ -49,7 +31,7 @@ function App() {
             element={<ExerciseDetails mode="Edit" />}
           />
         </Routes>
-      </ExerciseFormContext.Provider>
+      </ExerciseFormProvider>
       <Footer />
     </>
   );
