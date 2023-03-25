@@ -7,7 +7,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 import { Link, useNavigate } from "react-router-dom";
 import { validate } from "../../utils/form-validation";
-import { signUp } from "../../services/users";
+import { signUp, signInWithGoogle } from "../../services/users";
 
 const Register = () => {
   const initialValues = {
@@ -39,6 +39,8 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       signUp(formValues.email, formValues.password);
       navigate("/");
+    } else {
+      console.log(formErrors);
     }
   }, [formErrors, isSubmit, formValues, navigate]);
 
@@ -95,9 +97,9 @@ const Register = () => {
             icon={faGoogle}
             className={styles["icon"]}
           />
-          <input
+          <button
             className={styles["google-submit"]}
-            type="submit"
+            type="button"
             value="Google Sign In"
           />
         </div>

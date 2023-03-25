@@ -4,9 +4,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./BurgerNav.module.css";
+import { useAuth } from "../../../contexts/AuthContext";
 
-const BurgerNav = ({ className, hasUser }) => {
+const BurgerNav = ({ className }) => {
   const [isShown, setIsShown] = useState(false);
+  const { user } = useAuth();
 
   const showBurgerMenu = (e) => {
     setIsShown(!isShown);
@@ -32,7 +34,7 @@ const BurgerNav = ({ className, hasUser }) => {
       )}
       {/* hasUser */}
       <div className={styles[classShown]}>
-        {hasUser ? (
+        {user ? (
           <ul className={`${styles["links-burger"]} ${styles["hasUser"]}`}>
             {/* USER */}
             <li>

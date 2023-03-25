@@ -4,12 +4,16 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithPopup,
-  onAuthStateChanged,
 } from "firebase/auth";
+
+import { persistence } from "../utils/persistence";
 
 export const signIn = async (email, password) => {
   try {
-    const response = await signInWithEmailAndPassword(auth, email, password);
+    console.log("here");
+    const response = await persistence(
+      signInWithEmailAndPassword(auth, email, password)
+    );
     console.log("Successfull login!");
     return response;
   } catch (error) {
@@ -17,9 +21,9 @@ export const signIn = async (email, password) => {
   }
 };
 
-export const signInWithGoogle = async (email, password) => {
+export const signInWithGoogle = async () => {
   try {
-    const response = await signInWithPopup(auth, googleProvider);
+    const response = await persistence(signInWithPopup(auth, googleProvider));
     console.log("Successfull login!");
     return response;
   } catch (error) {
@@ -29,10 +33,8 @@ export const signInWithGoogle = async (email, password) => {
 
 export const signUp = async (email, password) => {
   try {
-    const response = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
+    const response = await persistence(
+      createUserWithEmailAndPassword(auth, email, password)
     );
     console.log("Successfull registration!");
     return response;

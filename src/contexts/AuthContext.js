@@ -10,17 +10,21 @@ export function useAuth() {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(auth?.currentUser);
+  const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const authFunction = onAuthStateChanged(auth, (currentUser) =>
-      setUser(currentUser)
-    );
+    const authFunction = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setPending(false);
+    });
     return authFunction();
   }, []);
 
   const context = {
     user,
     setUser,
+    pending,
+    setPending,
   };
 
   return (

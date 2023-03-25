@@ -1,10 +1,12 @@
 import styles from "./DefaultNav.module.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
 
-const DefaultNav = ({ className, hasUser }) => {
+const DefaultNav = ({ className }) => {
+  const { user } = useAuth();
   return (
     <div className={className}>
-      {hasUser ? (
+      {user ? (
         <ul className={`${styles["links"]} ${styles["links-user"]}`}>
           {/* USER */}
           <li>

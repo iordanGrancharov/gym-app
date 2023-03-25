@@ -14,7 +14,7 @@ export const validate = (values) => {
     errors.password = "Password should be at least 5 characters long!";
   }
 
-  if (values.password !== values.rePassword) {
+  if (values?.rePassword && values.password !== values.rePassword) {
     errors.rePassword = "Passwords don't match!";
   }
 

@@ -2,6 +2,13 @@
 
 /* BACKGROUND */
 
+.loader {
+  margin: 0 auto;
+  margin-top: 2vh;
+
+  width: 50vw;
+}
+
 .profile {
   position: fixed;
   right: 2vw;

@@ -19,7 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    console.log(formValues);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -31,6 +30,7 @@ const Login = () => {
   };
 
   useEffect(() => {
+    console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       signIn(formValues.email, formValues.password);
       navigate("/");
