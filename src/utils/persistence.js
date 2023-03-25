@@ -8,7 +8,7 @@ export const persistence = async (callback) => {
       // local only. Closing the window wouldn't clear any existing state even
       // if a user forgets to sign out.
       // ...
-      // New sign-in will be persisted with session persistence.
+      // New sign-in will be persisted with local persistence.
       return callback();
     })
     .catch((error) => {

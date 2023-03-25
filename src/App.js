@@ -19,34 +19,36 @@ function App() {
         <Navbar />
         <ExerciseFormProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/create"
-              element={
-                <ProtectedRoute>
-                  <CreateWorkout />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route
-              path="/details/add/:exerciseId"
-              element={
-                <ProtectedRoute>
-                  <ExerciseDetails mode="Add" />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/details/edit/:exerciseId/:index"
-              element={
-                <ProtectedRoute>
-                  <ExerciseDetails mode="Edit" />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/" element={<Navbar />}>
+              <Route index element={<Home />} />
+              <Route
+                path="/create"
+                element={
+                  <ProtectedRoute>
+                    <CreateWorkout />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route
+                path="/details/add/:exerciseId"
+                element={
+                  <ProtectedRoute>
+                    <ExerciseDetails mode="Add" />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/details/edit/:exerciseId/:index"
+                element={
+                  <ProtectedRoute>
+                    <ExerciseDetails mode="Edit" />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
           </Routes>
         </ExerciseFormProvider>
         <Footer />

@@ -39,8 +39,6 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       signUp(formValues.email, formValues.password);
       navigate("/");
-    } else {
-      console.log(formErrors);
     }
   }, [formErrors, isSubmit, formValues, navigate]);
 

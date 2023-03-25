@@ -10,7 +10,6 @@ import { persistence } from "../utils/persistence";
 
 export const signIn = async (email, password) => {
   try {
-    console.log("here");
     const response = await persistence(
       signInWithEmailAndPassword(auth, email, password)
     );

@@ -30,7 +30,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       signIn(formValues.email, formValues.password);
       navigate("/");

@@ -7,7 +7,7 @@ const Logout = () => {
   useEffect(() => {
     logout();
   }, []);
-  return <Navigate to="/login" />;
+  return <Navigate to="/" />;
 };
 
 export default Logout;
