@@ -1,9 +1,12 @@
+import { useContext } from "react";
+
 import styles from "./DefaultNav.module.css";
+
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const DefaultNav = ({ className }) => {
-  const { user } = useAuth();
+  const { user } = useContext(AuthContext);
   return (
     <div className={className}>
       {user ? (

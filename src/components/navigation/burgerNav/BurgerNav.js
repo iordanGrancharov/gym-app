@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./BurgerNav.module.css";
-import { useAuth } from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const BurgerNav = ({ className }) => {
   const [isShown, setIsShown] = useState(false);
-  const { user } = useAuth();
+  const { user } = useContext(AuthContext);
 
   const showBurgerMenu = (e) => {
     setIsShown(!isShown);

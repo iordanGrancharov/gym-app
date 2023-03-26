@@ -6,39 +6,30 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
-import { persistence } from "../utils/persistence";
-
 export const signIn = async (email, password) => {
   try {
-    const response = await persistence(
-      signInWithEmailAndPassword(auth, email, password)
-    );
+    const response = await signInWithEmailAndPassword(auth, email, password);
     console.log("Successfull login!");
     return response;
   } catch (error) {
-    console.log(error.message);
+    throw error.message;
   }
 };
 
-export const signInWithGoogle = async () => {
-  try {
-    const response = await persistence(signInWithPopup(auth, googleProvider));
-    console.log("Successfull login!");
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 
 export const signUp = async (email, password) => {
   try {
-    const response = await persistence(
-      createUserWithEmailAndPassword(auth, email, password)
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
     );
+
     console.log("Successfull registration!");
     return response;
   } catch (error) {
-    console.log(error.message);
+    throw error.message;
   }
 };
 
@@ -48,6 +39,6 @@ export const logout = async () => {
     console.log("Successfull logout!");
     return response;
   } catch (error) {
-    console.log(error.message);
+    throw error.message;
   }
 };

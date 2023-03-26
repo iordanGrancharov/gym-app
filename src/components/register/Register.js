@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import styles from "./Register.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,9 +7,11 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 import { Link, useNavigate } from "react-router-dom";
 import { validate } from "../../utils/form-validation";
-import { signUp, signInWithGoogle } from "../../services/users";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Register = () => {
+  const { signUp, signInWithGoogle } = useContext(AuthContext);
+
   const initialValues = {
     email: "",
     password: "",
@@ -37,10 +39,22 @@ const Register = () => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      signUp(formValues.email, formValues.password);
-      navigate("/");
+      try {
+        signUp(formValues.email, formValues.password).then(() => navigate("/"));
+      } catch (e) {
+        navigate("/404");
+      }
     }
-  }, [formErrors, isSubmit, formValues, navigate]);
+  }, [formErrors, isSubmit, formValues, signUp, navigate]);
+
+  const googleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/");
+    } catch (error) {
+      navigate("/404");
+    }
+  };
 
   return (
     <section className={styles["container"]}>
@@ -95,10 +109,11 @@ const Register = () => {
             icon={faGoogle}
             className={styles["icon"]}
           />
-          <button
+          <input
             className={styles["google-submit"]}
             type="button"
             value="Google Sign In"
+            onClick={googleSignIn}
           />
         </div>
         <p className={styles["p-signIn"]}>

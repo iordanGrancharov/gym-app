@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import styles from "./Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +7,11 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 import { Link, useNavigate } from "react-router-dom";
 import { validate } from "../../utils/form-validation";
-import { signIn } from "../../services/users";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Login = () => {
   const initialValues = { email: "", password: "" };
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -31,10 +32,22 @@ const Login = () => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      signIn(formValues.email, formValues.password);
-      navigate("/");
+      try {
+        signIn(formValues.email, formValues.password).then(() => navigate("/"));
+      } catch (e) {
+        navigate("/404");
+      }
     }
-  }, [formErrors, isSubmit, formValues, navigate]);
+  }, [formErrors, isSubmit, formValues, signIn, navigate]);
+
+  const googleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/");
+    } catch (error) {
+      navigate("/404");
+    }
+  };
 
   return (
     <section className={styles["container"]}>
@@ -79,8 +92,9 @@ const Login = () => {
           />
           <input
             className={styles["google-submit"]}
-            type="submit"
+            type="button"
             value="Google Sign In"
+            onClick={googleSignIn}
           />
         </div>
         <p className={styles["new-here"]}>

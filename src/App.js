@@ -11,12 +11,12 @@ import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Logout from "./components/Logout/Logout";
+import NotFound from "./components/404/NotFound";
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <Navbar />
         <ExerciseFormProvider>
           <Routes>
             <Route path="/" element={<Navbar />}>
@@ -48,6 +48,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </ExerciseFormProvider>

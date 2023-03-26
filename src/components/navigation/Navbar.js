@@ -1,16 +1,17 @@
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-
-import { LinearProgress } from "@mui/material";
-import Logo from "../Navigation/Logo/logo2.svg";
-
-import BurgerNav from "./BurgerNav/BurgerNav";
-import DefaultNav from "./DefaultNav/DefaultNav";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import styles from "./Navbar.module.css";
 
+import BurgerNav from "./BurgerNav/BurgerNav";
+import DefaultNav from "./DefaultNav/DefaultNav";
+import { LinearProgress } from "@mui/material";
+import Logo from "../Navigation/Logo/logo2.svg";
+
 const Navbar = () => {
-  const { user, pending } = useAuth();
+  const { user, pending } = useContext(AuthContext);
+  let data;
 
   return (
     <>
@@ -42,7 +43,9 @@ const Navbar = () => {
               <div className={styles["profile"]}>
                 <Link to="/profile">
                   <img
-                    src="https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png"
+                    src={
+                      "https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png"
+                    }
                     alt="SNIMKA BACE"
                   />
                 </Link>

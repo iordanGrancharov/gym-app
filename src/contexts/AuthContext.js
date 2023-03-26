@@ -1,12 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebaseAuthentication";
 import { onAuthStateChanged } from "firebase/auth";
+import { signIn, signUp, logout, signInWithGoogle } from "../services/users";
 
 export const AuthContext = createContext();
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -14,16 +11,25 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const authFunction = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser !== null) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+
+      console.log(currentUser);
       setPending(false);
     });
-    return authFunction();
+    return authFunction;
   }, []);
 
-  console.log(user);
   const context = {
     user,
     pending,
+    signIn,
+    signUp,
+    logout,
+    signInWithGoogle,
   };
 
   return (

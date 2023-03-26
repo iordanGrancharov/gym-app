@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  GoogleAuthProvider,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_RAPID_FIREBASE_KEY,
@@ -21,4 +26,19 @@ export const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
   prompt: "select_account",
+  login_hint: "user@example.com",
 });
+
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // local only. Closing the window wouldn't clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with local persistence.
+    console.log("Local Persistent enabled!");
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    console.log(error.message);
+  });
