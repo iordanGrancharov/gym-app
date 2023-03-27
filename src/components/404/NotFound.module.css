@@ -33,7 +33,7 @@
 
 .img {
   width: 50vw;
-  height: 60vh;
+  height: 65vh;
   background: url("./images/ddd.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@
 }
 
 .content {
-  margin-top: 10vh;
+  margin-top: 9vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,5 +55,5 @@
   color: white;
   font-family: var(--font-family-five);
   text-shadow: var(--text-shadow-one);
-  margin-top: 2vh;
+  margin-top: 1vh;
 }

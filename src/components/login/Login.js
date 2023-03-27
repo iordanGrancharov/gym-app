@@ -8,6 +8,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { validate } from "../../utils/form-validation";
 import { AuthContext } from "../../contexts/AuthContext";
+import { createUser } from "../../services/users";
 
 const Login = () => {
   const initialValues = { email: "", password: "" };
@@ -31,18 +32,23 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      try {
-        signIn(formValues.email, formValues.password).then(() => navigate("/"));
-      } catch (e) {
-        navigate("/404");
+    async function logIn() {
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        try {
+          await signIn(formValues.email, formValues.password);
+          navigate("/");
+        } catch (e) {
+          navigate("/404");
+        }
       }
     }
+    logIn();
   }, [formErrors, isSubmit, formValues, signIn, navigate]);
 
   const googleSignIn = async () => {
     try {
-      await signInWithGoogle();
+      const response = await signInWithGoogle();
+      createUser(response);
       navigate("/");
     } catch (error) {
       navigate("/404");

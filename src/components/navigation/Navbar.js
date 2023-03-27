@@ -11,7 +11,6 @@ import Logo from "../Navigation/Logo/logo2.svg";
 
 const Navbar = () => {
   const { user, pending } = useContext(AuthContext);
-  let data;
 
   return (
     <>

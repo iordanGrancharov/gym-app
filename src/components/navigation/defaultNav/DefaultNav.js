@@ -35,10 +35,10 @@ const DefaultNav = ({ className }) => {
             <Link to="/workouts">Workouts</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login">Sign In</Link>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <Link to="/register">Sign Up</Link>
           </li>
         </ul>
       )}

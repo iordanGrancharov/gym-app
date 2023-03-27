@@ -5,6 +5,7 @@ import {
   signOut,
   signInWithPopup,
 } from "firebase/auth";
+import { createUserDocumentFromAuth } from "../firebase/firebaseFirestore";
 
 export const signIn = async (email, password) => {
   try {
@@ -41,4 +42,10 @@ export const logout = async () => {
   } catch (error) {
     throw error.message;
   }
+};
+
+export const createUser = async (auth) => {
+  const response = await createUserDocumentFromAuth(auth);
+
+  return response;
 };

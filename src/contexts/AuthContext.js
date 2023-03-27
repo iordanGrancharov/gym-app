@@ -3,6 +3,8 @@ import { auth } from "../firebase/firebaseAuthentication";
 import { onAuthStateChanged } from "firebase/auth";
 import { signIn, signUp, logout, signInWithGoogle } from "../services/users";
 
+import { getUserData } from "../firebase/firebaseFirestore";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -10,14 +12,15 @@ export const AuthProvider = ({ children }) => {
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const authFunction = onAuthStateChanged(auth, (currentUser) => {
+    const authFunction = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser !== null) {
-        setUser(currentUser);
+        const userData = await getUserData(currentUser);
+        console.log(userData);
+        setUser(userData);
       } else {
         setUser(null);
       }
 
-      console.log(currentUser);
       setPending(false);
     });
     return authFunction;

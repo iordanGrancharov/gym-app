@@ -3,6 +3,7 @@ import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
 
 import styles from "./CreateForm.module.css";
@@ -10,6 +11,8 @@ import styles from "./CreateForm.module.css";
 const CreateForm = ({ className }) => {
   const { exercisesForm, setExercisesForm, workoutInfo, setWorkoutInfo } =
     useContext(ExerciseFormContext);
+
+  const { user } = useContext(AuthContext);
 
   const removeExercise = (index) => {
     if (
@@ -33,7 +36,11 @@ const CreateForm = ({ className }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const workoutData = { ...workoutInfo, exercises: [...exercisesForm] };
+    const workoutData = {
+      ...workoutInfo,
+      exercises: [...exercisesForm],
+      _ownerId: user.uid,
+    };
 
     console.log(workoutData);
   };
