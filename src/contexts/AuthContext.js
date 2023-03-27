@@ -1,9 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebaseAuthentication";
 import { onAuthStateChanged } from "firebase/auth";
-import { signIn, signUp, logout, signInWithGoogle } from "../services/users";
-
-import { getUserData } from "../firebase/firebaseFirestore";
+import {
+  signIn,
+  signUp,
+  logout,
+  signInWithGoogle,
+  createUser,
+} from "../services/users";
 
 export const AuthContext = createContext();
 
@@ -12,15 +16,12 @@ export const AuthProvider = ({ children }) => {
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const authFunction = onAuthStateChanged(auth, async (currentUser) => {
-      if (currentUser !== null) {
-        const userData = await getUserData(currentUser);
-        console.log(userData);
-        setUser(userData);
-      } else {
-        setUser(null);
+    const authFunction = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log(currentUser);
+        createUser(currentUser);
       }
-
+      setUser(currentUser);
       setPending(false);
     });
     return authFunction;

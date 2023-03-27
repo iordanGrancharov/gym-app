@@ -8,7 +8,6 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { validate } from "../../utils/form-validation";
 import { AuthContext } from "../../contexts/AuthContext";
-import { createUser } from "../../services/users";
 
 const Login = () => {
   const initialValues = { email: "", password: "" };
@@ -47,8 +46,8 @@ const Login = () => {
 
   const googleSignIn = async () => {
     try {
-      const response = await signInWithGoogle();
-      createUser(response);
+      await signInWithGoogle();
+
       navigate("/");
     } catch (error) {
       navigate("/404");

@@ -5,12 +5,12 @@ import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (userAuth) => {
-  const userDocumentRef = doc(db, "users", userAuth.user.uid);
+  const userDocumentRef = doc(db, "users", userAuth.uid);
 
   const userData = await getDoc(userDocumentRef);
 
   if (!userData.exists()) {
-    const { displayName, email } = userAuth.user;
+    const { displayName, email } = userAuth;
     const createdAt = new Date();
 
     try {
