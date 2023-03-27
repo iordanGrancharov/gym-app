@@ -12,7 +12,11 @@ const CreateForm = ({ className }) => {
     useContext(ExerciseFormContext);
 
   const removeExercise = (index) => {
-    if (window.confirm("Are u sure u want to delete this exercise?")) {
+    if (
+      window.confirm(
+        `Are u sure u want to delete ${exercisesForm[index].name}?`
+      )
+    ) {
       const items = exercisesForm.filter((x, i) => i !== index);
       setExercisesForm(items);
     }
@@ -20,13 +24,23 @@ const CreateForm = ({ className }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setWorkoutInfo({
+      ...workoutInfo,
+      [name]: value,
+    });
+    // setWorkoutInfo({ ...workoutInfo, [name]: value });
+  };
 
-    setWorkoutInfo({ ...workoutInfo, [name]: value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const workoutData = { ...workoutInfo, exercises: [...exercisesForm] };
+
+    console.log(workoutData);
   };
 
   return (
     <div className={className}>
-      <form className={styles["form"]}>
+      <form className={styles["form"]} onSubmit={handleSubmit}>
         <h3>Workout Info:</h3>
         <div className={styles["input-field"]}>
           <input
@@ -59,6 +73,18 @@ const CreateForm = ({ className }) => {
             onChange={handleChange}
             value={workoutInfo.description}
           />
+        </div>
+        <div className={styles["input-field"]}>
+          <select
+            name="level"
+            className={styles["field"]}
+            placeholder="Select level:"
+            onChange={handleChange}
+          >
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
         </div>
         <div className={styles["exercises"]}>
           <p>Exercises:</p>

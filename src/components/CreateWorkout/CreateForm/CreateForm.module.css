@@ -40,6 +40,10 @@ h3 {
   resize: inherit;
 }
 
+.input-field select option {
+  text-transform: capitalize;
+}
+
 .exercises {
   display: flex;
   flex-direction: column;

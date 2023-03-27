@@ -9,7 +9,8 @@ export const ExerciseFormProvider = ({ children }) => {
     title: "",
     imageUrl: "",
     description: "",
-    exercises: exercisesForm,
+    level: "",
+    exercises: [],
   });
 
   const context = {
