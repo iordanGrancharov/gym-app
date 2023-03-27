@@ -5,7 +5,10 @@ import {
   signOut,
   signInWithPopup,
 } from "firebase/auth";
-import { createUserDocumentFromAuth } from "../firebase/firebaseFirestore";
+import {
+  createUserDocumentFromAuth,
+  getUserData,
+} from "../firebase/firebaseFirestore";
 
 export const signIn = async (email, password) => {
   try {
@@ -47,5 +50,10 @@ export const logout = async () => {
 export const createUser = async (auth) => {
   const response = await createUserDocumentFromAuth(auth);
 
+  return response;
+};
+
+export const getUser = async (auth) => {
+  const response = await getUserData(auth);
   return response;
 };

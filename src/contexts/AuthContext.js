@@ -7,6 +7,7 @@ import {
   logout,
   signInWithGoogle,
   createUser,
+  getUser,
 } from "../services/users";
 
 export const AuthContext = createContext();
@@ -18,10 +19,16 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const authFunction = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        console.log(currentUser);
         createUser(currentUser);
       }
-      setUser(currentUser);
+      if (currentUser !== null) {
+        getUser(currentUser)
+          .then((data) => setUser(data))
+          .catch((e) => console.log(e.message));
+      } else {
+        setUser(null);
+      }
+
       setPending(false);
     });
     return authFunction;
