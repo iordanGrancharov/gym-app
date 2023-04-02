@@ -5,16 +5,22 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
+import { WorkoutContext } from "../../../contexts/WorkoutContext";
 import { updateUser } from "../../../services/users";
-import { addWorkout } from "../../../services/workouts";
+import {
+  addWorkout,
+  getWorkout,
+  updateWorkout,
+} from "../../../services/workouts";
 
 import styles from "./CreateForm.module.css";
 
-const CreateForm = ({ className }) => {
+const CreateForm = ({ className, mode }) => {
   const navigate = useNavigate();
 
   const { exercisesForm, setExercisesForm, workoutInfo, setWorkoutInfo } =
     useContext(ExerciseFormContext);
+  const { workoutData: workout } = useContext(WorkoutContext);
 
   const { user } = useContext(AuthContext);
   const [formErrors, setFormErrors] = useState({});
@@ -62,6 +68,20 @@ const CreateForm = ({ className }) => {
     setFormErrors(validateForm(workoutInfo, exercisesForm));
     setIsSubmit(true);
   };
+  useEffect(() => {
+    const getWorkoutInfo = async () => {
+      if (mode === "Update") {
+        try {
+          const data = await getWorkout(workout.workoutId);
+          setWorkoutInfo({ ...data.data() });
+          setExercisesForm([...data.data().exercises]);
+        } catch (e) {
+          console.log(e.message);
+        }
+      }
+    };
+    getWorkoutInfo();
+  }, []);
 
   useEffect(() => {
     async function submitForm() {
@@ -74,20 +94,41 @@ const CreateForm = ({ className }) => {
           exercises: [...exercisesForm],
           createdBy: user.email,
           _ownerId: user._id,
+          _id: workout.workoutId,
         };
 
         try {
-          await addWorkout(workoutData);
+          if (mode === "Create") {
+            await addWorkout(workoutData);
 
-          const updatedUser = {
-            ...user,
-            personalInfo: {
-              ...user.personalInfo,
-              workouts: [...user.personalInfo.workouts, workoutData],
-            },
-          };
-          await updateUser(user._id, updatedUser);
+            const updatedUser = {
+              ...user,
+              personalInfo: {
+                ...user.personalInfo,
+                workouts: [...user.personalInfo.workouts, workoutData],
+              },
+            };
+            await updateUser(user._id, updatedUser);
+          }
 
+          if (mode === "Update") {
+            await updateWorkout(workoutData);
+
+            const index = user.personalInfo.workouts.findIndex(
+              (x) => x.workoutId === workout.workoutId
+            );
+            const updatedUser = {
+              ...user,
+              personalInfo: {
+                ...user.personalInfo,
+                workouts: [
+                  ...user.personalInfo.workouts,
+                  (user.personalInfo.workouts[index] = workoutData),
+                ],
+              },
+            };
+            await updateUser(user._id, updatedUser);
+          }
           setWorkoutInfo({
             title: "",
             imageUrl: "",
@@ -210,7 +251,7 @@ const CreateForm = ({ className }) => {
           <input
             type="submit"
             className={styles["btn-submit"]}
-            value="Create Workout"
+            value={`${mode} Workout`}
           />
         </div>
       </form>

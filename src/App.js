@@ -30,7 +30,7 @@ function App() {
                   path="/workout/create"
                   element={
                     <ProtectedRoute>
-                      <CreateWorkout mode="create" />
+                      <CreateWorkout mode="Create" />
                     </ProtectedRoute>
                   }
                 />
@@ -38,7 +38,7 @@ function App() {
                   path="/workout/update"
                   element={
                     <ProtectedRoute>
-                      <CreateWorkout mode="update" />
+                      <CreateWorkout mode="Update" />
                     </ProtectedRoute>
                   }
                 />

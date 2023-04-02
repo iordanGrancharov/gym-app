@@ -37,6 +37,10 @@ const WorkoutDetails = () => {
     }
   };
 
+  const editHandler = () => {
+    navigate("/workout/update");
+  };
+
   return (
     <section className={styles["container"]}>
       <div className={styles["image-container"]}>
@@ -82,7 +86,7 @@ const WorkoutDetails = () => {
         {user._id === workout._ownerId && (
           <div className={styles["btn-container"]}>
             <button onClick={deleteHandler}>Delete Workout</button>
-            <button>Edit Workout</button>
+            <button onClick={editHandler}>Edit Workout</button>
           </div>
         )}
       </div>

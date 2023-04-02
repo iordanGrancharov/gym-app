@@ -7,7 +7,7 @@ import styles from "./CreateWorkout.module.css";
 import Exercises from "./Exercises/Exercises";
 import CreateForm from "./CreateForm/CreateForm";
 
-const CreateWorkout = () => {
+const CreateWorkout = ({ mode }) => {
   const [search, setSearch] = useState("");
   const [exercises, setExercises] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -86,7 +86,7 @@ const CreateWorkout = () => {
           />
         )}
       </div>
-      <CreateForm className={styles["create-form"]} />
+      <CreateForm className={styles["create-form"]} mode={mode} />
     </section>
   );
 };
