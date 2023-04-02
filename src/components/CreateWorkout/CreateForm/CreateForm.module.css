@@ -8,6 +8,11 @@
   font-weight: 600;
 }
 
+.error {
+  color: red;
+  margin: 0 auto;
+}
+
 h3 {
   font-weight: 600;
 }

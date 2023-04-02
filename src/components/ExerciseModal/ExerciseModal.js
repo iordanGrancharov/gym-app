@@ -15,7 +15,7 @@ const AddExerciseModal = ({
   const { exercisesForm, setExercisesForm } = useContext(ExerciseFormContext);
 
   const [exerciseInfo, setExerciseInfo] = useState({
-    index: index,
+    index: index ? index : null,
     id: exercise.id,
     name: exercise.name,
     sets: index ? Number(exercisesForm[index].sets) : 1,

@@ -1,4 +1,5 @@
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getDate } from "../utils/getDate";
 //doc instance of document
 // getDoc, setDoc - using data of documents
 
@@ -11,10 +12,12 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
   if (!userData.exists()) {
     const { displayName, email } = userAuth;
-    const createdAt = new Date();
+    const createdAt = getDate();
+    console.log(userAuth);
 
     try {
       await setDoc(userDocumentRef, {
+        _id: userAuth.uid,
         email,
         createdAt,
         personalInfo: {

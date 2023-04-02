@@ -37,7 +37,7 @@ const Login = () => {
           await signIn(formValues.email, formValues.password);
           navigate("/");
         } catch (e) {
-          navigate("/404");
+          navigate("/error");
         }
       }
     }
@@ -47,10 +47,9 @@ const Login = () => {
   const googleSignIn = async () => {
     try {
       await signInWithGoogle();
-
       navigate("/");
     } catch (error) {
-      navigate("/404");
+      navigate("/error");
     }
   };
 

@@ -45,7 +45,7 @@ const Register = () => {
           await signUp(formValues.email, formValues.password);
           navigate("/");
         } catch (e) {
-          navigate("/404");
+          navigate("/error");
         }
       }
     }
@@ -57,7 +57,7 @@ const Register = () => {
       await signInWithGoogle();
       navigate("/");
     } catch (error) {
-      navigate("/404");
+      navigate("/error");
     }
   };
 
