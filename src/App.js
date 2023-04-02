@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ExerciseFormProvider } from "./contexts/ExerciseFormContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import { WorkoutProvider } from "./contexts/WorkoutContext";
 
 import Navbar from "./components/Navigation/Navbar";
 import Home from "./components/Home/Home";
@@ -14,47 +15,66 @@ import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Error/NotFound";
 import Error from "./components/Error/Error";
 import WorkoutsCatalog from "./components/WorkoutsCatalog/WorkoutsCatalog";
+import WorkoutDetails from "./components/WorkoutDetails/WorkoutDetails";
 
 function App() {
   return (
     <>
       <AuthProvider>
         <ExerciseFormProvider>
-          <Routes>
-            <Route path="/" element={<Navbar />}>
-              <Route index element={<Home />} />
-              <Route
-                path="/create"
-                element={
-                  <ProtectedRoute>
-                    <CreateWorkout />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route
-                path="/details/add/:exerciseId"
-                element={
-                  <ProtectedRoute>
-                    <ExerciseDetails mode="Add" />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/details/edit/:exerciseId/:index"
-                element={
-                  <ProtectedRoute>
-                    <ExerciseDetails mode="Edit" />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/workouts" element={<WorkoutsCatalog />} />
-              <Route path="/error" element={<Error />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
+          <WorkoutProvider>
+            <Routes>
+              <Route path="/" element={<Navbar />}>
+                <Route index element={<Home />} />
+                <Route
+                  path="/workout/create"
+                  element={
+                    <ProtectedRoute>
+                      <CreateWorkout mode="create" />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/workout/update"
+                  element={
+                    <ProtectedRoute>
+                      <CreateWorkout mode="update" />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route
+                  path="/details/add/:exerciseId"
+                  element={
+                    <ProtectedRoute>
+                      <ExerciseDetails mode="Add" />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/details/edit/:exerciseId/:index"
+                  element={
+                    <ProtectedRoute>
+                      <ExerciseDetails mode="Edit" />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/workouts/details/:workoutId"
+                  element={<WorkoutDetails />}
+                />
+                <Route
+                  path="/details/exercise/:exerciseId"
+                  element={<ExerciseDetails mode="Preview" />}
+                />
+                <Route path="/workouts" element={<WorkoutsCatalog />} />
+                <Route path="/error" element={<Error />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </WorkoutProvider>
         </ExerciseFormProvider>
         <Footer />
       </AuthProvider>

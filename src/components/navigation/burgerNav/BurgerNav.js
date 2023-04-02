@@ -38,7 +38,7 @@ const BurgerNav = ({ className }) => {
           <ul className={`${styles["links-burger"]} ${styles["hasUser"]}`}>
             {/* USER */}
             <li>
-              <Link to="/create">Create Your Own</Link>
+              <Link to="/workout/create">Create Your Own</Link>
             </li>
             <li>
               <Link to="/nutrition">Nutrition</Link>

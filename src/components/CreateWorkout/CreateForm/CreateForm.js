@@ -181,7 +181,13 @@ const CreateForm = ({ className }) => {
                         {exercise.sets}
                       </span>{" "}
                       <span className={styles["text"]}>Reps:</span>
-                      <span className={styles["amount"]}>{exercise.reps}</span>
+                      <span className={styles["amount"]}>
+                        {exercise.reps}
+                      </span>{" "}
+                      <span className={styles["text"]}>Weight:</span>
+                      <span className={styles["amount"]}>
+                        {exercise.weight}
+                      </span>
                     </div>
                   </div>
                   <div className={styles["icon-container"]}>

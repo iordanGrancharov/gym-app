@@ -6,10 +6,11 @@ import {
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import ExerciseModal from "../../ExerciseModal/ExerciseModal";
+import { WorkoutContext } from "../../../contexts/WorkoutContext";
 
 const Details = ({
   id,
@@ -22,6 +23,9 @@ const Details = ({
   index,
 }) => {
   const [modalState, setModalState] = useState(false);
+
+  const { workoutData } = useContext(WorkoutContext);
+  console.log(workoutData);
 
   const showModal = () => {
     setModalState(true);
@@ -65,14 +69,27 @@ const Details = ({
             </ul>
           </div>
         </div>
-        <div className={styles["btn-container"]}>
-          <Link to="/create" className={styles["btn"]} type="button">
-            Back
-          </Link>
-          <button className={styles["btn"]} type="button" onClick={showModal}>
-            {mode} Exercise
-          </button>
-        </div>
+        {mode === "Preview" ? (
+          <div className={styles["btn-container"]}>
+            <Link
+              to={`/workouts/details/${workoutData.workoutId}`}
+              className={styles["btn"]}
+              type="button"
+            >
+              Back
+            </Link>
+          </div>
+        ) : (
+          <div className={styles["btn-container"]}>
+            <Link to="/create" className={styles["btn"]} type="button">
+              Back
+            </Link>
+            <button className={styles["btn"]} type="button" onClick={showModal}>
+              {mode} Exercise
+            </button>
+          </div>
+        )}
+
         <ExerciseModal
           index={index}
           className={modalClass}

@@ -20,6 +20,7 @@ const AddExerciseModal = ({
     name: exercise.name,
     sets: index ? Number(exercisesForm[index].sets) : 1,
     reps: index ? Number(exercisesForm[index].reps) : 1,
+    weight: index ? Number(exercisesForm[index].weight) : 1,
   });
 
   const handleChange = (e) => {
@@ -46,6 +47,7 @@ const AddExerciseModal = ({
         ...items[index],
         sets: exerciseInfo.sets,
         reps: exerciseInfo.reps,
+        weight: exerciseInfo.weight,
       };
       items[index] = item;
       setExercisesForm([...items]);
@@ -89,6 +91,16 @@ const AddExerciseModal = ({
               name="reps"
               onChange={handleChange}
               value={exerciseInfo.reps}
+            />
+          </div>
+          <div className={styles["input-field"]}>
+            <label htmlFor="sets">Weight:</label>
+            <input
+              type="number"
+              placeholder="Weight"
+              name="weight"
+              onChange={handleChange}
+              value={exerciseInfo.weight}
             />
           </div>
           <div className={styles["btn-container"]}>

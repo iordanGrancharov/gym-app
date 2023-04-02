@@ -3,8 +3,10 @@ import styles from "./WorkoutsCatalog.module.css";
 import WorkoutsCard from "./WorkoutsCard/WorkoutsCard";
 import { useEffect, useState } from "react";
 import { getAllWorkouts } from "../../services/workouts";
+import { Link, useNavigate } from "react-router-dom";
 
 const WorkoutsCatalog = () => {
+  const navigate = useNavigate();
   const [workouts, setWorkouts] = useState([]);
   useEffect(() => {
     const getWorkouts = async () => {
@@ -13,11 +15,11 @@ const WorkoutsCatalog = () => {
 
         setWorkouts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       } catch (e) {
-        console.log(e);
+        navigate("/error");
       }
     };
     getWorkouts();
-  }, []);
+  }, [navigate]);
   return (
     <section className={styles["container"]}>
       <div className={styles["workouts-container"]}>
@@ -25,7 +27,9 @@ const WorkoutsCatalog = () => {
         <hr />
         <div className={styles["workoutsCard-container"]}>
           {workouts.map((workout) => (
-            <WorkoutsCard {...workout} key={workout.id} />
+            <Link to={`/workouts/details/${workout.id}`} key={workout.id}>
+              <WorkoutsCard {...workout} />
+            </Link>
           ))}
         </div>
       </div>
