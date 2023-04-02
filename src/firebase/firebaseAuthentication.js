@@ -6,8 +6,6 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_RAPID_FIREBASE_KEY,
   authDomain: process.env.REACT_APP_RAPID_FIREBASE_AUTHDOMAIN,
@@ -44,41 +42,3 @@ setPersistence(auth, browserLocalPersistence)
     // Handle Errors here.
     console.log(error.message);
   });
-
-//doc instance of document
-// getDoc, setDoc - using data of documents
-
-export const db = getFirestore();
-
-export const createUserDocumentFromAuth = async (userAuth) => {
-  const userDocumentRef = doc(db, "users", userAuth.uid);
-  console.log("here");
-  const userData = await getDoc(userDocumentRef);
-
-  if (!userData.exists()) {
-    const { displayName, email } = userAuth;
-    const createdAt = new Date();
-    console.log("there");
-    try {
-      await setDoc(userDocumentRef, {
-        displayName,
-        email,
-        createdAt,
-        personalInfo: {
-          avatar:
-            "https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png",
-          workouts: [],
-          nutrition: [],
-          weight: "",
-          height: "",
-          experience: "",
-          gymType: "",
-        },
-      });
-    } catch (e) {
-      console.log("error creating the user", e.message);
-    }
-  }
-
-  return userDocumentRef;
-};

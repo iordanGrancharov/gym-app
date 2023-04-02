@@ -5,6 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
+import { updateUser } from "../../../services/users";
 import { addWorkout } from "../../../services/workouts";
 
 import styles from "./CreateForm.module.css";
@@ -67,12 +68,25 @@ const CreateForm = ({ className }) => {
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         const workoutData = {
           ...workoutInfo,
+          imageUrl: workoutInfo.imageUrl
+            ? workoutInfo.imageUrl
+            : "https://i.pinimg.com/564x/81/0a/53/810a5398c33d7e93e6c9d088450066ca.jpg",
           exercises: [...exercisesForm],
+          createdBy: user.email,
           _ownerId: user._id,
         };
 
         try {
           await addWorkout(workoutData);
+
+          const updatedUser = {
+            ...user,
+            personalInfo: {
+              ...user.personalInfo,
+              workouts: [...user.personalInfo.workouts, workoutData],
+            },
+          };
+          await updateUser(user._id, updatedUser);
 
           setWorkoutInfo({
             title: "",
@@ -96,7 +110,7 @@ const CreateForm = ({ className }) => {
     setExercisesForm,
     isSubmit,
     navigate,
-    user._id,
+    user,
     workoutInfo,
     setWorkoutInfo,
   ]);

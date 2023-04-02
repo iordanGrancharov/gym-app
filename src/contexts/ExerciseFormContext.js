@@ -9,7 +9,7 @@ export const ExerciseFormProvider = ({ children }) => {
     title: "",
     imageUrl: "",
     description: "",
-    level: "",
+    level: "Beginner",
     exercises: [],
   });
 

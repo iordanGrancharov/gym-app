@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Error/NotFound";
 import Error from "./components/Error/Error";
+import WorkoutsCatalog from "./components/WorkoutsCatalog/WorkoutsCatalog";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/workouts" element={<WorkoutsCatalog />} />
               <Route path="/error" element={<Error />} />
               <Route path="*" element={<NotFound />} />
             </Route>

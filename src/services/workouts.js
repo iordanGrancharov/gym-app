@@ -25,7 +25,7 @@ export const deleteWorkout = (id) => {
   return deleteDoc(workout);
 };
 
-export const getAll = () => {
+export const getAllWorkouts = () => {
   return getDocs(collectionRef);
 };
 

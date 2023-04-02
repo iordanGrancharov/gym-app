@@ -10,6 +10,9 @@ import {
   getUserData,
 } from "../firebase/firebaseFirestore";
 
+import { db } from "../firebase/firebaseFirestore";
+import { updateDoc, deleteDoc, doc } from "firebase/firestore";
+
 export const signIn = async (email, password) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
@@ -56,4 +59,14 @@ export const createUser = async (auth) => {
 export const getUser = async (auth) => {
   const response = await getUserData(auth);
   return response;
+};
+
+export const updateUser = (id, updatedUser) => {
+  const user = doc(db, "users", id);
+  return updateDoc(user, updatedUser);
+};
+
+export const deleteWorkout = (id) => {
+  const user = doc(db, "users", id);
+  return deleteDoc(user);
 };
