@@ -11,7 +11,7 @@ import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Logout from "./components/Logout/Logout";
-import NotFound from "./components/404/NotFound";
+import NotFound from "./components/Error/NotFound";
 
 function App() {
   return (
@@ -45,6 +45,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <ExerciseDetails mode="Edit" />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/error"
+                element={
+                  <ProtectedRoute>
+                    <Error />
                   </ProtectedRoute>
                 }
               />
