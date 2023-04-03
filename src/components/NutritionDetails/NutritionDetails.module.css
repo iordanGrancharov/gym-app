@@ -34,9 +34,9 @@
 }
 
 .content-container {
-  margin-top: 10vh;
+  margin-top: 15vh;
   width: 50vw;
-  height: 75vh;
+  height: 80vh;
   background-color: white;
   outline: 3px solid white;
   outline-offset: 10px;
@@ -62,8 +62,12 @@
 }
 
 .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
   margin-top: 2vh;
-  width: 50%;
+  width: 58%;
   text-align: center;
   font-family: var(--font-family-five);
   font-weight: 600;
@@ -71,6 +75,10 @@
 }
 .info h1 {
   margin-bottom: 2vh;
+}
+
+.section-one {
+  width: 42%;
 }
 
 .micro {
@@ -95,18 +103,45 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .section-two {
-  height: 80%;
-  width: 54.9%;
+  height: 100%;
+  width: 58%;
+  margin: 0 auto;
   border-left: 3px solid var(--main-bg-color);
   text-align: center;
-  margin: 0 auto;
   margin-top: -7vh;
   font-weight: 600;
 }
 
+.section-two p {
+  margin: 0;
+}
+
 .section-two h5 {
   color: var(--main-bg-color);
+}
+
+.btn-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+
+.btn-container button {
+  padding: 0.2vh 2vw;
+  background-color: var(--main-bg-color);
+  color: white;
+  border: none;
+  border-radius: 1vh;
+  font-family: var(--font-family-five);
+  text-shadow: var(--text-shadow-one);
+}
+
+.btn-container button:hover {
+  background-color: rgb(240, 240, 104);
 }

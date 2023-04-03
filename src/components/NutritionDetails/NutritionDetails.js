@@ -11,6 +11,10 @@ const NutritionDetails = () => {
   const { nutritionId } = useParams();
   const navigate = useNavigate();
 
+  const handleBack = () => {
+    navigate("/nutriotion");
+  };
+
   useEffect(() => {
     const fetchNutrition = async () => {
       try {
@@ -126,6 +130,11 @@ const NutritionDetails = () => {
                 {i + 1}.{x.b}
               </p>
             ))}
+
+            <div className={styles["btn-container"]}>
+              <button onClick={handleBack}>Back</button>
+              <button>Save</button>
+            </div>
           </div>
         </div>
       </div>

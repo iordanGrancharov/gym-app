@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { fetchData, ketoDbOptions } from "../../utils/fetchData";
-import { Link } from "react-router-dom";
 
 import NutritionCard from "./NutritionCard/NutritionCard";
 
@@ -19,6 +18,13 @@ const NutritionCatalog = () => {
     const { name, value } = e.target;
     const check = value < 0 ? 0 : value;
     setFilter({ ...filter, [name]: check });
+  };
+
+  const resetForm = () => {
+    setFilter({
+      less: "",
+      greater: "",
+    });
   };
 
   const handleFilter = async (e) => {
@@ -73,6 +79,8 @@ const NutritionCatalog = () => {
       }
     };
     fetchNutrition();
+
+    return resetForm;
   }, []);
 
   return (
