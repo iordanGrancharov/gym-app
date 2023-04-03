@@ -53,7 +53,7 @@ const AddExerciseModal = ({
       setExercisesForm([...items]);
     }
 
-    navigate("/create");
+    navigate("/workout/create");
   };
 
   const closeModal = (e) => {

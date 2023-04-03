@@ -1,18 +1,19 @@
-import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
 import { WorkoutContext } from "../../../contexts/WorkoutContext";
-import { updateUser } from "../../../services/users";
+
 import {
   addWorkout,
   getWorkout,
   updateWorkout,
 } from "../../../services/workouts";
+import { updateUser } from "../../../services/users";
+import { generate } from "shortid";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateForm.module.css";
 
 const CreateForm = ({ className, mode }) => {
@@ -81,7 +82,7 @@ const CreateForm = ({ className, mode }) => {
       }
     };
     getWorkoutInfo();
-  }, []);
+  }, [workout, setWorkoutInfo, setExercisesForm, mode]);
 
   useEffect(() => {
     async function submitForm() {
@@ -94,7 +95,7 @@ const CreateForm = ({ className, mode }) => {
           exercises: [...exercisesForm],
           createdBy: user.email,
           _ownerId: user._id,
-          _id: workout.workoutId,
+          _id: generate({ length: 20 }),
         };
 
         try {
@@ -105,30 +106,20 @@ const CreateForm = ({ className, mode }) => {
               ...user,
               personalInfo: {
                 ...user.personalInfo,
-                workouts: [...user.personalInfo.workouts, workoutData],
-              },
-            };
-            await updateUser(user._id, updatedUser);
-          }
-
-          if (mode === "Update") {
-            await updateWorkout(workoutData);
-
-            const index = user.personalInfo.workouts.findIndex(
-              (x) => x.workoutId === workout.workoutId
-            );
-            const updatedUser = {
-              ...user,
-              personalInfo: {
-                ...user.personalInfo,
                 workouts: [
                   ...user.personalInfo.workouts,
-                  (user.personalInfo.workouts[index] = workoutData),
+                  { workoutId: workoutData._id },
                 ],
               },
             };
             await updateUser(user._id, updatedUser);
           }
+          // TRY WITH NEW WORKOUT
+
+          if (mode === "Update") {
+            await updateWorkout(workout.workoutId, workoutData);
+          }
+
           setWorkoutInfo({
             title: "",
             imageUrl: "",
@@ -154,6 +145,8 @@ const CreateForm = ({ className, mode }) => {
     user,
     workoutInfo,
     setWorkoutInfo,
+    mode,
+    workout,
   ]);
 
   return (
@@ -200,9 +193,24 @@ const CreateForm = ({ className, mode }) => {
             className={styles["field"]}
             onChange={handleChange}
           >
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
+            <option
+              value="Beginner"
+              selected={workoutInfo.level === "Beginner" ? true : false}
+            >
+              Beginner
+            </option>
+            <option
+              value="Intermediate"
+              selected={workoutInfo.level === "Intermediate" ? true : false}
+            >
+              Intermediate
+            </option>
+            <option
+              value="Advanced"
+              selected={workoutInfo.level === "Advanced" ? true : false}
+            >
+              Advanced
+            </option>
           </select>
         </div>
         <div className={styles["exercises"]}>
