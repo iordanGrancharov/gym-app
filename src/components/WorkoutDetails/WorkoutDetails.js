@@ -15,9 +15,6 @@ const WorkoutDetails = () => {
   const { setWorkoutData } = useContext(WorkoutContext);
   const { user } = useContext(AuthContext);
 
-  console.log(user);
-  console.log(workout);
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -25,7 +22,6 @@ const WorkoutDetails = () => {
         setWorkout(data.data());
         setWorkoutData({ ...data.data(), workoutId: workoutId });
       } catch (e) {
-        console.log(e.message);
         navigate("/error");
       }
     };
@@ -35,18 +31,6 @@ const WorkoutDetails = () => {
   const deleteHandler = async () => {
     try {
       await deleteWorkout(workoutId);
-      const filtered = user.personalInfo.workouts.filter(
-        (x) => x !== workoutId
-      );
-      const updatedUser = {
-        ...user,
-        personalInfo: {
-          ...user.personalInfo,
-          workouts: [...filtered],
-        },
-      };
-      await updateUser(user._id, updatedUser);
-
       navigate("/workouts");
     } catch (e) {
       navigate("/error");

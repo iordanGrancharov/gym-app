@@ -17,14 +17,23 @@ export const AuthProvider = ({ children }) => {
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const authFunction = onAuthStateChanged(auth, (currentUser) => {
+    const authFunction = onAuthStateChanged(auth, async (currentUser) => {
+      console.log(currentUser);
+
       if (currentUser) {
-        createUser(currentUser);
+        try {
+          await createUser(currentUser);
+        } catch (e) {
+          console.log(e.message);
+        }
       }
       if (currentUser !== null) {
-        getUser(currentUser)
-          .then((data) => setUser(data))
-          .catch((e) => console.log(e.message));
+        try {
+          const data = await getUser(currentUser);
+          setUser(data);
+        } catch (e) {
+          console.log(e.message);
+        }
       } else {
         setUser(null);
       }

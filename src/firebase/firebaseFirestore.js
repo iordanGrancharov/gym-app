@@ -23,8 +23,6 @@ export const createUserDocumentFromAuth = async (userAuth) => {
           displayName: displayName ? displayName : "defaultUserName",
           avatar:
             "https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png",
-          workouts: [],
-          nutrition: [],
           weight: "",
           height: "",
           experience: "",

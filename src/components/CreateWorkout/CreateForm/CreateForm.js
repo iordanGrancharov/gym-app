@@ -101,20 +101,7 @@ const CreateForm = ({ className, mode }) => {
         try {
           if (mode === "Create") {
             await addWorkout(workoutData);
-
-            const updatedUser = {
-              ...user,
-              personalInfo: {
-                ...user.personalInfo,
-                workouts: [
-                  ...user.personalInfo.workouts,
-                  { workoutId: workoutData._id },
-                ],
-              },
-            };
-            await updateUser(user._id, updatedUser);
           }
-          // TRY WITH NEW WORKOUT
 
           if (mode === "Update") {
             await updateWorkout(workout.workoutId, workoutData);
