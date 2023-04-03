@@ -1,0 +1,112 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("https://i.imgur.com/hW8tBdX.png");
+  background-repeat: repeat-x;
+  background-position: right;
+
+  overflow: hidden;
+
+  animation: move-background 30s linear infinite;
+}
+
+@keyframes move-background {
+  0% {
+    background-position: left;
+  }
+  25% {
+    background-position: center;
+  }
+  50% {
+    background-position: right;
+  }
+  75% {
+    background-position: center;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+.content-container {
+  margin-top: 10vh;
+  width: 50vw;
+  height: 75vh;
+  background-color: white;
+  outline: 3px solid white;
+  outline-offset: 10px;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+}
+
+.img-container {
+  width: 38%;
+  margin: 2vh;
+
+  padding-bottom: 3vh;
+  padding-right: 3vh;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 7px 10px 15px black;
+}
+
+.info {
+  margin-top: 2vh;
+  width: 50%;
+  text-align: center;
+  font-family: var(--font-family-five);
+  font-weight: 600;
+  border-left: 3px solid var(--main-bg-color);
+}
+.info h1 {
+  margin-bottom: 2vh;
+}
+
+.micro {
+  width: 80%;
+  font-family: var(--font-family-five);
+  font-weight: 600;
+  margin-left: 2vh;
+  margin-bottom: 3vh;
+  margin-top: -2.5vh;
+}
+.micro p {
+  margin: 0;
+  border-bottom: 2px solid black;
+}
+
+.micro p span {
+  color: var(--main-bg-color);
+  margin-left: 1vh;
+}
+
+.section-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-two {
+  height: 80%;
+  width: 54.9%;
+  border-left: 3px solid var(--main-bg-color);
+  text-align: center;
+  margin: 0 auto;
+  margin-top: -7vh;
+  font-weight: 600;
+}
+
+.section-two h5 {
+  color: var(--main-bg-color);
+}

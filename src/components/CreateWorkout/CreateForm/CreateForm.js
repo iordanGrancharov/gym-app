@@ -9,7 +9,6 @@ import {
   getWorkout,
   updateWorkout,
 } from "../../../services/workouts";
-import { updateUser } from "../../../services/users";
 import { generate } from "shortid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -6,7 +6,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import { CircularProgress } from "@mui/material";
 import styles from "./WorkoutDetails.module.css";
-import { updateUser } from "../../services/users";
 
 const WorkoutDetails = () => {
   const navigate = useNavigate();

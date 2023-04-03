@@ -16,6 +16,8 @@ import NotFound from "./components/Error/NotFound";
 import Error from "./components/Error/Error";
 import WorkoutsCatalog from "./components/WorkoutsCatalog/WorkoutsCatalog";
 import WorkoutDetails from "./components/WorkoutDetails/WorkoutDetails";
+import NutritionCatalog from "./components/NutritionCatalog/NutritionCatalog";
+import NutritionDetails from "./components/NutritionDetails/NutritionDetails";
 
 function App() {
   return (
@@ -70,6 +72,11 @@ function App() {
                   element={<ExerciseDetails mode="Preview" />}
                 />
                 <Route path="/workouts" element={<WorkoutsCatalog />} />
+                <Route path="/nutrition" element={<NutritionCatalog />} />
+                <Route
+                  path="/nutrition/details/:nutritionId"
+                  element={<NutritionDetails />}
+                />
                 <Route path="/error" element={<Error />} />
                 <Route path="*" element={<NotFound />} />
               </Route>

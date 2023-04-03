@@ -1,0 +1,48 @@
+.card {
+  height: 38vh;
+  width: 15vw;
+  background-color: var(--main-bg-color);
+  color: white;
+  border: 3px solid black;
+  border-radius: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  box-shadow: var(--box-shadow-main);
+  text-transform: capitalize;
+}
+
+.card h5 {
+  margin-top: 1vh;
+  height: 8vh;
+  width: 14vw;
+  text-shadow: var(--text-shadow-one);
+  text-align: center;
+}
+.bonus {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.bonus p {
+  text-shadow: var(--text-shadow-one);
+}
+
+.loader {
+  margin-left: 18vw;
+  margin-top: 11vh;
+}
+
+.img-container {
+  width: 80%;
+  height: 70%;
+  margin: 1vh auto;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1vh;
+  border: 3px solid white;
+}
