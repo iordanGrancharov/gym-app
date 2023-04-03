@@ -15,6 +15,9 @@ const WorkoutDetails = () => {
   const { setWorkoutData } = useContext(WorkoutContext);
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+  console.log(workout);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -52,6 +55,10 @@ const WorkoutDetails = () => {
 
   const editHandler = () => {
     navigate("/workout/update");
+  };
+
+  const handleBack = () => {
+    navigate("/workouts");
   };
 
   return (
@@ -98,8 +105,11 @@ const WorkoutDetails = () => {
         </table>
         {user._id === workout._ownerId && (
           <div className={styles["btn-container"]}>
-            <button onClick={deleteHandler}>Delete Workout</button>
-            <button onClick={editHandler}>Edit Workout</button>
+            <button onClick={handleBack}>Back</button>
+            <div className={styles["btn-workout"]}>
+              <button onClick={deleteHandler}>Delete Workout</button>
+              <button onClick={editHandler}>Edit Workout</button>
+            </div>
           </div>
         )}
       </div>

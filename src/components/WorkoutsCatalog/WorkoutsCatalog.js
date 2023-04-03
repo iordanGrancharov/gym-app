@@ -27,7 +27,7 @@ const WorkoutsCatalog = () => {
         <hr />
         <div className={styles["workoutsCard-container"]}>
           {workouts.map((workout) => (
-            <Link to={`/workouts/details/${workout.id}`} key={workout.id}>
+            <Link to={`/workouts/details/${workout.id}`} key={workout._id}>
               <WorkoutsCard {...workout} />
             </Link>
           ))}
