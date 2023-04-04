@@ -122,6 +122,8 @@
 
 .section-two h5 {
   color: var(--main-bg-color);
+  margin-top: 6vh;
+  margin-bottom: 2vh;
 }
 
 .btn-container {
@@ -129,7 +131,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 .btn-container button {

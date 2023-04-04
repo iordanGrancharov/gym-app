@@ -1,18 +1,56 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchData, ketoDbOptions } from "../../utils/fetchData";
+import { useParams, useNavigate } from "react-router-dom";
+import { prepareData } from "../../utils/nutritionDetailsData";
+import { getNutrition, nutrition } from "../../services/nutrition";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import styles from "./NutritionDetails.module.css";
-import { useParams, useNavigate } from "react-router-dom";
 
 const NutritionDetails = () => {
   const [recipe, setRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [steps, setSteps] = useState([]);
+
   const { nutritionId } = useParams();
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleBack = () => {
     navigate("/nutriotion");
+  };
+
+  const handleSave = async () => {
+    try {
+      const ref = await getNutrition(nutritionId);
+
+      if (ref.exists()) {
+        const data = {
+          ...ref.data(),
+          users: [...ref.data().users, user._id],
+        };
+
+        await nutrition(nutritionId, data);
+      } else {
+        const prepared = {};
+
+        Object.entries(recipe)
+          .filter(([a, b]) => b !== null)
+          .forEach(([a, b]) => {
+            return (prepared[a] = b);
+          });
+
+        const usersArr = recipe.users ? [...recipe.users] : [];
+        const data = { ...prepared, users: [...usersArr, user._id] };
+
+        await nutrition(nutritionId, data);
+      }
+      navigate("/");
+    } catch (e) {
+      console.log(e.message);
+      //   navigate("/error");
+    }
   };
 
   useEffect(() => {
@@ -23,56 +61,7 @@ const NutritionDetails = () => {
           ketoDbOptions
         );
 
-        const myData = Object.entries(data[0]);
-
-        const stepsArr = myData
-          .filter((x) => {
-            const [a, b] = x;
-            if (a.includes("directions") && b != null) {
-              return true;
-            }
-            return false;
-          })
-          .map(([a, b]) => {
-            if (b === null) {
-              return false;
-            }
-            return { b };
-          });
-
-        const measurement = myData
-          .filter((x) => {
-            const [a, b] = x;
-            if (a.includes("measurement") && b != null) {
-              return true;
-            }
-            return false;
-          })
-          .map(([a, b]) => {
-            return b;
-          });
-
-        let ingredients = myData
-          .filter((x) => {
-            const [a, b] = x;
-            if (a.includes("ingredient") && b !== null) {
-              return true;
-            }
-            return false;
-          })
-          .map(([a, b]) => {
-            if (b === null) {
-              return false;
-            }
-            return { b };
-          });
-
-        ingredients = measurement.map(
-          (x, i) =>
-            `${!x ? "" : x} ${!ingredients[i].b ? "" : ingredients[i].b}`
-        );
-
-        ingredients = ingredients.filter((x) => x !== " ");
+        const { stepsArr, ingredients } = prepareData(data);
 
         setSteps(stepsArr);
         setIngredients(ingredients);
@@ -118,22 +107,22 @@ const NutritionDetails = () => {
               <p>
                 <span>Ingredients: </span>
               </p>
-              {ingredients.map((x) => (
-                <p>{x}</p>
+              {ingredients.map((x, i) => (
+                <p key={i}>{x}</p>
               ))}
             </div>
           </div>
           <div className={styles["section-two"]}>
             <h5>Steps:</h5>
             {steps.map((x, i) => (
-              <p>
+              <p key={i}>
                 {i + 1}.{x.b}
               </p>
             ))}
 
             <div className={styles["btn-container"]}>
               <button onClick={handleBack}>Back</button>
-              <button>Save</button>
+              <button onClick={handleSave}>Save</button>
             </div>
           </div>
         </div>

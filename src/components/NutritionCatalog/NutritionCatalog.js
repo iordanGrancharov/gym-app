@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchData, ketoDbOptions } from "../../utils/fetchData";
+import { useNavigate } from "react-router-dom";
 
 import NutritionCard from "./NutritionCard/NutritionCard";
 
@@ -7,6 +8,8 @@ import styles from "./NutritionCatalog.module.css";
 import { CircularProgress } from "@mui/material";
 
 const NutritionCatalog = () => {
+  const navigate = useNavigate();
+
   const [filter, setFilter] = useState({
     less: "",
     greater: "",
@@ -32,6 +35,11 @@ const NutritionCatalog = () => {
     if (filter) {
       setIsLoading(true);
       try {
+        if (Math.abs(filter.less - filter.greater < 5)) {
+          filter.greater -= 5;
+        } else if (filter.less < filter.greater) {
+          return;
+        }
         const data = await fetchData(
           `https://keto-diet.p.rapidapi.com/?calories__lt=${filter.less}&calories__gt=${filter.greater}`,
           ketoDbOptions
@@ -45,11 +53,12 @@ const NutritionCatalog = () => {
         const randomReceipts = Array.from(randomIndexes).map(
           (index) => data[index]
         );
-        console.log(randomReceipts);
+
         setReceipts(randomReceipts);
         setIsLoading(false);
       } catch (e) {
         console.log(e.message);
+        navigate("/error");
       }
     }
   };
