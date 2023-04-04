@@ -48,7 +48,7 @@
 
 .image-container img {
   width: 90%;
-  height: 80%;
+  height: 90%;
   box-shadow: var(--box-shadow-main);
   outline: 2px solid white;
   outline-offset: 8px;

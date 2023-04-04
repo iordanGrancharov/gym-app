@@ -33,6 +33,11 @@
   }
 }
 
+.loader {
+  margin-top: 20vh;
+  margin-left: 28vw;
+}
+
 .workouts-container {
   display: flex;
   flex-direction: column;
@@ -73,7 +78,7 @@
   display: none;
 }
 
-hr {
+.workouts-container hr {
   width: 80%;
   border: 2px solid #fff;
   opacity: 1;

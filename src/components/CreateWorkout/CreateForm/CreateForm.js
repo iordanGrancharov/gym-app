@@ -94,6 +94,7 @@ const CreateForm = ({ className, mode }) => {
           exercises: [...exercisesForm],
           createdBy: user.email,
           _ownerId: user._id,
+          users: [],
           _id: `${generate()}${generate()}`,
         };
 

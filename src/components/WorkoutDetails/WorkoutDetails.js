@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { deleteWorkout, getWorkout } from "../../services/workouts";
+import {
+  deleteWorkout,
+  getWorkout,
+  updateWorkout,
+} from "../../services/workouts";
 import { WorkoutContext } from "../../contexts/WorkoutContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -42,6 +46,19 @@ const WorkoutDetails = () => {
 
   const handleBack = () => {
     navigate("/workouts");
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    try {
+      await updateWorkout(workoutId, {
+        ...workout,
+        users: [...workout.users, user._id],
+      });
+      navigate("/");
+    } catch (e) {
+      navigate("/error");
+    }
   };
 
   return (
@@ -86,12 +103,19 @@ const WorkoutDetails = () => {
             )}
           </tbody>
         </table>
-        {user._id === workout._ownerId && (
+        {user._id === workout._ownerId ? (
           <div className={styles["btn-container"]}>
             <button onClick={handleBack}>Back</button>
             <div className={styles["btn-workout"]}>
               <button onClick={deleteHandler}>Delete Workout</button>
               <button onClick={editHandler}>Edit Workout</button>
+            </div>
+          </div>
+        ) : (
+          <div className={styles["btn-container"]}>
+            <button onClick={handleBack}>Back</button>
+            <div className={styles["btn-workout"]}>
+              <button onClick={handleSave}>Save Workout</button>
             </div>
           </div>
         )}
