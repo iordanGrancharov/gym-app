@@ -57,7 +57,16 @@ const Register = () => {
       await signInWithGoogle();
       navigate("/");
     } catch (error) {
-      navigate("/error");
+      const message = error.message
+        .split("(")[1]
+        .substring(0, error.message.split("(")[1].length - 2);
+
+      if (
+        message !== "auth/popup-closed-by-user" &&
+        message !== "cancelled-popup-request"
+      ) {
+        navigate("/error");
+      }
     }
   };
 
