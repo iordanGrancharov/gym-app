@@ -19,6 +19,7 @@ import WorkoutDetails from "./components/WorkoutDetails/WorkoutDetails";
 import NutritionCatalog from "./components/NutritionCatalog/NutritionCatalog";
 import NutritionDetails from "./components/NutritionDetails/NutritionDetails";
 import Profile from "./components/Profile/Profile";
+import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -83,6 +84,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Profile />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile/information/:userId"
+                  element={
+                    <ProtectedRoute>
+                      <UpdateProfile />
                     </ProtectedRoute>
                   }
                 />

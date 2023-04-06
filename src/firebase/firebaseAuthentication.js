@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 
+import { getStorage, ref } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_RAPID_FIREBASE_KEY,
   authDomain: process.env.REACT_APP_RAPID_FIREBASE_AUTHDOMAIN,
@@ -21,7 +23,8 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export default app;
-
+export const storage = getStorage(app);
+export const storageRef = ref(storage);
 export const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({

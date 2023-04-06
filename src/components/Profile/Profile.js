@@ -10,7 +10,7 @@ import { CircularProgress } from "@mui/material";
 import styles from "./Profile.module.css";
 import NutritionCard from "../NutritionCard/NutritionCard";
 import { getSavedNutrition } from "../../services/nutrition";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [workoutToDisplay, setWorkoutsToDisplay] = useState(null);
@@ -18,7 +18,9 @@ const Profile = () => {
   const [workoutsWanted, setWorkoutsWanted] = useState(false);
   const [nutritionWanted, setNutritionWanted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const getCreated = async () => {
     try {
@@ -126,7 +128,12 @@ const Profile = () => {
                   : "6 years"}
               </span>
             </p>
-            <button className={styles["update-btn"]}>Update Profile</button>
+            <button
+              className={styles["update-btn"]}
+              onClick={() => navigate(`/profile/information/${user._id}`)}
+            >
+              Update Profile
+            </button>
             <div className={styles["since"]}>
               <p>
                 User since: <span>{user.createdAt}</span>
