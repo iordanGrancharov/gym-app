@@ -18,6 +18,7 @@ import WorkoutsCatalog from "./components/WorkoutsCatalog/WorkoutsCatalog";
 import WorkoutDetails from "./components/WorkoutDetails/WorkoutDetails";
 import NutritionCatalog from "./components/NutritionCatalog/NutritionCatalog";
 import NutritionDetails from "./components/NutritionDetails/NutritionDetails";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -76,6 +77,14 @@ function App() {
                 <Route
                   path="/nutrition/details/:nutritionId"
                   element={<NutritionDetails />}
+                />
+                <Route
+                  path="/profile/:userId"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
                 />
                 <Route path="/error" element={<Error />} />
                 <Route path="*" element={<NotFound />} />

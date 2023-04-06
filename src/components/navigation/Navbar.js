@@ -40,13 +40,8 @@ const Navbar = () => {
             <BurgerNav className={styles["burger"]} />
             {user && (
               <div className={styles["profile"]}>
-                <Link to="/profile">
-                  <img
-                    src={
-                      "https://dfge.de/wp-content/uploads/blank-profile-picture-973460_640.png"
-                    }
-                    alt="SNIMKA BACE"
-                  />
+                <Link to={`/profile/${user._id}`}>
+                  <img src={user.personalInfo.avatar} alt="SNIMKA BACE" />
                 </Link>
               </div>
             )}

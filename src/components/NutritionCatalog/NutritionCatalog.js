@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchData, ketoDbOptions } from "../../utils/fetchData";
 import { useNavigate } from "react-router-dom";
 
-import NutritionCard from "./NutritionCard/NutritionCard";
+import NutritionCard from "../NutritionCard/NutritionCard";
 
 import styles from "./NutritionCatalog.module.css";
 import { CircularProgress } from "@mui/material";
@@ -121,7 +121,7 @@ const NutritionCatalog = () => {
         <div className={styles["card-container"]}>
           {isLoading ? (
             <CircularProgress
-              style={{ color: "white" }}
+              style={{ color: "#d83e59" }}
               size={"4rem"}
               className={styles["loader"]}
             />

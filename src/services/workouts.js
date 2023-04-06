@@ -7,6 +7,8 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  query,
+  where,
 } from "firebase/firestore";
 
 const collectionRef = collection(db, "workouts");
@@ -32,4 +34,22 @@ export const getAllWorkouts = () => {
 export const getWorkout = (id) => {
   const workout = doc(db, "workouts", id);
   return getDoc(workout);
+};
+
+export const getCreatedByUserWorkouts = async (id) => {
+  const q = query(collectionRef, where("_ownerId", "==", id));
+  const res = await getDocs(q);
+  const data = [];
+
+  res.docs.forEach((document) => data.push(document.data()));
+  return data;
+};
+
+export const getSavedWorkout = async (id) => {
+  const q = query(collectionRef, where("users", "array-contains", id));
+  const res = await getDocs(q);
+  const data = [];
+
+  res.docs.forEach((document) => data.push(document.data()));
+  return data;
 };

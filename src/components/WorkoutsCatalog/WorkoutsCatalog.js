@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllWorkouts } from "../../services/workouts";
 import { Link, useNavigate } from "react-router-dom";
 
-import WorkoutsCard from "./WorkoutsCard/WorkoutsCard";
+import WorkoutsCard from "../WorkoutsCard/WorkoutsCard";
 
 import { CircularProgress } from "@mui/material";
 import styles from "./WorkoutsCatalog.module.css";

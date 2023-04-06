@@ -7,6 +7,8 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 
 const collectionRef = collection(db, "nutrition");
@@ -42,4 +44,13 @@ export const getAllNutritions = () => {
 export const getNutrition = (id) => {
   const nutrition = doc(db, "nutrition", id);
   return getDoc(nutrition);
+};
+
+export const getSavedNutrition = async (id) => {
+  const q = query(collectionRef, where("users", "array-contains", id));
+  const res = await getDocs(q);
+  const data = [];
+
+  res.docs.forEach((document) => data.push(document.data()));
+  return data;
 };
