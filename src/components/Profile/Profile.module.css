@@ -228,9 +228,15 @@
   box-shadow: 0px 2px 10px black;
 }
 
+.btn-workouts a:hover {
+  color: black;
+  text-shadow: none;
+}
+
 .p:hover {
   background-color: rgb(245, 245, 121);
   transition: 0.2s linear;
+  text-shadow: none;
 }
 
 .addition {

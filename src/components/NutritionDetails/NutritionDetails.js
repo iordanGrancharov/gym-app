@@ -122,7 +122,7 @@ const NutritionDetails = () => {
 
             <div className={styles["btn-container"]}>
               <button onClick={handleBack}>Back</button>
-              <button onClick={handleSave}>Save</button>
+              {user && <button onClick={handleSave}>Save</button>}
             </div>
           </div>
         </div>
