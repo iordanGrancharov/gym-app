@@ -11,7 +11,7 @@ import {
 } from "../firebase/firebaseFirestore";
 
 import { db } from "../firebase/firebaseFirestore";
-import { updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { updateDoc, deleteDoc, getDoc, doc } from "firebase/firestore";
 
 export const signIn = async (email, password) => {
   try {
@@ -59,6 +59,11 @@ export const createUser = async (auth) => {
 export const getUser = async (auth) => {
   const response = await getUserData(auth);
   return response;
+};
+
+export const getUserById = async (id) => {
+  const user = doc(db, "users", id);
+  return getDoc(user);
 };
 
 export const updateUser = (id, updatedUser) => {

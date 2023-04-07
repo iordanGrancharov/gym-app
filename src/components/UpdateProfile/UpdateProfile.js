@@ -1,12 +1,17 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
-import styles from "./UpdateProfile.module.css";
 import { storage } from "../../firebase/firebaseAuthentication";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { updateUser } from "../../services/users";
+import { useNavigate } from "react-router-dom";
+
+import styles from "./UpdateProfile.module.css";
 
 const UpdateProfile = () => {
-  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { user, setUser } = useContext(AuthContext);
   const [imageUploadState, setImageUploadState] = useState(null);
   const [formData, setFormData] = useState({
     ...user,
@@ -40,18 +45,30 @@ const UpdateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const fileUrl = await uploadFile();
 
-    const fileUrl = await uploadFile();
-
-    console.log(fileUrl);
-    const data = {
-      ...formData,
-      personalInfo: {
-        ...formData.personalInfo,
-        avatar: imageUploadState ? formData.personalInfo.avatar : fileUrl,
-      },
-    };
-    console.log(data);
+      const updatedUser = {
+        ...formData,
+        personalInfo: {
+          ...formData.personalInfo,
+          avatar: imageUploadState
+            ? formData.personalInfo.avatar
+              ? formData.personalInfo.avatar
+              : user.personalInfo.avatar
+            : fileUrl
+            ? fileUrl
+            : user.personalInfo.avatar,
+        },
+      };
+      console.log(updatedUser);
+      await updateUser(user._id, updatedUser);
+      setUser(updatedUser);
+      navigate(`/profile/${user._id}`);
+    } catch (e) {
+      console.log(e.message);
+      navigate("/error");
+    }
   };
 
   return (
@@ -63,6 +80,7 @@ const UpdateProfile = () => {
       </div>
       <form className={styles["form"]} onSubmit={handleSubmit}>
         <h3>Additional Information</h3>
+        <label>Set your username:</label>
         <input
           type="text"
           placeholder="Username"
@@ -71,6 +89,7 @@ const UpdateProfile = () => {
           value={formData.personalInfo.username}
         />
         <div className={styles["image-container"]}>
+          <label>Set your avatar:</label>
           <div className={styles["btn-container"]}>
             <button type="button" onClick={() => setImageUploadState(true)}>
               imageUrl
@@ -88,7 +107,7 @@ const UpdateProfile = () => {
               value={formData.personalInfo.avatar}
             />
           ) : (
-            <label htmlFor="inputImage">
+            <label htmlFor="inputImage" className={styles["special"]}>
               <input
                 type="file"
                 id="inputImage"
@@ -99,6 +118,7 @@ const UpdateProfile = () => {
             </label>
           )}
         </div>
+        <label style={{ marginTop: "3vh" }}>Set your gymType:</label>
         <select
           name="gymType"
           onChange={handleChange}

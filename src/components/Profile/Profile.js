@@ -4,12 +4,13 @@ import {
   getCreatedByUserWorkouts,
   getSavedWorkout,
 } from "../../services/workouts";
-import WorkoutsCard from "../WorkoutsCard/WorkoutsCard";
+import { getSavedNutrition } from "../../services/nutrition";
 
 import { CircularProgress } from "@mui/material";
 import styles from "./Profile.module.css";
 import NutritionCard from "../NutritionCard/NutritionCard";
-import { getSavedNutrition } from "../../services/nutrition";
+import WorkoutsCard from "../WorkoutsCard/WorkoutsCard";
+
 import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
@@ -77,8 +78,6 @@ const Profile = () => {
     }
   };
 
-  // MAKE THE FILTER LOGIC
-  // WRITE THE QUERIES
   return (
     <section className={styles["container"]}>
       <div className={styles["profile"]}>
@@ -90,32 +89,31 @@ const Profile = () => {
             />
           </div>
           <div className={styles["user-info"]}>
-            <h4>
-              {user.personalInfo.username
-                ? user.personalInfo.username
-                : "Йордан Грънчаров"}
-            </h4>
+            <h4>{user.personalInfo.username}</h4>
             <h6>{user.email}</h6>
 
             <h5>
               Gym Type:{" "}
               <span>
-                {user.personalInfo.gymType ? user.personal.info : "Bodybuilder"}
+                {user.personalInfo.gymType ? user.personalInfo.gymType : "..."}
               </span>
             </h5>
-            <h6>Age: {user.personalInfo.age ? user.personalInfo.age : "23"}</h6>
+            <h6>
+              Age: {user.personalInfo.age ? user.personalInfo.age : "..."}
+            </h6>
 
             <div className={styles["weight-height"]}>
               <p>
                 weight:{" "}
                 <span>
-                  {user.personalInfo.weight ? user.personalInfo.weight : "80"}kg
+                  {user.personalInfo.weight ? user.personalInfo.weight : "..."}
+                  kg
                 </span>
               </p>
               <p>
                 height:{" "}
                 <span>
-                  {user.personalInfo.weight ? user.personalInfo.weight : "180"}
+                  {user.personalInfo.height ? user.personalInfo.height : "..."}
                   cm
                 </span>
               </p>
@@ -125,7 +123,7 @@ const Profile = () => {
               <span>
                 {user.personalInfo.experience
                   ? user.personalInfo.experience
-                  : "6 years"}
+                  : "..."}
               </span>
             </p>
             <button

@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   const context = {
     user,
+    setUser,
     pending,
     signIn,
     signUp,

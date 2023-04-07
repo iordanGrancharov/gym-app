@@ -4,6 +4,9 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
 import { WorkoutContext } from "../../../contexts/WorkoutContext";
 
+import { storage } from "../../../firebase/firebaseAuthentication";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 import {
   addWorkout,
   getWorkout,
@@ -21,10 +24,28 @@ const CreateForm = ({ className, mode }) => {
   const { exercisesForm, setExercisesForm, workoutInfo, setWorkoutInfo } =
     useContext(ExerciseFormContext);
   const { workoutData: workout } = useContext(WorkoutContext);
-
   const { user } = useContext(AuthContext);
+
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [imageUploadState, setImageUploadState] = useState(null);
+  const [image, setImage] = useState(null);
+
+  const uploadFile = async () => {
+    if (image === null) {
+      return;
+    }
+
+    const storageRef = ref(
+      storage,
+      `/files/avatars/${image.name}${new Date().valueOf()}`
+    );
+    const snapshot = await uploadBytes(storageRef, image);
+    // Get the download URL for the uploaded file
+    const url = await getDownloadURL(snapshot.ref);
+
+    return url;
+  };
 
   const removeExercise = (index) => {
     if (
@@ -86,10 +107,16 @@ const CreateForm = ({ className, mode }) => {
   useEffect(() => {
     async function submitForm() {
       if (Object.keys(formErrors).length === 0 && isSubmit) {
+        const fileUrl = await uploadFile();
+
         const workoutData = {
           ...workoutInfo,
-          imageUrl: workoutInfo.imageUrl
+          imageUrl: imageUploadState
             ? workoutInfo.imageUrl
+              ? workoutInfo.imageUrl
+              : "https://i.pinimg.com/564x/81/0a/53/810a5398c33d7e93e6c9d088450066ca.jpg"
+            : fileUrl
+            ? fileUrl
             : "https://i.pinimg.com/564x/81/0a/53/810a5398c33d7e93e6c9d088450066ca.jpg",
           exercises: [...exercisesForm],
           createdBy: user.email,
@@ -104,7 +131,17 @@ const CreateForm = ({ className, mode }) => {
           }
 
           if (mode === "Update") {
-            await updateWorkout(workout.workoutId, workoutData);
+            const edittedData = {
+              ...workoutData,
+              imageUrl: imageUploadState
+                ? workoutInfo.imageUrl
+                  ? workoutInfo.imageUrl
+                  : workout.imageUrl
+                : fileUrl
+                ? fileUrl
+                : workout.imageUrl,
+            };
+            await updateWorkout(workout.workoutId, edittedData);
           }
 
           setWorkoutInfo({
@@ -153,15 +190,36 @@ const CreateForm = ({ className, mode }) => {
           />
         </div>
         <div className={styles["input-field"]}>
-          <input
-            className={styles["field"]}
-            id="imageUrl"
-            type="text"
-            name="imageUrl"
-            placeholder="ImageURL"
-            onChange={handleChange}
-            value={workoutInfo.imageUrl}
-          />
+          <label>Set Workout Cover:</label>
+          <div className={styles["btn-container"]}>
+            <button type="button" onClick={() => setImageUploadState(true)}>
+              imageUrl
+            </button>
+            <button type="button" onClick={() => setImageUploadState(false)}>
+              Upload
+            </button>
+          </div>
+          {imageUploadState ? (
+            <input
+              className={styles["field"]}
+              id="imageUrl"
+              type="text"
+              name="imageUrl"
+              placeholder="ImageURL"
+              onChange={handleChange}
+              value={workoutInfo.imageUrl}
+            />
+          ) : (
+            <label htmlFor="inputImage" className={styles["special"]}>
+              <input
+                type="file"
+                id="inputImage"
+                hidden
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              Upload File
+            </label>
+          )}
         </div>
         <div className={styles["input-field"]}>
           <p className={styles["error"]}>{formErrors.description}</p>

@@ -20,7 +20,7 @@ h3 {
 .input-field {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   margin: 0.3vh 0;
 }
 
@@ -47,6 +47,10 @@ h3 {
 
 .input-field select option {
   text-transform: capitalize;
+}
+
+.input-field label {
+  text-align: center;
 }
 
 .exercises {
@@ -139,4 +143,46 @@ h3 {
   color: var(--main-bg-color);
   text-shadow: none;
   font-weight: 600;
+}
+
+.special {
+  margin: 1vh;
+  cursor: pointer;
+  background-color: darkmagenta;
+  color: white;
+
+  padding: 0.5vh 1vh;
+  text-shadow: var(--text-shadow-one);
+  font-size: 2vh;
+  text-align: center;
+}
+
+.special:hover {
+  background-color: rgb(255, 255, 120);
+  color: rgb(41, 39, 39);
+  text-shadow: none;
+  transition: 0.3s ease;
+}
+
+.btn-container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-container button {
+  color: white;
+  background-color: var(--main-bg-color);
+  text-shadow: var(--text-shadow-one);
+  border: none;
+  margin: 0 0.1vw;
+  padding: 0.5vh 1.5vh;
+}
+
+.btn-container button:hover {
+  transform: scale(1);
+  background-color: rgb(255, 255, 120);
+  color: rgb(41, 39, 39);
+  text-shadow: none;
+  transition: 0.3s ease;
 }

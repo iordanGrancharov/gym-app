@@ -84,15 +84,25 @@
 
 .form input {
   margin: 2vh auto;
+  margin-top: 0;
   border-radius: 2vh;
   padding: 0.5vh;
-  border: 1px solid gray;
+  border: 2px solid var(--main-bg-color);
   text-align: center;
+}
+
+.form input::placeholder {
+  font-style: italic;
+  color: var(--main-bg-color);
 }
 
 .form select {
   padding: 1vh;
   margin: 5vh auto;
+  margin-top: 0;
+  background-color: var(--main-bg-color);
+  color: white;
+  text-shadow: var(--text-shadow-two);
 }
 
 .weight-height {
@@ -136,7 +146,7 @@
 .image-container input {
   margin: 0.5vh;
 }
-.image-container label {
+.image-container .special {
   margin: 1vh;
   cursor: pointer;
 
@@ -146,7 +156,7 @@
   text-shadow: var(--text-shadow-one);
 }
 
-.image-container label:hover {
+.image-container .special:hover {
   background-color: rgb(255, 255, 120);
   color: rgb(41, 39, 39);
   text-shadow: none;
