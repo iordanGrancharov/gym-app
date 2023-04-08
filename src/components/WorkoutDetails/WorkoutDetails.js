@@ -11,7 +11,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { CircularProgress } from "@mui/material";
 import styles from "./WorkoutDetails.module.css";
 
-const WorkoutDetails = () => {
+const WorkoutDetails = ({ mode }) => {
   const navigate = useNavigate();
   const { workoutId } = useParams();
   const [workout, setWorkout] = useState({});
@@ -45,7 +45,13 @@ const WorkoutDetails = () => {
   };
 
   const handleBack = () => {
-    navigate("/workouts");
+    if (mode === "fromCatalog") {
+      navigate("/workouts");
+    }
+
+    if (mode === "fromProfile") {
+      navigate(`/profile/${user._id}`);
+    }
   };
 
   const handleSave = async (e) => {
@@ -58,6 +64,18 @@ const WorkoutDetails = () => {
       navigate("/");
     } catch (e) {
       navigate("/error");
+    }
+  };
+
+  const deleteSavedWorkout = async (e) => {
+    const updatedWorkout = { ...workout };
+    const users = [...workout.users].filter((x) => x !== user._id);
+
+    try {
+      await updateWorkout(workoutId, { ...updatedWorkout, users: [...users] });
+      navigate(`/profile/${user._id}`);
+    } catch (e) {
+      console.log(e.message);
     }
   };
 
@@ -103,7 +121,7 @@ const WorkoutDetails = () => {
             )}
           </tbody>
         </table>
-        {user._id === workout._ownerId ? (
+        {user && user._id === workout._ownerId ? (
           <div className={styles["btn-container"]}>
             <button onClick={handleBack}>Back</button>
             <div className={styles["btn-workout"]}>
@@ -114,9 +132,17 @@ const WorkoutDetails = () => {
         ) : (
           <div className={styles["btn-container"]}>
             <button onClick={handleBack}>Back</button>
-            <div className={styles["btn-workout"]}>
-              <button onClick={handleSave}>Save Workout</button>
-            </div>
+            {user &&
+            user._id !== workout._ownerId &&
+            !workout.users.find((x) => x === user._id) ? (
+              <div className={styles["btn-workout"]}>
+                <button onClick={handleSave}>Save Workout</button>
+              </div>
+            ) : (
+              <div className={styles["btn-workout"]}>
+                <button onClick={deleteSavedWorkout}>Delete Workout</button>
+              </div>
+            )}
           </div>
         )}
       </div>

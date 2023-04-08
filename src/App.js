@@ -49,7 +49,6 @@ function App() {
                     </ProtectedRouteGuest>
                   }
                 />
-                {/* PROTECTED ROUTES GUEST ONLY */}
                 <Route
                   path="/login"
                   element={
@@ -92,7 +91,15 @@ function App() {
                 />
                 <Route
                   path="/workouts/details/:workoutId"
-                  element={<WorkoutDetails />}
+                  element={<WorkoutDetails mode={"fromCatalog"} />}
+                />
+                <Route
+                  path="/profile/workouts/details/:workoutId"
+                  element={
+                    <ProtectedRouteGuest>
+                      <WorkoutDetails mode={"fromProfile"} />
+                    </ProtectedRouteGuest>
+                  }
                 />
                 <Route
                   path="/:workoutId/details/exercise/:exerciseId"
@@ -102,8 +109,17 @@ function App() {
                 <Route path="/nutrition" element={<NutritionCatalog />} />
                 <Route
                   path="/nutrition/details/:nutritionId"
-                  element={<NutritionDetails />}
+                  element={<NutritionDetails mode="fromCatalog" />}
                 />
+                <Route
+                  path="/profile/nutrition/details/:nutritionId"
+                  element={
+                    <ProtectedRouteGuest>
+                      <NutritionDetails mode="fromProfile" />
+                    </ProtectedRouteGuest>
+                  }
+                />
+
                 <Route
                   path="/profile/:userId"
                   element={

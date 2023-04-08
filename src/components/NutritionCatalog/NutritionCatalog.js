@@ -6,6 +6,7 @@ import NutritionCard from "../NutritionCard/NutritionCard";
 
 import styles from "./NutritionCatalog.module.css";
 import { CircularProgress } from "@mui/material";
+import { generateRandomElements } from "../../utils/generateRandomElements";
 
 const NutritionCatalog = () => {
   const navigate = useNavigate();
@@ -15,12 +16,12 @@ const NutritionCatalog = () => {
     greater: "",
   });
   const [receipts, setReceipts] = useState([]);
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const check = value < 0 ? 0 : value;
-    setFilter({ ...filter, [name]: check });
+    setFilter({ ...filter, [name]: value });
   };
 
   const resetForm = () => {
@@ -28,6 +29,7 @@ const NutritionCatalog = () => {
       less: "",
       greater: "",
     });
+    setError(null);
   };
 
   const handleFilter = async (e) => {
@@ -35,30 +37,37 @@ const NutritionCatalog = () => {
     if (filter) {
       setIsLoading(true);
       try {
-        if (Math.abs(filter.less - filter.greater < 5)) {
-          filter.greater -= 5;
-        } else if (filter.less < filter.greater) {
-          return;
+        // API isnt working good with a difference smaller than 5
+        if (Number(filter.less) === Number(filter.greater)) {
+          throw new Error("LessThan and GreaterThan can't be equal");
         }
+
+        if (Number(filter.less) < Number(filter.greater)) {
+          throw new Error("LessThan must be bigger than GreaterThan");
+        }
+
+        if (Number(filter.less) - Number(filter.greater) < 20) {
+          throw new Error(
+            "LessThan must be at least 20 bigger than GreaterThan"
+          );
+        }
+
+        if (Number(filter.less) < 0 || Number(filter.greater) < 0) {
+          throw new Error("Values can't be negative");
+        }
+
+        setError(null);
+
         const data = await fetchData(
           `https://keto-diet.p.rapidapi.com/?calories__lt=${filter.less}&calories__gt=${filter.greater}`,
           ketoDbOptions
         );
-        const randomIndexes = new Set();
-        while (randomIndexes.size < 3) {
-          const index = Math.floor(Math.random() * data.length);
-          randomIndexes.add(index);
-        }
-
-        const randomReceipts = Array.from(randomIndexes).map(
-          (index) => data[index]
-        );
+        const randomReceipts = generateRandomElements(data);
 
         setReceipts(randomReceipts);
         setIsLoading(false);
       } catch (e) {
-        console.log(e.message);
-        navigate("/error");
+        setError(e.message);
       }
     }
   };
@@ -71,31 +80,26 @@ const NutritionCatalog = () => {
           "https://keto-diet.p.rapidapi.com/",
           ketoDbOptions
         );
-        const randomIndexes = new Set();
-        while (randomIndexes.size < 3) {
-          const index = Math.floor(Math.random() * data.length);
-          randomIndexes.add(index);
-        }
 
-        const randomReceipts = Array.from(randomIndexes).map(
-          (index) => data[index]
-        );
-        console.log(randomReceipts);
+        const randomReceipts = generateRandomElements(data);
+
         setReceipts(randomReceipts);
         setIsLoading(false);
       } catch (e) {
         console.log(e.message);
+        navigate("/error");
       }
     };
     fetchNutrition();
 
     return resetForm;
-  }, []);
+  }, [navigate]);
 
   return (
     <section className={styles["container"]}>
       <div className={styles["receipts-section"]}>
         <h2>Nutrition</h2>
+        {error && <p className={styles["error"]}>{error}</p>}
         <form className={styles["form"]}>
           <h5>Filter by Calories</h5>
           <div className={styles["input-container"]}>
@@ -127,7 +131,7 @@ const NutritionCatalog = () => {
             />
           ) : (
             receipts.map((receipt) => (
-              <NutritionCard {...receipt} key={receipt.id} />
+              <NutritionCard {...receipt} key={receipt.id} mode="fromCatalog" />
             ))
           )}
         </div>

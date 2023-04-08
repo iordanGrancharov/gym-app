@@ -178,6 +178,14 @@
   display: none;
 }
 
+.card-container a {
+  margin: 0;
+  padding: 0;
+  color: white;
+  text-decoration: none;
+  border-radius: 1vh;
+}
+
 .loader {
   width: 100%;
   margin: 20vh 46vh;
@@ -213,7 +221,7 @@
   margin-left: 12vw;
   width: 70%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   text-transform: capitalize;
   margin-bottom: 1vh;

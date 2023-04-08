@@ -2,12 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { fetchData, ketoDbOptions } from "../../utils/fetchData";
 import { useParams, useNavigate } from "react-router-dom";
 import { prepareData } from "../../utils/nutritionDetailsData";
-import { getNutrition, nutrition } from "../../services/nutrition";
+import {
+  deleteNutrition,
+  getNutrition,
+  nutrition,
+  updateNut,
+} from "../../services/nutrition";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import styles from "./NutritionDetails.module.css";
 
-const NutritionDetails = () => {
+const NutritionDetails = ({ mode }) => {
   const [recipe, setRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [steps, setSteps] = useState([]);
@@ -18,7 +23,13 @@ const NutritionDetails = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/nutriotion");
+    if (mode === "fromCatalog") {
+      navigate("/nutrition");
+    }
+
+    if (mode === "fromProfile") {
+      navigate(`/profile/nutrition/details/${nutritionId}`);
+    }
   };
 
   const handleSave = async () => {
@@ -48,18 +59,42 @@ const NutritionDetails = () => {
       }
       navigate("/");
     } catch (e) {
+      navigate("/error");
       console.log(e.message);
-      //   navigate("/error");
+    }
+  };
+
+  const handleDelete = async () => {
+    const users = [...recipe.users].filter((x) => x !== user._id);
+    const updatedNutrition = { ...recipe, users: [...users] };
+
+    try {
+      await nutrition(nutritionId, updatedNutrition);
+      if (users.length === 0) {
+        await deleteNutrition(nutritionId);
+      }
+
+      navigate(`/profile/${user._id}`);
+    } catch (e) {
+      navigate(`/error`);
     }
   };
 
   useEffect(() => {
     const fetchNutrition = async () => {
       try {
-        const data = await fetchData(
-          `https://keto-diet.p.rapidapi.com/?id=${nutritionId}`,
-          ketoDbOptions
-        );
+        let data = null;
+        if (mode === "fromCatalog") {
+          data = await fetchData(
+            `https://keto-diet.p.rapidapi.com/?id=${nutritionId}`,
+            ketoDbOptions
+          );
+        }
+
+        if (mode === "fromProfile") {
+          const res = await getNutrition(nutritionId);
+          data = [{ ...res.data() }];
+        }
 
         const { stepsArr, ingredients } = prepareData(data);
 
@@ -68,11 +103,11 @@ const NutritionDetails = () => {
         setRecipe(data[0]);
       } catch (e) {
         console.log(e.message);
-        navigate("/error");
+        // navigate("/error");
       }
     };
     fetchNutrition();
-  }, [nutritionId, navigate]);
+  }, [mode, nutritionId, navigate]);
 
   return (
     <section className={styles["container"]}>
@@ -122,7 +157,17 @@ const NutritionDetails = () => {
 
             <div className={styles["btn-container"]}>
               <button onClick={handleBack}>Back</button>
-              {user && <button onClick={handleSave}>Save</button>}
+              {user ? (
+                recipe.users ? (
+                  !recipe.users.find((x) => x === user._id) ? (
+                    <button onClick={handleSave}>Save</button>
+                  ) : (
+                    <button onClick={handleDelete}>Delete</button>
+                  )
+                ) : (
+                  <button onClick={handleSave}>Save</button>
+                )
+              ) : null}
             </div>
           </div>
         </div>

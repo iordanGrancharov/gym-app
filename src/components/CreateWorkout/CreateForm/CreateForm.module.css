@@ -56,7 +56,7 @@ h3 {
 .exercises {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   margin: 0.3vh 0;
   width: 95%;
 }

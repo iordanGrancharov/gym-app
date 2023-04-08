@@ -38,7 +38,7 @@ const CreateForm = ({ className, mode }) => {
 
     const storageRef = ref(
       storage,
-      `/files/avatars/${image.name}${new Date().valueOf()}`
+      `/files/workouts/${image.name}${new Date().valueOf()}`
     );
     const snapshot = await uploadBytes(storageRef, image);
     // Get the download URL for the uploaded file

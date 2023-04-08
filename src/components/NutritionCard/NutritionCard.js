@@ -8,6 +8,7 @@ const NutritionCard = ({
   difficulty,
   calories,
   className,
+  mode,
 }) => {
   const style = className ? `${styles[className]}` : `${styles["card"]}`;
 
@@ -16,7 +17,13 @@ const NutritionCard = ({
       <h5>{recipe}</h5>
 
       <div className={styles["img-container"]}>
-        <Link to={`/nutrition/details/${id}`}>
+        <Link
+          to={
+            mode === "fromCatalog"
+              ? `/nutrition/details/${id}`
+              : `/profile/nutrition/details/${id}`
+          }
+        >
           <img src={image} alt={recipe} />
         </Link>
       </div>

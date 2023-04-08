@@ -16,7 +16,6 @@ const collectionRef = collection(db, "nutrition");
 export const nutrition = async (id, data) => {
   const nutrition = doc(db, "nutrition", id);
 
-  console.log(nutrition);
   try {
     const receipe = await getDoc(nutrition);
 
@@ -30,6 +29,11 @@ export const nutrition = async (id, data) => {
   } catch (e) {
     throw e.message;
   }
+};
+
+export const updateNut = (id, data) => {
+  const nutrition = doc(db, "nutrition", id);
+  return updateDoc(nutrition, data);
 };
 
 export const deleteNutrition = (id) => {

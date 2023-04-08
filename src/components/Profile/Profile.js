@@ -168,7 +168,12 @@ const Profile = () => {
             {!isLoading && !nutritionWanted && workoutsWanted ? (
               workoutToDisplay ? (
                 workoutToDisplay.map((x) => (
-                  <WorkoutsCard className={"card-profile"} {...x} key={x._id} />
+                  <WorkoutsCard
+                    {...x}
+                    className={"card-profile"}
+                    key={x._id}
+                    mode="fromProfile"
+                  />
                 ))
               ) : (
                 <div className={styles["no-content"]}>
@@ -199,6 +204,7 @@ const Profile = () => {
                     {...x}
                     key={x._id}
                     className={"card-profile"}
+                    mode="fromProfile"
                   />
                 ))
               ) : (

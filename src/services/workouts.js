@@ -41,7 +41,9 @@ export const getCreatedByUserWorkouts = async (id) => {
   const res = await getDocs(q);
   const data = [];
 
-  res.docs.forEach((document) => data.push(document.data()));
+  res.docs.forEach((document) =>
+    data.push({ ...document.data(), doc_id: document.id })
+  );
   return data;
 };
 
@@ -50,6 +52,8 @@ export const getSavedWorkout = async (id) => {
   const res = await getDocs(q);
   const data = [];
 
-  res.docs.forEach((document) => data.push(document.data()));
+  res.docs.forEach((document) =>
+    data.push({ ...document.data(), doc_id: document.id })
+  );
   return data;
 };

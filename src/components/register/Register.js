@@ -10,7 +10,7 @@ import { validate } from "../../utils/form-validation";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const Register = () => {
-  const { signUp, signInWithGoogle } = useContext(AuthContext);
+  const { signUp, signInWithGoogle, user } = useContext(AuthContext);
 
   const initialValues = {
     email: "",
@@ -43,19 +43,19 @@ const Register = () => {
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         try {
           await signUp(formValues.email, formValues.password);
-          navigate("/");
+          navigate(`/`);
         } catch (e) {
           navigate("/error");
         }
       }
     }
     register();
-  }, [formErrors, isSubmit, formValues, signUp, navigate]);
+  }, [user, formErrors, isSubmit, formValues, signUp, navigate]);
 
   const googleSignIn = async () => {
     try {
       await signInWithGoogle();
-      navigate("/");
+      navigate(`/`);
     } catch (error) {
       const message = error.message
         .split("(")[1]

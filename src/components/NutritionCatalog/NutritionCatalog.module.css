@@ -33,6 +33,10 @@
   }
 }
 
+.error {
+  font-weight: 600;
+}
+
 .card-container a {
   text-decoration: none;
 }

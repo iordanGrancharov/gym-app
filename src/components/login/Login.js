@@ -11,7 +11,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const Login = () => {
   const initialValues = { email: "", password: "" };
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, user } = useContext(AuthContext);
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -35,19 +35,19 @@ const Login = () => {
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         try {
           await signIn(formValues.email, formValues.password);
-          navigate("/");
+          navigate(`/`);
         } catch (e) {
           navigate("/error");
         }
       }
     }
     logIn();
-  }, [formErrors, isSubmit, formValues, signIn, navigate]);
+  }, [user, formErrors, isSubmit, formValues, signIn, navigate]);
 
   const googleSignIn = async () => {
     try {
       await signInWithGoogle();
-      navigate("/");
+      navigate(`/`);
     } catch (error) {
       const message = error.message
         .split("(")[1]

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllWorkouts } from "../../services/workouts";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import WorkoutsCard from "../WorkoutsCard/WorkoutsCard";
 
@@ -11,13 +11,16 @@ const WorkoutsCatalog = () => {
   const navigate = useNavigate();
   const [workouts, setWorkouts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const getWorkouts = async () => {
       try {
         setIsLoading(true);
         const data = await getAllWorkouts();
 
-        setWorkouts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setWorkouts(
+          data.docs.map((doc) => ({ ...doc.data(), doc_id: doc.id }))
+        );
         setIsLoading(false);
       } catch (e) {
         navigate("/error");
@@ -39,9 +42,7 @@ const WorkoutsCatalog = () => {
             />
           ) : (
             workouts.map((workout) => (
-              <Link to={`/workouts/details/${workout.id}`} key={workout._id}>
-                <WorkoutsCard {...workout} />
-              </Link>
+              <WorkoutsCard {...workout} key={workout._id} mode="fromCatalog" />
             ))
           )}
         </div>
