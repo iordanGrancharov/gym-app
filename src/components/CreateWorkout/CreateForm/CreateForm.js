@@ -21,15 +21,21 @@ import styles from "./CreateForm.module.css";
 const CreateForm = ({ className, mode }) => {
   const navigate = useNavigate();
 
-  const { exercisesForm, setExercisesForm, workoutInfo, setWorkoutInfo } =
-    useContext(ExerciseFormContext);
+  const {
+    exercisesForm,
+    setExercisesForm,
+    workoutInfo,
+    setWorkoutInfo,
+    image,
+    setImage,
+    imageUploadState,
+    setImageUploadState,
+  } = useContext(ExerciseFormContext);
   const { workoutData: workout } = useContext(WorkoutContext);
   const { user } = useContext(AuthContext);
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [imageUploadState, setImageUploadState] = useState(null);
-  const [image, setImage] = useState(null);
 
   const uploadFile = useCallback(async () => {
     if (image === null) {
@@ -101,6 +107,7 @@ const CreateForm = ({ className, mode }) => {
     setExercisesForm([]);
   }, [setWorkoutInfo, setExercisesForm]);
 
+  //Only on Mount
   useEffect(() => {
     const getWorkoutInfo = async () => {
       if (mode === "Update") {
@@ -112,18 +119,17 @@ const CreateForm = ({ className, mode }) => {
           console.log(e.message);
         }
       }
-
-      if (mode === "Create") {
-        clearForm();
-      }
     };
     getWorkoutInfo();
   });
 
+  //Logic
   useEffect(() => {
     async function submitForm() {
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         const fileUrl = await uploadFile();
+
+        console.log(imageUploadState);
 
         const workoutData = {
           ...workoutInfo,
@@ -160,6 +166,7 @@ const CreateForm = ({ className, mode }) => {
             await updateWorkout(workout.workoutId, edittedData);
           }
 
+          setImage(null);
           clearForm();
           navigate("/");
         } catch (e) {
@@ -170,6 +177,7 @@ const CreateForm = ({ className, mode }) => {
     }
     submitForm();
   }, [
+    setImage,
     clearForm,
     uploadFile,
     imageUploadState,

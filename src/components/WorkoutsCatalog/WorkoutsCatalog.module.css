@@ -88,3 +88,13 @@
   text-decoration: none;
   color: white;
 }
+
+.no {
+  width: 180%;
+  text-transform: uppercase;
+  margin-left: 12vw;
+  font-weight: 600;
+  margin-top: 20vh;
+  color: rgba(255, 255, 255, 0.621);
+  font-size: 4vh;
+}

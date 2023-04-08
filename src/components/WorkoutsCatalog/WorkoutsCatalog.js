@@ -40,10 +40,12 @@ const WorkoutsCatalog = () => {
               size={"4rem"}
               className={styles["loader"]}
             />
-          ) : (
+          ) : workouts.length > 0 ? (
             workouts.map((workout) => (
               <WorkoutsCard {...workout} key={workout._id} mode="fromCatalog" />
             ))
+          ) : (
+            <p className={styles["no"]}>No workouts have been created yet</p>
           )}
         </div>
       </div>

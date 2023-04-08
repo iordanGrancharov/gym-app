@@ -37,7 +37,6 @@ const AddExerciseModal = ({
     e.preventDefault();
 
     if (mode === "Add") {
-      console.log(exerciseInfo);
       setExercisesForm((state) => [...state, { ...exerciseInfo }]);
     }
 

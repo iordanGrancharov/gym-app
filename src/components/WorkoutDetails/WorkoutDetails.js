@@ -132,7 +132,25 @@ const WorkoutDetails = ({ mode }) => {
         ) : (
           <div className={styles["btn-container"]}>
             <button onClick={handleBack}>Back</button>
-            {user &&
+            {user ? (
+              workout.users ? (
+                !workout.users.find((x) => x === user._id) ? (
+                  <div className={styles["btn-workout"]}>
+                    <button onClick={handleSave}>Save Workout</button>
+                  </div>
+                ) : (
+                  <div className={styles["btn-workout"]}>
+                    <button onClick={deleteSavedWorkout}>Delete Workout</button>
+                  </div>
+                )
+              ) : (
+                <div className={styles["btn-workout"]}>
+                  <button onClick={handleSave}>Save Workout</button>
+                </div>
+              )
+            ) : null}
+
+            {/* {user &&
             user._id !== workout._ownerId &&
             !workout.users.find((x) => x === user._id) ? (
               <div className={styles["btn-workout"]}>
@@ -142,7 +160,7 @@ const WorkoutDetails = ({ mode }) => {
               <div className={styles["btn-workout"]}>
                 <button onClick={deleteSavedWorkout}>Delete Workout</button>
               </div>
-            )}
+            )} */}
           </div>
         )}
       </div>
