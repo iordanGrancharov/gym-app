@@ -10,7 +10,7 @@ import Register from "./components/Register/Register";
 import Footer from "./components/Footer/Footer";
 import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProtectedRouteGuest from "./components/ProtectedRoute/ProtectedRouteGuest";
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Error/NotFound";
 import Error from "./components/Error/Error";
@@ -20,6 +20,7 @@ import NutritionCatalog from "./components/NutritionCatalog/NutritionCatalog";
 import NutritionDetails from "./components/NutritionDetails/NutritionDetails";
 import Profile from "./components/Profile/Profile";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -33,17 +34,17 @@ function App() {
                 <Route
                   path="/workout/create"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <CreateWorkout mode="Create" />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
                 <Route
                   path="/workout/update"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <CreateWorkout mode="Update" />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
                 <Route path="/login" element={<Login />} />
@@ -52,17 +53,17 @@ function App() {
                 <Route
                   path="/details/add/:exerciseId"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <ExerciseDetails mode="Add" />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
                 <Route
                   path="/details/edit/:exerciseId/:index"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <ExerciseDetails mode="Edit" />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
                 <Route
@@ -82,19 +83,20 @@ function App() {
                 <Route
                   path="/profile/:userId"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <Profile />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
                 <Route
                   path="/profile/information/:userId"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRouteGuest>
                       <UpdateProfile />
-                    </ProtectedRoute>
+                    </ProtectedRouteGuest>
                   }
                 />
+                <Route path="/about" element={<About />} />
                 <Route path="/error" element={<Error />} />
                 <Route path="*" element={<NotFound />} />
               </Route>

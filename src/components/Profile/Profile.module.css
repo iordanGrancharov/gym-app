@@ -170,6 +170,8 @@
   height: 64.7vh;
   width: 80%;
   overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .card-container::-webkit-scrollbar {
@@ -186,6 +188,13 @@
   font-family: var(--font-family-five);
   width: 100%;
   text-align: center;
+}
+
+.no-content {
+  width: 200%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-self: center;
 }
 
 .no {
@@ -250,8 +259,11 @@
 }
 
 .else {
-  width: 60%;
+  width: 150%;
   height: 95%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-self: center;
   box-shadow: 8px 10px 10px rgb(57, 57, 57);
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }

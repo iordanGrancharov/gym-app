@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
@@ -31,7 +31,7 @@ const CreateForm = ({ className, mode }) => {
   const [imageUploadState, setImageUploadState] = useState(null);
   const [image, setImage] = useState(null);
 
-  const uploadFile = async () => {
+  const uploadFile = useCallback(async () => {
     if (image === null) {
       return;
     }
@@ -45,7 +45,7 @@ const CreateForm = ({ className, mode }) => {
     const url = await getDownloadURL(snapshot.ref);
 
     return url;
-  };
+  }, [image]);
 
   const removeExercise = (index) => {
     if (
@@ -64,7 +64,6 @@ const CreateForm = ({ className, mode }) => {
       ...workoutInfo,
       [name]: value,
     });
-    // setWorkoutInfo({ ...workoutInfo, [name]: value });
   };
 
   const validateForm = (data, exercises) => {
@@ -89,6 +88,19 @@ const CreateForm = ({ className, mode }) => {
     setFormErrors(validateForm(workoutInfo, exercisesForm));
     setIsSubmit(true);
   };
+
+  const clearForm = useCallback(() => {
+    setWorkoutInfo({
+      title: "",
+      imageUrl: "",
+      description: "",
+      level: "",
+      exercises: [],
+    });
+
+    setExercisesForm([]);
+  }, [setWorkoutInfo, setExercisesForm]);
+
   useEffect(() => {
     const getWorkoutInfo = async () => {
       if (mode === "Update") {
@@ -100,9 +112,13 @@ const CreateForm = ({ className, mode }) => {
           console.log(e.message);
         }
       }
+
+      if (mode === "Create") {
+        clearForm();
+      }
     };
     getWorkoutInfo();
-  }, [workout, setWorkoutInfo, setExercisesForm, mode]);
+  });
 
   useEffect(() => {
     async function submitForm() {
@@ -144,14 +160,7 @@ const CreateForm = ({ className, mode }) => {
             await updateWorkout(workout.workoutId, edittedData);
           }
 
-          setWorkoutInfo({
-            title: "",
-            imageUrl: "",
-            description: "",
-            level: "Beginner",
-            exercises: [],
-          });
-          setExercisesForm([]);
+          clearForm();
           navigate("/");
         } catch (e) {
           console.log(e.message);
@@ -161,6 +170,9 @@ const CreateForm = ({ className, mode }) => {
     }
     submitForm();
   }, [
+    clearForm,
+    uploadFile,
+    imageUploadState,
     formErrors,
     exercisesForm,
     setExercisesForm,

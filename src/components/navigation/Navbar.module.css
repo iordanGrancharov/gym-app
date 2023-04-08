@@ -28,8 +28,12 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 50%;
-  border: var(--border-type-one);
+  border: 0.4vh solid white;
   box-shadow: var(--box-shadow-main);
+}
+
+.profile img:hover {
+  border: var(--border-type-one);
 }
 
 .navigation-bg {

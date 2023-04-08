@@ -5,13 +5,7 @@ export const ExerciseFormContext = createContext([]);
 export const ExerciseFormProvider = ({ children }) => {
   const [exercisesForm, setExercisesForm] = useState([]);
 
-  const [workoutInfo, setWorkoutInfo] = useState({
-    title: "",
-    imageUrl: "",
-    description: "",
-    level: "",
-    exercises: [],
-  });
+  const [workoutInfo, setWorkoutInfo] = useState({});
 
   const context = {
     exercisesForm,

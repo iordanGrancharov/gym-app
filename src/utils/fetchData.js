@@ -1,7 +1,7 @@
 export const exerciseDbOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY_THREE,
+    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
     "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
   },
 };
@@ -17,7 +17,7 @@ export const youtubeDbOptions = {
 export const ketoDbOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY_THREE,
+    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
     "X-RapidAPI-Host": "keto-diet.p.rapidapi.com",
   },
 };

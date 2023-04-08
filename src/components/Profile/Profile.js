@@ -171,7 +171,7 @@ const Profile = () => {
                   <WorkoutsCard className={"card-profile"} {...x} key={x._id} />
                 ))
               ) : (
-                <div>
+                <div className={styles["no-content"]}>
                   <p className={styles["no"]}>No Workouts to be displayed</p>
                   <div className={styles["btn-workouts"]}>
                     <p className={styles["addition"]}>
@@ -202,7 +202,7 @@ const Profile = () => {
                   />
                 ))
               ) : (
-                <div>
+                <div className={styles["no-content"]}>
                   <p className={styles["no"]}>No Nutrition to be displayed</p>
                   <div className={styles["btn-workouts"]}>
                     <p className={styles["addition"]}>
@@ -215,12 +215,6 @@ const Profile = () => {
                 </div>
               )
             ) : null}
-
-            {/* {!isLoading && workoutToDisplay ? (
-              workoutToDisplay.map((x) => <WorkoutsCard {...x} key={x._id} />)
-            ) : (
-              <p className={styles["no"]}>No Workouts to be displayed</p>
-            )} */}
           </div>
         </div>
       </div>
