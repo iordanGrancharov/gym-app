@@ -6,7 +6,6 @@ import {
   deleteNutrition,
   getNutrition,
   nutrition,
-  updateNut,
 } from "../../services/nutrition";
 import { AuthContext } from "../../contexts/AuthContext";
 

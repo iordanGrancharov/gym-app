@@ -10,6 +10,8 @@ import {
   getUserData,
 } from "../firebase/firebaseFirestore";
 
+import { deleteUser } from "firebase/auth";
+
 import { db } from "../firebase/firebaseFirestore";
 import { updateDoc, deleteDoc, getDoc, doc } from "firebase/firestore";
 
@@ -71,7 +73,11 @@ export const updateUser = (id, updatedUser) => {
   return updateDoc(user, updatedUser);
 };
 
-export const deleteWorkout = (id) => {
+export const deleteUserFirestore = (id) => {
   const user = doc(db, "users", id);
   return deleteDoc(user);
+};
+
+export const deleteUserFromAuth = (user) => {
+  return deleteUser(user);
 };

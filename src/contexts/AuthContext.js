@@ -15,14 +15,15 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [pending, setPending] = useState(true);
+  const [userAuthRef, setUserAuthRef] = useState(null);
 
   useEffect(() => {
     const authFunction = onAuthStateChanged(auth, async (currentUser) => {
       setPending(true);
-
       if (currentUser) {
         try {
           await createUser(currentUser);
+          setUserAuthRef(currentUser);
         } catch (e) {
           console.log(e.message);
         }
@@ -44,6 +45,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const context = {
+    userAuthRef,
     user,
     setUser,
     pending,
