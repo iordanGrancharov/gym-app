@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import CreateWorkout from "./components/CreateWorkout/CreateWorkout";
 import ExerciseDetails from "./components/ExerciseDetails/ExerciseDetails";
 import ProtectedRouteGuest from "./components/ProtectedRoute/ProtectedRouteGuest";
+import ProtectedRouteUsers from "./components/ProtectedRoute/PotecredRouteUsers";
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Error/NotFound";
 import Error from "./components/Error/Error";
@@ -39,6 +40,7 @@ function App() {
                     </ProtectedRouteGuest>
                   }
                 />
+                {/* check */}
                 <Route
                   path="/workout/update"
                   element={
@@ -47,9 +49,31 @@ function App() {
                     </ProtectedRouteGuest>
                   }
                 />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/logout" element={<Logout />} />
+                {/* PROTECTED ROUTES GUEST ONLY */}
+                <Route
+                  path="/login"
+                  element={
+                    <ProtectedRouteUsers>
+                      <Login />
+                    </ProtectedRouteUsers>
+                  }
+                />
+                <Route
+                  path="/register"
+                  element={
+                    <ProtectedRouteUsers>
+                      <Register />
+                    </ProtectedRouteUsers>
+                  }
+                />
+                <Route
+                  path="/logout"
+                  element={
+                    <ProtectedRouteGuest>
+                      <Logout />
+                    </ProtectedRouteGuest>
+                  }
+                />
                 <Route
                   path="/details/add/:exerciseId"
                   element={
@@ -71,7 +95,7 @@ function App() {
                   element={<WorkoutDetails />}
                 />
                 <Route
-                  path="/details/exercise/:exerciseId"
+                  path="/:workoutId/details/exercise/:exerciseId"
                   element={<ExerciseDetails mode="Preview" />}
                 />
                 <Route path="/workouts" element={<WorkoutsCatalog />} />

@@ -91,7 +91,7 @@ const WorkoutDetails = () => {
               workout?.exercises.map((exercise) => (
                 <tr key={exercise.id}>
                   <td className={styles["special"]}>
-                    <Link to={`/details/exercise/${exercise.id}`}>
+                    <Link to={`/${workoutId}/details/exercise/${exercise.id}`}>
                       {exercise.name}
                     </Link>
                   </td>

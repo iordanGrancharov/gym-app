@@ -68,11 +68,13 @@ const ExerciseDetails = ({ mode }) => {
           <>
             <Details {...exercise} mode={mode} index={index} />
             <ExerciseVideos videos={videos} name={exercise.name} />
-            <SimilarExercise
-              similarTargetExercises={similarTargetExercises}
-              target={exercise.target}
-              exerciseId={exercise.id}
-            />
+            {mode === "Add" && (
+              <SimilarExercise
+                similarTargetExercises={similarTargetExercises}
+                target={exercise.target}
+                exerciseId={exercise.id}
+              />
+            )}
           </>
         )}
       </div>
