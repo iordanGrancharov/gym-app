@@ -120,11 +120,11 @@ const CreateForm = ({ className, mode }) => {
           console.log(e.message);
         }
       }
-      console.log(mode);
+
       setModeState(mode.toLowerCase());
     };
     getWorkoutInfo();
-  });
+  }, [setWorkoutInfo, setExercisesForm, setModeState, workout, mode]);
 
   //Logic
   useEffect(() => {
