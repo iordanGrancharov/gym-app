@@ -38,21 +38,36 @@ const NutritionCatalog = () => {
       setIsLoading(true);
       try {
         // API isnt working good with a difference smaller than 5
-        if (Number(filter.less) === Number(filter.greater)) {
+        if (
+          Number(filter.less) === Number(filter.greater) &&
+          filter.less &&
+          filter.greater
+        ) {
           throw new Error("LessThan and GreaterThan can't be equal");
         }
 
-        if (Number(filter.less) < Number(filter.greater)) {
+        if (
+          Number(filter.less) < Number(filter.greater) &&
+          filter.less &&
+          filter.greater
+        ) {
           throw new Error("LessThan must be bigger than GreaterThan");
         }
 
-        if (Number(filter.less) - Number(filter.greater) < 20) {
+        if (
+          Number(filter.less) - Number(filter.greater) < 20 &&
+          filter.less &&
+          filter.greater
+        ) {
           throw new Error(
             "LessThan must be at least 20 bigger than GreaterThan"
           );
         }
 
-        if (Number(filter.less) < 0 || Number(filter.greater) < 0) {
+        if (
+          Number(filter.less) < 0 ||
+          (Number(filter.greater) < 0 && filter.less && filter.greater)
+        ) {
           throw new Error("Values can't be negative");
         }
 

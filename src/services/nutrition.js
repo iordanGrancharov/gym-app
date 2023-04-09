@@ -31,11 +31,6 @@ export const nutrition = async (id, data) => {
   }
 };
 
-export const updateNut = (id, data) => {
-  const nutrition = doc(db, "nutrition", id);
-  return updateDoc(nutrition, data);
-};
-
 export const deleteNutrition = (id) => {
   const nutrition = doc(db, "nutrition", id);
   return deleteDoc(nutrition);

@@ -61,13 +61,13 @@ const WorkoutDetails = ({ mode }) => {
         ...workout,
         users: [...workout.users, user._id],
       });
-      navigate("/");
+      navigate(`/profile/${user._id}`);
     } catch (e) {
       navigate("/error");
     }
   };
 
-  const deleteSavedWorkout = async (e) => {
+  const removeSavedWorkout = async (e) => {
     const updatedWorkout = { ...workout };
     const users = [...workout.users].filter((x) => x !== user._id);
 
@@ -140,7 +140,7 @@ const WorkoutDetails = ({ mode }) => {
                   </div>
                 ) : (
                   <div className={styles["btn-workout"]}>
-                    <button onClick={deleteSavedWorkout}>Delete Workout</button>
+                    <button onClick={removeSavedWorkout}>Remove</button>
                   </div>
                 )
               ) : (

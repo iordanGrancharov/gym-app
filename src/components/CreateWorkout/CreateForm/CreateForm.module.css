@@ -108,6 +108,7 @@ h3 {
 
 .amount {
   color: var(--main-bg-color);
+  text-transform: lowercase;
 }
 
 .icon-container {
@@ -144,6 +145,25 @@ h3 {
   text-shadow: none;
   font-weight: 600;
 }
+
+/* .btn-clear {
+  margin: 1vh auto;
+  color: var(--secondary-color);
+  background-color: darkmagenta;
+  border: none;
+  border-radius: 5vh;
+  width: 12vw;
+  padding: 0.5vh 0;
+  text-shadow: var(--text-shadow-one);
+}
+
+.btn-clear:hover {
+  background-color: #ebbebe;
+  color: var(--main-bg-color);
+  text-shadow: none;
+  font-weight: 600;
+  transform: scale(1);
+} */
 
 .special {
   margin: 1vh;

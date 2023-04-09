@@ -35,7 +35,7 @@
 
 .content-container {
   margin-top: 15vh;
-  width: 70vw;
+  width: 60vw;
   height: 80vh;
   background-color: white;
   outline: 3px solid white;
@@ -67,7 +67,7 @@
   justify-content: center;
   margin: 0 auto;
   margin-top: 2vh;
-  width: 44vw;
+  width: 34vw;
   text-align: center;
   font-family: var(--font-family-five);
   font-weight: 600;
@@ -75,6 +75,7 @@
 }
 .info h1 {
   margin-bottom: 2vh;
+  margin-top: -12vh;
 }
 
 .section-one {
@@ -109,11 +110,11 @@
 
 .section-two {
   height: 100%;
-  width: 41.8vw;
+  width: 31.9vw;
   margin: 0 auto;
   border-left: 3px solid var(--main-bg-color);
   text-align: center;
-  margin-top: -14vh;
+  margin-top: -20vh;
   font-weight: 600;
 }
 

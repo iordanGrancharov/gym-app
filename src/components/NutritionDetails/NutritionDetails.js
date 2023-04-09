@@ -56,14 +56,14 @@ const NutritionDetails = ({ mode }) => {
 
         await nutrition(nutritionId, data);
       }
-      navigate("/");
+      navigate(`/profile/${user._id}`);
     } catch (e) {
       navigate("/error");
       console.log(e.message);
     }
   };
 
-  const handleDelete = async () => {
+  const handleRemove = async () => {
     const users = [...recipe.users].filter((x) => x !== user._id);
     const updatedNutrition = { ...recipe, users: [...users] };
 
@@ -161,7 +161,7 @@ const NutritionDetails = ({ mode }) => {
                   !recipe.users.find((x) => x === user._id) ? (
                     <button onClick={handleSave}>Save</button>
                   ) : (
-                    <button onClick={handleDelete}>Delete</button>
+                    <button onClick={handleRemove}>Remove</button>
                   )
                 ) : (
                   <button onClick={handleSave}>Save</button>

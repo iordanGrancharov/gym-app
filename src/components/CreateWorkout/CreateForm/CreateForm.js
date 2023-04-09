@@ -300,7 +300,9 @@ const CreateForm = ({ className, mode }) => {
                       </span>{" "}
                       <span className={styles["text"]}>Weight:</span>
                       <span className={styles["amount"]}>
-                        {exercise.weight}
+                        {exercise.weight !== ""
+                          ? exercise.weight + " kg"
+                          : exercise.weight}
                       </span>
                     </div>
                   </div>
