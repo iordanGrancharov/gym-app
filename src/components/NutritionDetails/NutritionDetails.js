@@ -27,7 +27,7 @@ const NutritionDetails = ({ mode }) => {
     }
 
     if (mode === "fromProfile") {
-      navigate(`/profile/nutrition/details/${nutritionId}`);
+      navigate(`/profile/${user._id}`);
     }
   };
 
