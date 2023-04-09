@@ -11,6 +11,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import ExerciseModal from "../../ExerciseModal/ExerciseModal";
 import { WorkoutContext } from "../../../contexts/WorkoutContext";
+import { ExerciseFormContext } from "../../../contexts/ExerciseFormContext";
 
 const Details = ({
   id,
@@ -25,8 +26,9 @@ const Details = ({
   const [modalState, setModalState] = useState(false);
 
   const { workoutData } = useContext(WorkoutContext);
-  console.log(workoutData);
+  const { modeState } = useContext(ExerciseFormContext);
 
+  console.log(modeState);
   const showModal = () => {
     setModalState(true);
   };
@@ -81,7 +83,11 @@ const Details = ({
           </div>
         ) : (
           <div className={styles["btn-container"]}>
-            <Link to="/create" className={styles["btn"]} type="button">
+            <Link
+              to={`/workout/${modeState}`}
+              className={styles["btn"]}
+              type="button"
+            >
               Back
             </Link>
             <button className={styles["btn"]} type="button" onClick={showModal}>

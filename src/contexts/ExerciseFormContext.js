@@ -7,8 +7,11 @@ export const ExerciseFormProvider = ({ children }) => {
   const [workoutInfo, setWorkoutInfo] = useState({});
   const [imageUploadState, setImageUploadState] = useState(true);
   const [image, setImage] = useState(null);
+  const [modeState, setModeState] = useState("");
 
   const context = {
+    modeState,
+    setModeState,
     imageUploadState,
     setImageUploadState,
     exercisesForm,

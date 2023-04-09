@@ -36,6 +36,7 @@ const CreateForm = ({ className, mode }) => {
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const { setModeState } = useContext(ExerciseFormContext);
 
   const uploadFile = useCallback(async () => {
     if (image === null) {
@@ -119,6 +120,8 @@ const CreateForm = ({ className, mode }) => {
           console.log(e.message);
         }
       }
+      console.log(mode);
+      setModeState(mode.toLowerCase());
     };
     getWorkoutInfo();
   });
